@@ -1,5 +1,3 @@
-				</main>
-				<div class="mdl-layout__obfuscator"></div>
 				<footer class="mdl-mini-footer">
 					<div class="mdl-mini-footer__left-section">
 						<div class="mdl-logo">Heheszki</div>
@@ -9,6 +7,8 @@
 						</ul>
 					</div>
 				</footer>
+				</main>
+				<div class="mdl-layout__obfuscator"></div>
 			</div>
 		</div>
 	</body>
