@@ -20,7 +20,7 @@ class Welcome extends BaseController {
 	 */
 	public function index()
 	{
-		$this->load->view('layout/header');
+		$this->load->view('layout/header', $this->data);
 		$this->load->view('layout/testmid');
 		$this->load->view('layout/footer');
 	}

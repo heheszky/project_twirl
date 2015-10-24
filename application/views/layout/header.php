@@ -26,7 +26,11 @@
 							<a class="mdl-navigation__link" href="#">Książki</a>
 							<a class="mdl-navigation__link" href="#">Filmy</a>
 							<a class="mdl-navigation__link" href="#">Muzyka</a>
-							<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
+							<?php if(isset($user))
+								echo '<a class="mdl-navigation__link" href="/profil">'.$user['imie'].'</a>';
+							else
+								echo '<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>';
+							?>
 						</nav>
 					</div>
 				</header>
@@ -37,7 +41,11 @@
 					<a class="mdl-navigation__link" href="#">Książki</a>
 					<a class="mdl-navigation__link" href="#">Filmy</a>
 					<a class="mdl-navigation__link" href="#">Muzyka</a>
-					<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
+					<?php if(isset($user))
+						echo '<a class="mdl-navigation__link" href="/profil">'.$user['imie'].'</a>';
+					else
+						echo '<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>';
+					?>
 					</nav>
 				</div>
 				<div class="mdl-layout__drawer-button"><i class="material-icons">menu</i></div>

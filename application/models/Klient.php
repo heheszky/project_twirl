@@ -8,9 +8,9 @@ class Klient extends CI_Model {
 	function add()
 	{
 		$data = array(
-			"haslo"				=> md5($this->input->post('haslo')),
-			"imie_klienta"		=> $this->input->post('imie'),
-			"nazwisko_klienta"	=> $this->input->post('nazwisko'),
+			"haslo"				=> md5($this->input->post('password')),
+			"imie_klienta"		=> $this->input->post('imie_klienta'),
+			"nazwisko_klienta"	=> $this->input->post('nazwisko_klienta'),
 			"email"				=> $this->input->post('email'),
 			"miejscowosc"		=> $this->input->post('miejscowosc'),
 			"ulica"				=> $this->input->post('ulica'),
@@ -20,6 +20,7 @@ class Klient extends CI_Model {
 			"pesel"				=> $this->input->post('pesel')
 			);
 		$this->db->insert('klient', $data);
+		return array('id'=>$this->db->insert_id(), 'imie'=>$this->input->post('imie_klienta'));
 	}
 	function get($id)
 	{
@@ -31,9 +32,19 @@ class Klient extends CI_Model {
 			nr_domu,
 			nr_lokalu,
 			data_urodzenia,
-			pesel'
-		);
+			pesel,
+			admin
+		');
 		$this->db->where('ID_klienta', $id);
 		return $this->db->get('klient')->result();
+	}
+	function login($email, $password)
+	{
+		$this->db->select('id_klienta as id, imie_klienta as imie, admin');
+		$this->db->where(array(
+			'email' => $email,
+			'haslo' => $password
+		));
+		return $this->db->get('klient')->row();
 	}
 }
