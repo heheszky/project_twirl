@@ -1,0 +1,22 @@
+.mdl-card{
+	width:320px;
+	height:320px;
+	min-height: 0;
+	overflow: hidden;
+}
+.is-small-screen .mdl-card{
+	width:200px;
+	height:200px;
+}
+.mdl-card__title-text, .mdl-card__menu{
+	color:white;
+}
+.mdl-card__actions{position: absolute;
+    bottom: -53px;
+    width: 100%;
+    background: #fff;
+	-webkit-transition: bottom .25s ease-out;
+}
+.mdl-card:hover .mdl-card__actions{
+	bottom:0;
+}

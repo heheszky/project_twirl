@@ -1,0 +1,10 @@
+html>body{font-family:'Roboto','Helvetica','Arial',sans-serif!important;}
+
+header .mdl-navigation__link{color:#fff;text-transform: uppercase;opacity: .65;border-bottom: 3px solid transparent;}
+header .mdl-navigation__link:hover{border-bottom-color:#18FFFF;opacity: 1;}
+header .mdl-layout__header-row{padding: 0 40px 0 40px;}
+.small-screen-header{display:none;text-align: center;line-height: 52px;font-weight: 500;font-size: 13px;}
+.mdl-layout__drawer-button{display: none;}
+
+.is-small-screen .small-screen-header{display:block;height: 52px;background: #263238;color: white;}
+.is-small-screen .mdl-layout__drawer-button{display: block;color:white;}
