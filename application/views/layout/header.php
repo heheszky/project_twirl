@@ -26,16 +26,18 @@
 							<a class="mdl-navigation__link" href="#">Książki</a>
 							<a class="mdl-navigation__link" href="#">Filmy</a>
 							<a class="mdl-navigation__link" href="#">Muzyka</a>
+							<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
 						</nav>
 					</div>
 				</header>
 				<div class="mdl-layout__drawer" id='drawer'>
 					<span class="mdl-layout-title">Kategorie</span>
 					<nav class="mdl-navigation">
-					<a class="mdl-navigation__link" href="">Wszystkie</a>
-					<a class="mdl-navigation__link" href="">Książki</a>
-					<a class="mdl-navigation__link" href="">Filmy</a>
-					<a class="mdl-navigation__link" href="">Muzyka</a>
+					<a class="mdl-navigation__link" href="#">Wszystkie</a>
+					<a class="mdl-navigation__link" href="#">Książki</a>
+					<a class="mdl-navigation__link" href="#">Filmy</a>
+					<a class="mdl-navigation__link" href="#">Muzyka</a>
+					<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
 					</nav>
 				</div>
 				<div class="mdl-layout__drawer-button"><i class="material-icons">menu</i></div>
