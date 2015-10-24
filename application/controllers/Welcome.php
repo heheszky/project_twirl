@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Welcome extends CI_Controller {
+require "BaseController.php";
+class Welcome extends BaseController {
 
 	/**
 	 * Index Page for this controller.
