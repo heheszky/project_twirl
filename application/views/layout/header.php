@@ -19,7 +19,7 @@
 				<header class='mdl-layout__header mdl-layout__header--transparent' style='background: #263238'>
 					<div class="mdl-layout-icon"></div>
 					<div class="mdl-layout__header-row">
-						<span class="mdl-layout-title">Wypożyczalnia</span>
+						<span class="mdl-layout-title"><a href='/'>Wypożyczalnia</a></span>
 						<div class="mdl-layout-spacer"></div>
 						<nav class="mdl-navigation">
 							<a class="mdl-navigation__link" href="/">Wszystkie</a>
