@@ -1,4 +1,4 @@
-<form action="/klient/rejestracja" method="post" class='regForm'>
+<form action="/klient/rejestracja" method="post" class='regForm' autocomplete="off">
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="text" id="p1" name="imie_klienta"/>
 		<label class="mdl-textfield__label" for="p1">Imię</label>
