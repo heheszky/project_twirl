@@ -1,4 +1,4 @@
-<?
+<?php
 class Ksiazka extends CI_Model {
 	function __construct()
 	{

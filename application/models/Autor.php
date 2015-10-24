@@ -1,4 +1,4 @@
-<?
+<?php
 class Autor extends CI_Model {
 	function __construct()
 	{
