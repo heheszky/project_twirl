@@ -1,4 +1,4 @@
-<?
+<?php
 class Klient extends CI_Model {
 	function __construct()
 	{
@@ -11,6 +11,7 @@ class Klient extends CI_Model {
 			"haslo"				=> md5($this->input->post('haslo')),
 			"imie_klienta"		=> $this->input->post('imie'),
 			"nazwisko_klienta"	=> $this->input->post('nazwisko'),
+			"email"				=> $this->input->post('email'),
 			"miejscowosc"		=> $this->input->post('miejscowosc'),
 			"ulica"				=> $this->input->post('ulica'),
 			"nr_domu"			=> $this->input->post('nr_domu'),
