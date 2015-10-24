@@ -3,19 +3,32 @@
 	height:320px;
 	min-height: 0;
 	overflow: hidden;
+	margin:5px;
 }
 .is-small-screen .mdl-card{
-	width:200px;
-	height:200px;
+	width:100%;
+	height:100%;
+	min-width:200px;
+	min-height:200px;
 }
 .mdl-card__title-text, .mdl-card__menu{
 	color:white;
 }
 .mdl-card__actions{position: absolute;
-    bottom: -53px;
+    bottom: -52px;
     width: 100%;
     background: #fff;
 	-webkit-transition: bottom .25s ease-out;
+}
+.mdl-card__actions .mdl-card__title-text{
+	color: #fff;
+    background: rgba(0,0,0,.2);
+    position: absolute;
+    top: -60px;
+    left: 0px;
+    padding: 16px;
+	box-sizing: border-box;
+    width: 100%;
 }
 .mdl-card:hover .mdl-card__actions{
 	bottom:0;
