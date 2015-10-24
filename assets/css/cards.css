@@ -30,6 +30,9 @@
 .mdl-card:hover .mdl-card__actions{
 	bottom:0;
 }
+.mdl-card__menu .mdl-button{
+	background: rgba(0,0,0,.2);
+}
 
 @media screen and (max-width: 1024px){
 	.mdl-card{
