@@ -13,6 +13,9 @@
     width: 100%;
     background: #fff;
 	-webkit-transition: bottom .25s ease-out;
+	   -moz-transition: bottom .25s ease-out;
+	     -o-transition: bottom .25s ease-out;
+		    transition: bottom .25s ease-out;
 }
 .mdl-card__actions .mdl-card__title-text{
 	color: #fff;

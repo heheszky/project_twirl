@@ -22,7 +22,7 @@
 						<span class="mdl-layout-title">Wypożyczalnia</span>
 						<div class="mdl-layout-spacer"></div>
 						<nav class="mdl-navigation">
-							<a class="mdl-navigation__link" href="#">Wszystkie</a>
+							<a class="mdl-navigation__link" href="/">Wszystkie</a>
 							<a class="mdl-navigation__link" href="#">Książki</a>
 							<a class="mdl-navigation__link" href="#">Filmy</a>
 							<a class="mdl-navigation__link" href="#">Muzyka</a>
@@ -33,7 +33,7 @@
 				<div class="mdl-layout__drawer" id='drawer'>
 					<span class="mdl-layout-title">Kategorie</span>
 					<nav class="mdl-navigation">
-					<a class="mdl-navigation__link" href="#">Wszystkie</a>
+					<a class="mdl-navigation__link" href="/">Wszystkie</a>
 					<a class="mdl-navigation__link" href="#">Książki</a>
 					<a class="mdl-navigation__link" href="#">Filmy</a>
 					<a class="mdl-navigation__link" href="#">Muzyka</a>
