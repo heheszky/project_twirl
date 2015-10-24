@@ -1,9 +1,14 @@
+html{text-rendering: geometricPrecision;}
 ::-webkit-datetime-edit{color:transparent;}
 .is-dirty ::-webkit-datetime-edit{color: #757575;}
 
 .mdl-layout-title a{color: white;text-decoration: none;}
 .mdl-layout__content{display: flex;flex-direction:column;}
+
+main{background: #eeeeee;}
 .homeCategory{flex: 1;padding:1%;}
+.homeCategory h4{padding:5px;}
+
 .itemSection{display: flex;flex-direction:row;flex-wrap:wrap;justify-content:left;}
 .is-small-screen .itemSection{justify-content:center;}
 
@@ -23,4 +28,7 @@
 	.regForm .mdl-textfield__input{
 		width:100%;
 	}
+}
+@media screen and (max-width:550px){
+	.is-small-screen .homeCategory h4 .mdl-button{float:right;}
 }
