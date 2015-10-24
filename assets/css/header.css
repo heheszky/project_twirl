@@ -4,6 +4,7 @@ header .mdl-navigation__link{color:#fff;text-transform: uppercase;opacity: .65;b
 header .mdl-navigation__link.active{border-bottom-color:#fff;opacity: 1;}
 header .mdl-navigation__link:hover{border-bottom-color:#fff;opacity: 1;}
 header .mdl-layout__header-row{padding: 0 40px 0 40px;}
+
 .small-screen-header{display:none;text-align: center;line-height: 52px;font-weight: 500;font-size: 13px;}
 .mdl-layout__drawer-button{display: none;}
 

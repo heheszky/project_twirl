@@ -1,54 +1,20 @@
-.mdl-card{
-	width:320px;
-	height:320px;
-	min-height: 0;
-	overflow: hidden;
-	margin:5px;
-}
-.mdl-card__title-text, .mdl-card__menu{
-	color:white;
-}
-.mdl-card__actions{position: absolute;
-    bottom: -52px;
-    width: 100%;
-    background: #fff;
-	-webkit-transition: bottom .25s ease-out;
-	   -moz-transition: bottom .25s ease-out;
-	     -o-transition: bottom .25s ease-out;
-		    transition: bottom .25s ease-out;
-}
-.mdl-card__actions .mdl-card__title-text{
-	color: #fff;
-    background: rgba(0,0,0,.2);
-    position: absolute;
-    top: -60px;
-    left: 0px;
-    padding: 16px;
-	box-sizing: border-box;
-    width: 100%;
-}
-.mdl-card:hover .mdl-card__actions{
-	bottom:0;
-}
-.mdl-card__menu .mdl-button{
-	background: rgba(0,0,0,.2);
-}
+.mdl-card{width:320px;height:320px;min-height: 0;overflow: hidden;margin:5px;overflow: visible;}
+.mdl-card > a{display: flex;-webkit-box-flex: 1;-webkit-flex-grow: 1;-ms-flex-positive: 1;flex-grow: 1;}
+.mdl-card > a > div{border-radius: 2px;}
+.mdl-card__title-text{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: block;border:0 0 2px 2px;}
+.mdl-card__title-text, .mdl-card__menu{color:white;}
+.mdl-card__title-text .mdl-button{float:right;}
+.mdl-card__actions{width: 100%;padding:0;position:absolute;bottom:0;left:0;}
+.mdl-card__actions a{text-decoration: none;}
+.mdl-card__actions .mdl-card__title-text{color: #fff;background: rgba(0,0,0,.2);left: 0px;padding: 16px;box-sizing: border-box;width: 100%;}
+.mdl-card:hover .mdl-card__actions{bottom:0;}
 
 @media screen and (max-width: 1024px){
-	.mdl-card{
-		width:250px;
-		height:250px;
-	}
+	.mdl-card{width:250px;height:250px;}
 }
 @media screen and (max-width: 550px){
-	.mdl-card{
-		width:200px;
-		height:200px;
-	}
+	.mdl-card{width:200px;height:200px;}
 }
 @media screen and (max-width: 445px){
-	.mdl-card{
-		width:100%;
-		height:200px;
-	}
+	.mdl-card{width:100%;height:200px;}
 }
