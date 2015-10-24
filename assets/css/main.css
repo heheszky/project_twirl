@@ -1,5 +1,7 @@
 ::-webkit-datetime-edit{color:transparent;}
 .is-dirty ::-webkit-datetime-edit{color: #757575;}
+
+.mdl-layout-title a{color: white;text-decoration: none;}
 .mdl-layout__content{display: flex;flex-direction:column;}
 .homeCategory{flex: 1;padding:1%;}
 .itemSection{display: flex;flex-direction:row;flex-wrap:wrap;justify-content:left;}
@@ -9,6 +11,9 @@
 	padding:10px 0 10px 0;
 	width:300px;
 	margin:auto;
+}
+.regForm:-webkit-autofill{
+	background-color: white !important;
 }
 
 @media screen and (max-width:300px){
