@@ -1,1 +1,4 @@
-.mdl-layout__content{padding:5%;}
+.mdl-layout__content{display: flex;flex-direction:column;}
+.homeCategory{flex: 1;padding:1%;}
+.itemSection{display: flex;flex-direction:row;flex-wrap:wrap;justify-content:left;}
+.is-small-screen .itemSection{justify-content:center;}
