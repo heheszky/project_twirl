@@ -40,7 +40,7 @@ for(var x = 0; x < cardsLen; x++){
 		<li class="mdl-menu__item">Dodaj do koszyka</li>\
 		<li class="mdl-menu__item" onclick="window.location = \''+cardActionHref+'\'">Pokaż więcej informacji</li>\
 		<li class="mdl-menu__item" onclick="window.location = \'https://www.google.pl/webhp#q='+cardTitle+'\'">Szukaj w Google</li>\
-		<li class="mdl-menu__item" onclick="window.location = \'https://pl.wikipedia.org/wiki/'+cardTitle+'\'">Szukaj na Wikipedii</li>\
+		<li class="mdl-menu__item" onclick="window.location = \'https://pl.wikipedia.org/wiki/Specjalna:Szukaj/'+cardTitle+'\'">Szukaj na Wikipedii</li>\
 	</ul>';
 	h2Title.innerHTML = cardTitle + htmlCODE;
 	h2Title.classList.add('mdl-card__title-text');
