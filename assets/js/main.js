@@ -10,10 +10,12 @@ document.getElementsByClassName('mdl-layout__obfuscator')[0].addEventListener('c
 var cards = document.getElementsByTagName("card");
 var cardsLen = cards.length;
 
+//<card>
 for(var x = 0; x < cardsLen; x++){
 	var card = cards[0];
 	var cardTitle = cards[0].attributes.getNamedItem('cardTitle').value;
 	var cardCover = cards[0].attributes.getNamedItem('cardCover').value;
+	var cardType = cards[0].attributes.getNamedItem('cardType').value;
 	var cardActionHref = cards[0].attributes.getNamedItem('cardActionHref').value;
 	
 	var divBody = document.createElement("div");
@@ -24,9 +26,20 @@ for(var x = 0; x < cardsLen; x++){
 	
 	var divTitleParent = document.createElement("div");
 	divTitleParent.classList.add('mdl-card__title', 'mdl-card--expand');
-	if(cardCover == "" || typeof(cardCover) == 'undefined')
-		divTitleParent.style.background = "url(http://192.168.2.107:8080/assets/img/music_album.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
-	else{
+	if(cardCover == "" || typeof(cardCover) == 'undefined'){
+		switch(cardType){
+			case "0":
+				divTitleParent.style.background = "url(/assets/img/books.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
+				break
+			case "1":
+				divTitleParent.style.background = "url(/assets/img/film.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
+				break;
+			case "2":
+				divTitleParent.style.background = "url(/assets/img/music_album.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
+				break;
+		}
+		
+	}else{
 		divTitleParent.style.background = "url('"+cardCover+"') top no-repeat #FFF";
 		divTitleParent.style.backgroundSize = "100%";
 	}
