@@ -20,8 +20,10 @@ class Klient extends CI_Model {
 	function get($id)
 	{
 		$this->db->select('
+			ID_klienta,
 			imie_klienta,
 			nazwisko_klienta,
+			email,
 			miejscowosc,
 			ulica,
 			nr_domu,

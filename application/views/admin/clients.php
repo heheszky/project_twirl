@@ -11,6 +11,7 @@
       <th>Adres</th>
       <th>Data urodzenia</th>
       <th>PESEL</th>
+      <th>Admin</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,13 @@
         <td><?= $client->ulica." ".$client->nr_domu."/".$client->nr_lokalu ?></td>
         <td><?= $client->data_urodzenia ?></td>
         <td><?= $client->pesel ?></td>
+        <td>
+          <?php if($client->admin == 1): ?>
+          <input type="checkbox" name="is_admin" value=<?= $client->ID_klienta ?> checked/>
+          <?php else: ?>
+          <input type="checkbox" name="is_admin" value=<?= $client->ID_klienta ?>/>
+          <?php endif; ?>
+        </td>
       </tr>
       <?php endforeach; ?>
     </tbody>
