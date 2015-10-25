@@ -47,7 +47,7 @@ for(var x = 0; x < cardsLen; x++){
 	
 	var h2Title = document.createElement('h2');
 	var htmlCODE = '\
-	<button id="id-card-'+x+'" class="mdl-button mdl-js-button mdl-button--icon">\
+	<button id="id-card-'+x+'" class="mdl-button mdl-js-button mdl-button--icon moreBtn">\
 	<i class="material-icons">more_vert</i></button>\
 	<ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="id-card-'+x+'">\
 		<li class="mdl-menu__item">Dodaj do koszyka</li>\
@@ -55,13 +55,14 @@ for(var x = 0; x < cardsLen; x++){
 		<li class="mdl-menu__item" onclick="window.location = \'https://www.google.pl/webhp#q='+cardTitle+'\'">Szukaj w Google</li>\
 		<li class="mdl-menu__item" onclick="window.location = \'https://pl.wikipedia.org/wiki/Specjalna:Szukaj/'+cardTitle+'\'">Szukaj na Wikipedii</li>\
 	</ul>';
-	h2Title.innerHTML = cardTitle + htmlCODE;
+	h2Title.innerHTML = cardTitle;
 	h2Title.classList.add('mdl-card__title-text');
 	
 	var divActions = document.createElement('div');
 	divActions.classList.add('mdl-card__actions');
 	
 	divActions.appendChild(h2Title);
+	divActions.innerHTML += htmlCODE;
 	
 	divBody.appendChild(aCover);
 	divBody.appendChild(divActions);
