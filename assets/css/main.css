@@ -6,8 +6,10 @@ html{text-rendering: geometricPrecision;}
 .mdl-layout__content{display: flex;flex-direction:column;}
 
 main{background: #eeeeee;}
-.homeCategory{flex: 1;padding:1%;}
+.homeCategory, .midcontent{flex: 1;padding:1%;}
 .homeCategory h4{padding:5px;}
+.midcontent.centered{justify-content: center;}
+.table-centered{margin:auto;}
 
 .itemSection{display: flex;flex-direction:row;flex-wrap:wrap;justify-content:left;}
 .is-small-screen .itemSection{justify-content:center;}
