@@ -27,9 +27,9 @@
         <td><?= $client->pesel ?></td>
         <td>
           <?php if($client->admin == 1): ?>
-          <input type="checkbox" name="is_admin" value=<?= $client->ID_klienta ?> checked/>
+          <input type="checkbox" class='is-admin-checkbox' id='is_admin-<?= $client->ID_klienta ?>' name="is_admin" class='mdl-checkbox__input' value=<?= $client->ID_klienta ?> checked/><label for='is_admin-<?= $client->ID_klienta ?>' class='is-admin-checkbox-label'></label>
           <?php else: ?>
-          <input type="checkbox" name="is_admin" value=<?= $client->ID_klienta ?>/>
+          <input type="checkbox" class='is-admin-checkbox' id='is_admin-<?= $client->ID_klienta ?>' name="is_admin" class='mdl-checkbox__input' value=<?= $client->ID_klienta ?>/><label for='is_admin-<?= $client->ID_klienta ?>' class='is-admin-checkbox-label'></label>
           <?php endif; ?>
         </td>
       </tr>
