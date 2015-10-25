@@ -74,7 +74,7 @@ class Konto extends BaseController {
 		{
 			$sum += $weights[$i]*$numbers[$i];
 		}
-		$controlsum = $sum % 10;
+		$controlsum = 10 - ($sum % 10);
 		if($numbers[10] == $controlsum) return TRUE;
 		else return FALSE;
 	}
