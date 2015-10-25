@@ -91,7 +91,9 @@ function scrollTable(posFrom, posTo, duration, dir){
         scrollTable(e.scrollLeft, posTo, duration - 10, dir);
     }, 10);
 }
-document.getElementsByClassName('tableScrollButtonLeft')[0].addEventListener('click', scrollTableToLeft)
-document.getElementsByClassName('tableScrollButtonRight')[0].addEventListener('click', scrollTableToRight)
+if(document.getElementsByClassName('tableScrollButtonLeft')[0] != null){
+	document.getElementsByClassName('tableScrollButtonLeft')[0].addEventListener('click', scrollTableToLeft)
+	document.getElementsByClassName('tableScrollButtonRight')[0].addEventListener('click', scrollTableToRight)
+}
 
 function easeIn(t) { return t*t; }
