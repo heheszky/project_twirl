@@ -46,11 +46,12 @@
 					<a class="mdl-navigation__link" href="#">Książki</a>
 					<a class="mdl-navigation__link" href="#">Filmy</a>
 					<a class="mdl-navigation__link" href="#">Muzyka</a>
-					<?php if(isset($user))
-						echo '<a class="mdl-navigation__link" href="/profil">'.$user['imie'].'</a>';
-					else
-						echo '<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>';
-					?>
+					<?php if(isset($user)): ?>
+						<a class="mdl-navigation__link" href="/profil"><?= $user['imie'] ?></a>
+						<a class="mdl-navigation__link" href="/wyloguj">Wyloguj się</a>
+					<?php else: ?>
+						<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
+					<?php endif; ?>
 					</nav>
 				</div>
 				<div class="mdl-layout__drawer-button"><i class="material-icons">menu</i></div>
