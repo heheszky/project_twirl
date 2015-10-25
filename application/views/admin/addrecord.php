@@ -93,11 +93,11 @@
 			<label class="mdl-textfield__label" for="p3">Pseudonim</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<input class="mdl-textfield__input" type="text" id="p4" name="data_urodzenia_autora"/>
+			<input class="mdl-textfield__input" type="date" id="p4" name="data_urodzenia_autora"/>
 			<label class="mdl-textfield__label" for="p4">Data urodzenia autora</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<input class="mdl-textfield__input" type="text" id="p5" name="data_smierci_autora"/>
+			<input class="mdl-textfield__input" type="date" id="p5" name="data_smierci_autora"/>
 			<label class="mdl-textfield__label" for="p5">Data śmierci autora</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
