@@ -74,25 +74,24 @@ for(var x = 0; x < cardsLen; x++){
 
 function scrollTableToLeft(){
 	var e = document.getElementsByClassName('tableScrollButtonLeft')[0].previousElementSibling;
-	scrollTable(e.scrollLeft, e.scrollLeft-200, 500);
+	scrollTable(e.scrollLeft, e.scrollLeft-200, 500,-1);
 }
 function scrollTableToRight(){
 	var e = document.getElementsByClassName('tableScrollButtonLeft')[0].previousElementSibling;
-	scrollTable(e.scrollLeft, e.scrollLeft+200, 500);
+	scrollTable(e.scrollLeft, e.scrollLeft+200, 500,1);
 }
-function scrollTable(posFrom, posTo, duration){
+function scrollTable(posFrom, posTo, duration, dir){
 	if (duration <= 0) return;
 	var difference = posTo - posFrom;
-	var perTick = difference / duration * 10;
+	var perTick = dir*easeIn(difference / duration * 10);
 	setTimeout(function() {
 		var e = document.getElementsByClassName('tableScrollButtonLeft')[0].previousElementSibling;
         e.scrollLeft = e.scrollLeft + perTick;
         if (e.scrollLeft === posTo) return;
-        scrollTable(e.scrollLeft, posTo, duration - 10);
+        scrollTable(e.scrollLeft, posTo, duration - 10, dir);
     }, 10);
-	
 }
 document.getElementsByClassName('tableScrollButtonLeft')[0].addEventListener('click', scrollTableToLeft)
 document.getElementsByClassName('tableScrollButtonRight')[0].addEventListener('click', scrollTableToRight)
 
-function easeInOutQuart(t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t }
+function easeIn(t) { return t*t; }
