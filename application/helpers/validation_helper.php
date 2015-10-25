@@ -192,3 +192,50 @@ function add_book_config()
 	);
 	return $validation_config;
 }
+
+function add_album_config()
+{
+	$validation_config = array(
+		array(
+			'field' => 'nazwa_albumu',
+			'label' => 'Nazwa albumu',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nazwa jest wymagana',
+			),
+		),
+		array(
+			'field' => 'autor_albumu',
+			'label' => 'Autor albumu',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Autor jest wymagany',
+			),
+		),
+		array(
+			'field' => 'data_wydania_albumu',
+			'label' => 'Data wydania albumu',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Data wydania jest wymagana',
+			),
+		),
+		array(
+			'field' => 'liczba_utworow',
+			'label' => 'Liczba utworów',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Liczba utworów jest wymagana',
+			),
+		),
+		array(
+			'field' => 'nosnik_fizyczny',
+			'label' => 'Nośnik fizyczny',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nośnik fizyczny jest wymagany',
+			),
+		),
+	);
+	return $validation_config;
+}

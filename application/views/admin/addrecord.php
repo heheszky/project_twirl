@@ -13,6 +13,7 @@
 	<input type="date" name="data_smierci_autora"/>
 	<?= form_error('data_smierci_autora'); ?>
 	<select name="kraj_autora">
+		<option disabled selected>Kraj</option>
 	<?php foreach($kraje as $kraj): ?>
 		<option value="<?= $kraj->ID_kraju ?>">
 			<?= $kraj->nazwa_kraju ?>
@@ -21,10 +22,10 @@
 	</select>
 	<?= form_error('kraj_autora'); ?>
 	<select name="typ_autora">
-		<option disabled selected>---</option>
+		<option disabled selected>Typ</option>
 		<option value=1>Pisarz</option>
 		<option value=2>Reżyser</option>
-		<option value=3>Piosenkarz</option>
+		<option value=3>Muzyk</option>
 	</select>
 	<?= form_error('typ_autora'); ?>
 	<input type="submit" value="Dodaj">
@@ -39,6 +40,7 @@
 	<input type="text" name="tytul_ksiazki" placeholder="Tytuł książki"/>
 	<?= form_error('tytul_ksiazki'); ?>
 	<select name="autor_ksiazki">
+		<option disabled selected>Autor</option>
 	<?php foreach($pisarze as $pisarz): ?>
 		<option value="<?= $pisarz->id_autora ?>">
 			<?= $pisarz->imie_autora." ".$pisarz->nazwisko_autora ?>
@@ -47,6 +49,7 @@
 	</select>
 	<?= form_error('autor_ksiazki'); ?>
 	<select name="epoka_ksiazki">
+		<option disabled selected>Epoka</option>
 	<?php foreach($epoki as $epoka): ?>
 		<option value="<?= $epoka->ID_epoki ?>">
 			<?= $epoka->nazwa_epoki ?>
@@ -57,6 +60,7 @@
 	<input type="date" name="data_wydania_ksiazki" placeholder="Data wydania"/>
 	<?= form_error('data_wydania_ksiazki'); ?>
 	<select name="wydawnictwo_ksiazki">
+		<option disabled selected>Wydawnictwo</option>
 	<?php foreach($wydawnictwa as $wydawnictwo): ?>
 		<option value="<?= $wydawnictwo->id_wydawnictwa ?>">
 			<?= $wydawnictwo->krotka_nazwa_wydawnictwa ?>
@@ -65,6 +69,7 @@
 	</select>
 	<?= form_error('wydawnictwo_ksiazki'); ?>
 	<select name="okladka">
+		<option disabled selected>Okładka</option>
 		<option value=1>Miękka</option>
 		<option value=2>Twarda</option>
 	</select>
@@ -89,18 +94,30 @@
 	<input type="hidden" name="action" value="album">
 	<input type="text" name="nazwa_albumu" placeholder="Nazwa albumu"/>
 	<?= form_error('nazwa_albumu'); ?>
+	<select name="autor_albumu">
+		<option disabled selected>Autor</option>
+	<?php foreach($muzycy as $muzyk): ?>
+		<option value="<?= $muzyk->ID_autora ?>">
+			<?= $muzyk->imie_autora." ".$muzyk->nazwisko_autora ?>
+		</option>
+	<?php endforeach; ?>
+	</select>
+	<?= form_error('autor_albumu'); ?>
 	<input type="checkbox" name="kompilacja"/> Kompilacja 
 	<input type="date" name="data_wydania_albumu"/>
 	<?= form_error('data_wydania_albumu'); ?>
 	<input type="checkbox" name="soundtrack"/> Soundtrack
 	<input type="number" name="liczba_utworow" placeholder="Liczba utworów"/>
+	<?= form_error('liczba_utworow'); ?>
 	<select name="nosnik_fizyczny">
+		<option disabled selected>Nośnik</option>
 	<?php foreach($nosniki as $nosnik): ?>
-		<option value="<?= $nosnik->id_nosnika ?>">
+		<option value="<?= $nosnik->ID_nosnika ?>">
 			<?= $nosnik->nazwa_nosnika ?>
 		</option>
 	<?php endforeach; ?>
 	</select>
+	<?= form_error('nosnik_fizyczny'); ?>
 	<input type="number" name="liczba_nosnikow" placeholder="Liczba nośników"/>
 	<input type="number" name="liczba_egzemplarzy_albumu" placeholder="Liczba egzemplarzy"/>
 	<input type="submit" value="Dodaj"/>

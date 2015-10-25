@@ -5,12 +5,12 @@ class Album extends CI_Model {
 		$data = array(
 			"nazwa_albumu"		=> $this->input->post('nazwa_albumu'),
 			"kompilacja"		=> $this->input->post('kompilacja'),
-			"data_wydania_albumu"=> $this->input->post('data_wydania'),
+			"data_wydania_albumu"=> $this->input->post('data_wydania_albumu'),
 			"soundtrack"		=> $this->input->post('soundtrack'),
 			"liczba_utworow"	=> $this->input->post('liczba_utworow'),
-			"id_nosnika_fizycznego"=> $this->input->post('id_nosnika'),
+			"id_nosnika_fizycznego"=> $this->input->post('nosnik_fizyczny'),
 			"liczba_nosnikow"	=> $this->input->post('liczba_nosnikow'),
-			"liczba_egzemplarzy_albumu"=> $this->input->post('liczba_egzemplarzy'),
+			"liczba_egzemplarzy_albumu"=> $this->input->post('liczba_egzemplarzy_albumu'),
 			);
 		$this->db->insert('album', $data);
 	}

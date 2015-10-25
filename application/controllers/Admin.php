@@ -15,7 +15,14 @@ class Admin extends BaseController {
 		if(!$this->is_authorized())return;
 		$this->load->library('form_validation');
 		$this->context = array();
-		$this->load->model(array('kraj', 'autor', 'wydawnictwo', 'epoka', 'ksiazka'));
+		$this->load->model(array(
+			'kraj',
+			'autor',
+			'wydawnictwo',
+			'epoka',
+			'ksiazka',
+			'nosnik'
+		));
 		if($this->input->post('action'))
 		{
 			$this->load->helper('validation_helper');
@@ -24,10 +31,14 @@ class Admin extends BaseController {
 				case 'autor': $this->add_author(); break;
 				case 'ksiazka': $this->add_book(); break;
 				case 'wydawnictwo': $this->add_publisher(); break;
+				case 'album': $this->add_album(); break;
 			}
 		}
 		$this->context['kraje'] = $this->kraj->get_all();
 		$this->context['pisarze'] = $this->autor->get_all('typ_autora=1');
+		$this->context['rezyserowie'] = $this->autor->get_all('typ_autora=2');
+		$this->context['muzycy'] = $this->autor->get_all('typ_autora=3');
+		$this->context['nosniki'] = $this->nosnik->get_all();
 		$this->context['wydawnictwa'] = $this->wydawnictwo->get_all();
 		$this->context['epoki'] = $this->epoka->get_all();
 		$this->load->view('layout/header', $this->data);
@@ -79,5 +90,10 @@ class Admin extends BaseController {
 	{
 		$this->form_validation->set_rules(add_book_config());
 		if($this->form_validation->run())$this->ksiazka->add();
+	}
+	public function add_album()
+	{
+		$this->form_validation->set_rules(add_album_config());
+		if($this->form_validation->run())$this->album->add();
 	}
 }
