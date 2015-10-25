@@ -142,7 +142,7 @@
 <!------------------DODAWANIE AUTORA------------------------------->
 <div class='popupAlert' id='popupAutorKsiazki'>
 	<h2>Autor</h2>
-	<form action="/admin/addrecord" method="POST">
+	<form action="/admin/add_author" method="POST">
 		<input type="hidden" name="action" value="autor">
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="text" id="p1" name="imie_autora"/>
