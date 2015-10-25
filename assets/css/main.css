@@ -12,6 +12,12 @@ main{background: #eeeeee;}
 .itemSection{display: flex;flex-direction:row;flex-wrap:wrap;justify-content:left;}
 .is-small-screen .itemSection{justify-content:center;}
 
+.formContent{
+	display:flex;
+	flex-direction: row;
+	width:800px;
+	margin:auto;
+}
 .regForm{
 	padding:10px 0 10px 0;
 	width:300px;
@@ -20,12 +26,22 @@ main{background: #eeeeee;}
 .regForm:-webkit-autofill{
 	background-color: white !important;
 }
-
+.loginForm{
+	padding:10px 0 10px 0;
+	width:300px; margin:auto;
+	margin-top:0;
+}
+@media screen and (max-width: 800px){
+	.formContent{
+		width:300px;
+		display:block;
+	}
+}
 @media screen and (max-width:300px){
-	.regForm{
+	.regForm, .loginForm{
 		width:100%;
 	}
-	.regForm .mdl-textfield__input{
+	.regForm .mdl-textfield__input, .loginForm .mdl-textfield__input{
 		width:100%;
 	}
 }
