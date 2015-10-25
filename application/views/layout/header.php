@@ -26,11 +26,16 @@
 							<a class="mdl-navigation__link" href="#">Książki</a>
 							<a class="mdl-navigation__link" href="#">Filmy</a>
 							<a class="mdl-navigation__link" href="#">Muzyka</a>
-							<?php if(isset($user))
-								echo '<a class="mdl-navigation__link" href="/profil">'.$user['imie'].'</a>';
-							else
-								echo '<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>';
-							?>
+							<?php if(isset($user)): ?>
+								<a class="mdl-navigation__link" id="moreProfile">
+								<?= $user['imie'] ?>
+								</a>
+								<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="moreProfile">
+									<li class="mdl-menu__item" onclick='window.location = "/wyloguj";'>Wyloguj się</li>
+								</ul>
+							<?php else: ?>
+								<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
+							<?php endif; ?>
 						</nav>
 					</div>
 				</header>
