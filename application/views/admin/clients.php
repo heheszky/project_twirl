@@ -1,6 +1,6 @@
 <div class='midcontent centered'>
   <div class='container'>
-  <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table-centered" id='tableClients'>
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-centered" id='tableClients'>
     <thead>
       <tr>
       <th>ID</th>
@@ -26,7 +26,7 @@
         <td><?= $client->data_urodzenia ?></td>
         <td><?= $client->pesel ?></td>
         <td>
-          <input type="checkbox" class='is-admin-checkbox' id='is_admin-<?= $client->ID_klienta ?>' name="is_admin" value=<?= $client->ID_klienta ?> <?php if($client->admin == 1): ?>checked<?php endif; ?>/>
+          <input type="checkbox" class='is-admin-checkbox' id='is_admin-<?= $client->ID_klienta ?>' name="is_admin" value=<?= $client->ID_klienta ?> disabled <?php if($client->admin == 1): ?>checked<?php endif; ?>/>
           <label for='is_admin-<?= $client->ID_klienta ?>' class='is-admin-checkbox-label'></label>
         </td>
       </tr>
