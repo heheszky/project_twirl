@@ -78,8 +78,24 @@ class Admin extends BaseController {
 	/* Add record to database functions */
 	public function add_author()
 	{
+		$this->load->library('form_validation');
+		$this->load->helper('validation_helper');
+		$this->load->model('autor');
 		$this->form_validation->set_rules(add_author_config());
-		if($this->form_validation->run())$this->autor->add();
+		$return = array();
+		if($this->form_validation->run())
+		{
+			$this->autor->add();
+			$return['status'] = "ok";
+		} else {
+			$errors = array();
+			$this->form_validation->set_error_delimiters('', '');
+			foreach($this->input->post() as $k => $v)$errors[$k] = form_error($k);
+			$return['status'] = "fail";
+			$return['errors'] = array_filter($errors);
+		}
+		header('Content-type: application/json');
+		exit(json_encode($return));
 	}
 	public function add_publisher()
 	{
@@ -94,6 +110,9 @@ class Admin extends BaseController {
 	public function add_album()
 	{
 		$this->form_validation->set_rules(add_album_config());
-		if($this->form_validation->run())$this->album->add();
+		if($this->form_validation->run())
+		{
+			$this->album->add();
+		}
 	}
 }
