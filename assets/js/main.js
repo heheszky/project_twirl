@@ -97,3 +97,28 @@ if(document.getElementsByClassName('tableScrollButtonLeft')[0] != null){
 }
 
 function easeIn(t) { return t*t; }
+
+
+if(document.getElementsByClassName('obfuscator')[0] != null){
+	document.getElementsByClassName('obfuscator')[0].addEventListener('click',function(){
+		var popups = document.getElementsByClassName('popupAlert');
+		for(var x = 0; x < popups.length; x++){
+			popups[x].classList.remove('show');
+		}
+		this.classList.remove('show');
+	})
+}
+function showPopupAdd(popType){
+	var pop;
+	switch(popType){
+		case 0:
+			pop = document.getElementById('popupWydawnictwo');
+			break;
+		case 1:
+			pop = document.getElementById('popupAutorKsiazki');
+			break;
+	}
+	var obf = document.getElementsByClassName('obfuscator')[0]
+	obf.classList.add('show');
+	pop.classList.add('show');
+}
