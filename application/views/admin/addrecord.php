@@ -47,7 +47,11 @@
 		<select class="mdl-textfield__input dropDownInput" id='p6' name="wydawnictwo_ksiazki">
 		<?php foreach($wydawnictwa as $wydawnictwo): ?>
 			<option value="<?= $wydawnictwo->id_wydawnictwa ?>">
-				<?= $wydawnictwo->krotka_nazwa_wydawnictwa ?>
+				<?php if($wydawnictwo->krotka_nazwa_wydawnictwa)
+					echo $wydawnictwo->krotka_nazwa_wydawnictwa;
+				else
+					echo $wydawnictwo->nazwa_wydawnictwa;
+				?>
 			</option>
 		<?php endforeach; ?>
 		</select>
@@ -142,18 +146,30 @@
 	<input type="hidden" name="action" value="album">
 	<input type="text" name="nazwa_albumu" placeholder="Nazwa albumu"/>
 	<?= form_error('nazwa_albumu'); ?>
+	<select name="autor_albumu">
+		<option disabled selected>Autor</option>
+	<?php foreach($muzycy as $muzyk): ?>
+		<option value="<?= $muzyk->ID_autora ?>">
+			<?= $muzyk->imie_autora." ".$muzyk->nazwisko_autora ?>
+		</option>
+	<?php endforeach; ?>
+	</select>
+	<?= form_error('autor_albumu'); ?>
 	<input type="checkbox" name="kompilacja"/> Kompilacja 
 	<input type="date" name="data_wydania_albumu"/>
 	<?= form_error('data_wydania_albumu'); ?>
 	<input type="checkbox" name="soundtrack"/> Soundtrack
 	<input type="number" name="liczba_utworow" placeholder="Liczba utworów"/>
+	<?= form_error('liczba_utworow'); ?>
 	<select name="nosnik_fizyczny">
+		<option disabled selected>Nośnik</option>
 	<?php foreach($nosniki as $nosnik): ?>
-		<option value="<?= $nosnik->id_nosnika ?>">
+		<option value="<?= $nosnik->ID_nosnika ?>">
 			<?= $nosnik->nazwa_nosnika ?>
 		</option>
 	<?php endforeach; ?>
 	</select>
+	<?= form_error('nosnik_fizyczny'); ?>
 	<input type="number" name="liczba_nosnikow" placeholder="Liczba nośników"/>
 	<input type="number" name="liczba_egzemplarzy_albumu" placeholder="Liczba egzemplarzy"/>
 	<input type="submit" value="Dodaj"/>
