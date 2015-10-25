@@ -1,10 +1,5 @@
 <?php
 class Autor extends CI_Model {
-	function __construct()
-	{
-		// Call the Model constructor
-		parent::__construct();
-	}
 	function add()
 	{
 		$data = array(
@@ -35,6 +30,23 @@ class Autor extends CI_Model {
 			'ID_autora'=> $id,
 			'id_kraju_urodzenia' => 'id_kraju'
 		));
-		return $this->db->get('autor')->result();
+		return $this->db->get()->result();
+	}
+	function get_all($where=null)
+	{
+		$this->db->select('
+			id_autora,
+			imie_autora,
+			nazwisko_autora,
+			pseudonim_autora,
+			data_urodzenia_autora,
+			data_smierci_autora,
+			nazwa_kraju,
+			typ_autora,
+		');
+		$this->db->from(array('autor', 'kraj'));
+		$this->db->where('id_kraju_urodzenia=id_kraju');
+		if($where)$this->db->where($where);
+		return $this->db->get()->result();
 	}
 }

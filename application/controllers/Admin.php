@@ -10,15 +10,19 @@ class Admin extends BaseController {
 		$this->load->view('layout/footer');
 	}
 	
-	public function add_item()
+	public function addrecord()
 	{
 		if(!$this->is_authorized())return;
+		$this->context = array();
+		$this->load->model(array('kraj', 'autor'));
+		$this->context['kraje'] = $this->kraj->get_all();
+		$this->context['pisarze'] = $this->autor->get_all('typ_autora=1');
 		$this->load->view('layout/header', $this->data);
-		$this->load->view('admin/additem');
+		$this->load->view('admin/addrecord', $this->context);
 		$this->load->view('layout/footer');
 	}
 	
-	public function item_list()
+	public function itemlist()
 	{
 		if(!$this->is_authorized())return;
 		$this->load->view('layout/header', $this->data);
