@@ -165,7 +165,7 @@
 			<label class="mdl-textfield__label" for="p5">Data śmierci autora</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<select class="mdl-textfield__input dropDownInput" id='p6' name="kraj_autora">
+			<select class="mdl-textfield__input" id='p6' name="kraj_autora">
 			<?php foreach($kraje as $kraj): ?>
 				<option value="<?= $kraj->ID_kraju ?>">
 					<?= $kraj->nazwa_kraju ?>
@@ -175,7 +175,7 @@
 			<label class="mdl-textfield__label" for="p6">Kraj</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<select class="mdl-textfield__input dropDownInput" id='p7' name="typ_autora">
+			<select class="mdl-textfield__input" id='p7' name="typ_autora">
 				<option disabled selected>---</option>
 				<option value=1>Pisarz</option>
 				<option value=2>Reżyser</option>

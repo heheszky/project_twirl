@@ -47,10 +47,17 @@ main{background: #eeeeee;}
 }
 @media screen and (max-width:550px){
 	.is-small-screen .homeCategory h4 .mdl-button{float:right;}
+	.popupAlert{width:100%;left:0;}
+	.popupAlert .mdl-textfield{width:100%;}
 }
 @media screen and (max-width: 800px){
 	.formContent{
 		width:300px;
+		display:block;
+	}
+}
+@media screen and (max-width: 900px){
+	.addItem{
 		display:block;
 	}
 }
