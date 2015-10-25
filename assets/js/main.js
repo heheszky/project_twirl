@@ -70,3 +70,29 @@ for(var x = 0; x < cardsLen; x++){
 	card.parentNode.insertBefore(divBody, card);
 	card.parentNode.removeChild(card);
 }
+
+
+function scrollTableToLeft(){
+	var e = document.getElementsByClassName('tableScrollButtonLeft')[0].previousElementSibling;
+	scrollTable(e.scrollLeft, e.scrollLeft-200, 500);
+}
+function scrollTableToRight(){
+	var e = document.getElementsByClassName('tableScrollButtonLeft')[0].previousElementSibling;
+	scrollTable(e.scrollLeft, e.scrollLeft+200, 500);
+}
+function scrollTable(posFrom, posTo, duration){
+	if (duration <= 0) return;
+	var difference = posTo - posFrom;
+	var perTick = difference / duration * 10;
+	setTimeout(function() {
+		var e = document.getElementsByClassName('tableScrollButtonLeft')[0].previousElementSibling;
+        e.scrollLeft = e.scrollLeft + perTick;
+        if (e.scrollLeft === posTo) return;
+        scrollTable(e.scrollLeft, posTo, duration - 10);
+    }, 10);
+	
+}
+document.getElementsByClassName('tableScrollButtonLeft')[0].addEventListener('click', scrollTableToLeft)
+document.getElementsByClassName('tableScrollButtonRight')[0].addEventListener('click', scrollTableToRight)
+
+function easeInOutQuart(t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t }
