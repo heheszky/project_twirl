@@ -74,7 +74,71 @@
 	</div>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
+<!-----------------DODAWANIE ALBUMU------------------------->
 
+<form action="/admin/addrecord" method="POST" class='addBookForm'>
+	<h2>Album</h2>
+	<input type="hidden" name="action" value="album">
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="text" id="p1" name="nazwa_albumu"/>
+		<label class="mdl-textfield__label" for="p1">Nazwa albumu</label>
+	</div>
+	<?= form_error('nazwa_albumu'); ?>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<select class="mdl-textfield__input" id='p2' name="autor_albumu">
+			<option disabled selected>Autor</option>
+			<?php foreach($muzycy as $muzyk): ?>
+			<option value="<?= $muzyk->ID_autora ?>">
+				<?= $muzyk->imie_autora." ".$muzyk->nazwisko_autora ?>
+			</option>
+			<?php endforeach; ?>
+		</select>
+		<label class="mdl-textfield__label" for="p2">Autor</label>
+	</div>
+	<?= form_error('autor_albumu'); ?>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input type="checkbox" name="kompilacja"/> Kompilacja 
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="date" id="p4" name="data_wydania_albumu"/>
+		<label class="mdl-textfield__label" for="p4">Data wydania albumu</label>
+	</div>
+	<?= form_error('data_wydania_albumu'); ?>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input type="checkbox" name="soundtrack"/> Soundtrack
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="number" id="p6" name="liczba_utworow"/>
+		<label class="mdl-textfield__label" for="p6">Liczba utworów</label>
+	</div>
+	<?= form_error('liczba_utworow'); ?>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<select class="mdl-textfield__input" id='p7' name="nosnik_fizyczny">
+			<option disabled selected>Nośnik</option>
+		<?php foreach($nosniki as $nosnik): ?>
+			<option value="<?= $nosnik->ID_nosnika ?>">
+				<?= $nosnik->nazwa_nosnika ?>
+			</option>
+		<?php endforeach; ?>
+		</select>
+		<label class="mdl-textfield__label" for="p7">Nośnik</label>
+	</div>
+	<?= form_error('nosnik_fizyczny'); ?>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="number" id="p8" name="liczba_nosnikow"/>
+		<label class="mdl-textfield__label" for="p8">Liczba nośników</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="number" id="p9" name="liczba_egzemplarzy_albumu"/>
+		<label class="mdl-textfield__label" for="p9">Liczba egzemplarzy</label>
+	</div>
+	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
+</form>
+<!------------------DODAWANIE FILMU------------------------------->
+<form action="/admin/addrecord" method="POST" class='addBookForm'>
+<h2>Film</h2>
+</form>
+<!------------------    POPUPY      ------------------------------->
 <!------------------DODAWANIE AUTORA------------------------------->
 <div class='popupAlert' id='popupAutorKsiazki'>
 	<h2>Autor</h2>
@@ -140,39 +204,6 @@
 		<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 	</form>
 </div>
-<!-----------------DODAWANIE ALBUMU------------------------->
-<h2>Album</h2>
-<form action="/admin/addrecord" method="POST">
-	<input type="hidden" name="action" value="album">
-	<input type="text" name="nazwa_albumu" placeholder="Nazwa albumu"/>
-	<?= form_error('nazwa_albumu'); ?>
-	<select name="autor_albumu">
-		<option disabled selected>Autor</option>
-	<?php foreach($muzycy as $muzyk): ?>
-		<option value="<?= $muzyk->ID_autora ?>">
-			<?= $muzyk->imie_autora." ".$muzyk->nazwisko_autora ?>
-		</option>
-	<?php endforeach; ?>
-	</select>
-	<?= form_error('autor_albumu'); ?>
-	<input type="checkbox" name="kompilacja"/> Kompilacja 
-	<input type="date" name="data_wydania_albumu"/>
-	<?= form_error('data_wydania_albumu'); ?>
-	<input type="checkbox" name="soundtrack"/> Soundtrack
-	<input type="number" name="liczba_utworow" placeholder="Liczba utworów"/>
-	<?= form_error('liczba_utworow'); ?>
-	<select name="nosnik_fizyczny">
-		<option disabled selected>Nośnik</option>
-	<?php foreach($nosniki as $nosnik): ?>
-		<option value="<?= $nosnik->ID_nosnika ?>">
-			<?= $nosnik->nazwa_nosnika ?>
-		</option>
-	<?php endforeach; ?>
-	</select>
-	<?= form_error('nosnik_fizyczny'); ?>
-	<input type="number" name="liczba_nosnikow" placeholder="Liczba nośników"/>
-	<input type="number" name="liczba_egzemplarzy_albumu" placeholder="Liczba egzemplarzy"/>
-	<input type="submit" value="Dodaj"/>
-</form>
+
 <div class="obfuscator"></div>
 </div>
