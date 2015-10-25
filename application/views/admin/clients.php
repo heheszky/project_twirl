@@ -26,11 +26,8 @@
         <td><?= $client->data_urodzenia ?></td>
         <td><?= $client->pesel ?></td>
         <td>
-          <?php if($client->admin == 1): ?>
-          <input type="checkbox" class='is-admin-checkbox' id='is_admin-<?= $client->ID_klienta ?>' name="is_admin" class='mdl-checkbox__input' value=<?= $client->ID_klienta ?> checked/><label for='is_admin-<?= $client->ID_klienta ?>' class='is-admin-checkbox-label'></label>
-          <?php else: ?>
-          <input type="checkbox" class='is-admin-checkbox' id='is_admin-<?= $client->ID_klienta ?>' name="is_admin" class='mdl-checkbox__input' value=<?= $client->ID_klienta ?>/><label for='is_admin-<?= $client->ID_klienta ?>' class='is-admin-checkbox-label'></label>
-          <?php endif; ?>
+          <input type="checkbox" class='is-admin-checkbox' id='is_admin-<?= $client->ID_klienta ?>' name="is_admin" value=<?= $client->ID_klienta ?> <?php if($client->admin == 1): ?>checked<?php endif; ?>/>
+          <label for='is_admin-<?= $client->ID_klienta ?>' class='is-admin-checkbox-label'></label>
         </td>
       </tr>
       <?php endforeach; ?>
