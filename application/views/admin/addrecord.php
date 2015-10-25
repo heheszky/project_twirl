@@ -15,6 +15,7 @@
 	<?= form_error('tytul_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<select class="mdl-textfield__input dropDownInput" id='p3' name="autor_ksiazki">
+			<option disabled selected></option>
 		<?php foreach($pisarze as $pisarz): ?>
 			<option value="<?= $pisarz->id_autora ?>">
 				<?= $pisarz->imie_autora." ".$pisarz->nazwisko_autora ?>
@@ -29,6 +30,7 @@
 	<?= form_error('autor_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<select class="mdl-textfield__input" id='p4' name="epoka_ksiazki">
+			<option disabled selected></option>
 		<?php foreach($epoki as $epoka): ?>
 			<option value="<?= $epoka->ID_epoki ?>">
 				<?= $epoka->nazwa_epoki ?>
@@ -45,6 +47,7 @@
 	<?= form_error('data_wydania_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<select class="mdl-textfield__input dropDownInput" id='p6' name="wydawnictwo_ksiazki">
+			<option disabled selected></option>
 		<?php foreach($wydawnictwa as $wydawnictwo): ?>
 			<option value="<?= $wydawnictwo->id_wydawnictwa ?>">
 				<?php if($wydawnictwo->krotka_nazwa_wydawnictwa)
@@ -63,6 +66,7 @@
 	<?= form_error('wydawnictwo_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<select class="mdl-textfield__input" id='p7' name="okladka">
+			<option disabled selected></option>
 			<option value=1>Miękka</option>
 			<option value=2>Twarda</option>
 		</select>
@@ -86,10 +90,14 @@
 	<?= form_error('nazwa_albumu'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<select class="mdl-textfield__input" id='p2' name="autor_albumu">
-			<option disabled selected>Autor</option>
+			<option disabled selected></option>
 			<?php foreach($muzycy as $muzyk): ?>
-			<option value="<?= $muzyk->ID_autora ?>">
-				<?= $muzyk->imie_autora." ".$muzyk->nazwisko_autora ?>
+			<option value="<?= $muzyk->id_autora ?>">
+				<?php if($muzyk->nazwa_zespolu)
+					echo $muzyk->nazwa_zespolu;
+				else
+					echo $muzyk->imie_autora." ".$muzyk->nazwisko_autora;
+				?>
 			</option>
 			<?php endforeach; ?>
 		</select>
@@ -114,7 +122,7 @@
 	<?= form_error('liczba_utworow'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<select class="mdl-textfield__input" id='p7' name="nosnik_fizyczny">
-			<option disabled selected>Nośnik</option>
+			<option disabled selected></option>
 		<?php foreach($nosniki as $nosnik): ?>
 			<option value="<?= $nosnik->ID_nosnika ?>">
 				<?= $nosnik->nazwa_nosnika ?>
@@ -153,8 +161,11 @@
 			<label class="mdl-textfield__label" for="p2">Nazwisko</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<input class="mdl-textfield__input" type="text" id="p3" name="pseudonim_autora"/>
-			<label class="mdl-textfield__label" for="p3">Pseudonim</label>
+			<input class="mdl-textfield__input" type="text" id="p3" name="nazwa_zespolu"/>
+			<label class="mdl-textfield__label" for="p3">Nazwa zespołu</label>
+		</div>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<input type="checkbox" name="isZespol"/> Zespół
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="date" id="p4" name="data_urodzenia_autora"/>
@@ -166,6 +177,7 @@
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<select class="mdl-textfield__input" id='p6' name="kraj_autora">
+				<option disabled selected></option>
 			<?php foreach($kraje as $kraj): ?>
 				<option value="<?= $kraj->ID_kraju ?>">
 					<?= $kraj->nazwa_kraju ?>
@@ -176,7 +188,7 @@
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<select class="mdl-textfield__input" id='p7' name="typ_autora">
-				<option disabled selected>---</option>
+				<option disabled selected></option>
 				<option value=1>Pisarz</option>
 				<option value=2>Reżyser</option>
 				<option value=3>Piosenkarz</option>
