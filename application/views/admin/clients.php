@@ -1,5 +1,6 @@
 <div class='midcontent centered'>
-  <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table-centered">
+  <div class='container'>
+  <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp table-centered" id='tableClients'>
     <thead>
       <tr>
       <th>ID</th>
@@ -35,6 +36,11 @@
       <?php endforeach; ?>
     </tbody>
   </table>
-
-
+  </div>
+  <button class="mdl-button mdl-js-button mdl-button--icon tableScrollButtons tableScrollButtonLeft">
+    <i class="material-icons">keyboard_arrow_left</i>
+  </button>
+  <button class="mdl-button mdl-js-button mdl-button--icon tableScrollButtons tableScrollButtonRight">
+    <i class="material-icons">keyboard_arrow_right</i>
+  </button>
 </div>
