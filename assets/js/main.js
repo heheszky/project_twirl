@@ -25,7 +25,7 @@ for(var x = 0; x < cardsLen; x++){
 	var divTitleParent = document.createElement("div");
 	divTitleParent.classList.add('mdl-card__title', 'mdl-card--expand');
 	if(cardCover == "" || typeof(cardCover) == 'undefined')
-		divTitleParent.style.background = "url(http://192.168.2.107:8080/assets/img/music_album.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
+		divTitleParent.style.background = "url(/assets/img/music_album.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
 	else{
 		divTitleParent.style.background = "url('"+cardCover+"') top no-repeat #FFF";
 		divTitleParent.style.backgroundSize = "100%";
