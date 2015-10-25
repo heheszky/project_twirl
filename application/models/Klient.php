@@ -38,6 +38,23 @@ class Klient extends CI_Model {
 		$this->db->where('ID_klienta', $id);
 		return $this->db->get('klient')->result();
 	}
+	function get_all()
+	{
+		$this->db->select('
+			ID_klienta,
+			imie_klienta,
+			nazwisko_klienta,
+			email,
+			miejscowosc,
+			ulica,
+			nr_domu,
+			nr_lokalu,
+			data_urodzenia,
+			pesel,
+			admin
+		');
+		return $this->db->get('klient')->result();
+	}
 	function login($email, $password)
 	{
 		$this->db->select('id_klienta as id, imie_klienta as imie, admin');
