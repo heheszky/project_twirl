@@ -82,3 +82,26 @@
 	<?php echo form_error('krotka_nazwa_wydawnictwa'); ?>
 	<input type="submit" value="Dodaj"/>
 </form>
+
+<!-----------------DODAWANIE ALBUMU------------------------->
+<h2>Album</h2>
+<form action="/admin/addrecord" method="POST">
+	<input type="hidden" name="action" value="album">
+	<input type="text" name="nazwa_albumu" placeholder="Nazwa albumu"/>
+	<?php echo form_error('nazwa_albumu'); ?>
+	<input type="checkbox" name="kompilacja"/> Kompilacja 
+	<input type="date" name="data_wydania_albumu"/>
+	<?php echo form_error('data_wydania_albumu'); ?>
+	<input type="checkbox" name="soundtrack"/> Soundtrack
+	<input type="number" name="liczba_utworow" placeholder="Liczba utworów"/>
+	<select name="nosnik_fizyczny">
+	<?php foreach($nosniki as $nosnik) { ?>
+		<option value="<?php echo $nosnik->id_nosnika ?>">
+			<?php echo $nosnik->nazwa_nosnika ?>
+		</option>
+	<?php } ?>
+	</select>
+	<input type="number" name="liczba_nosnikow" placeholder="Liczba nośników"/>
+	<input type="number" name="liczba_egzemplarzy_albumu" placeholder="Liczba egzemplarzy"/>
+	<input type="submit" value="Dodaj"/>
+</form>
