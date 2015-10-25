@@ -32,7 +32,7 @@ for(var x = 0; x < cardsLen; x++){
 				divTitleParent.style.background = "url(/assets/img/books.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
 				break
 			case "1":
-				divTitleParent.style.background = "url(/assets/img/film.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
+				divTitleParent.style.background = "url(/assets/img/film.png) 50% 50% / auto no-repeat rgb(255, 255, 255)";
 				break;
 			case "2":
 				divTitleParent.style.background = "url(/assets/img/music_album.png) 50% 50% / 75% no-repeat rgb(255, 255, 255)";
