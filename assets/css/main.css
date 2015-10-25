@@ -51,7 +51,7 @@ main{background: #eeeeee;}
 }
 .popupAlert{
 	position: absolute;
-    top: -1000px;
+    top: -100px;
     left: calc(50% - 150px);
     width: 300px;
     height: auto;
@@ -60,6 +60,7 @@ main{background: #eeeeee;}
     margin: auto;
     background: #fff;
     padding: 16px;
+    opacity: 0;
     box-sizing: border-box;
     border-radius: 2px;
 	-webkit-transition-property: all;
@@ -72,6 +73,7 @@ main{background: #eeeeee;}
 .popupAlert.show{
     top: 10px;
     visibility: visible;
+    opacity: 1;
 }
 
 @media screen and (max-width:300px){
