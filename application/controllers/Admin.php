@@ -99,8 +99,24 @@ class Admin extends BaseController {
 	}
 	public function add_publisher()
 	{
+		$this->load->library('form_validation');
+		$this->load->helper('validation_helper');
+		$this->load->model('wydawnictwo');
 		$this->form_validation->set_rules(add_publisher_config());
-		if($this->form_validation->run())$this->wydawnictwo->add();
+		$return = array();
+		if($this->form_validation->run())
+		{
+			$this->wydawnictwo->add();
+			$return['status'] = "ok";
+		} else {
+			$errors = array();
+			$this->form_validation->set_error_delimiters('', '');
+			foreach($this->input->post() as $k => $v)$errors[$k] = form_error($k);
+			$return['status'] = "fail";
+			$return['errors'] = array_filter($errors);
+		}
+		header('Content-type: application/json');
+		exit(json_encode($return));
 	}
 	public function add_book()
 	{

@@ -189,7 +189,7 @@
 <!------------------DODAWANIE WYDAWNICTWA---------------------------->
 <div class='popupAlert' id='popupWydawnictwo'>
 	<h4>Wydawnictwo</h4>
-	<form action="/admin/addrecord" method="POST">
+	<form action="/admin/add_publisher" method="POST">
 		<input type="hidden" name="action" value="wydawnictwo">
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="text" id="p1" name="nazwa_wydawnictwa"/>
