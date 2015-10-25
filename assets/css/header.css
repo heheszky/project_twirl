@@ -9,6 +9,7 @@ header .mdl-menu__container{right:28px !important;}
 
 .small-screen-header{display:none;text-align: center;line-height: 52px;font-weight: 500;font-size: 13px;}
 .mdl-layout__drawer-button{display: none;}
+.mdl-layout__drawer .mdl-navigation{padding-top:0;padding-bottom:16px;}
 
 .is-small-screen .small-screen-header{display:block;height: 52px;background: #263238;color: white;}
 .is-small-screen .mdl-layout__drawer-button{display: block;color:white;}

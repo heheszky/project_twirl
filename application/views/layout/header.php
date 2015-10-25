@@ -46,6 +46,9 @@
 					<a class="mdl-navigation__link" href="#">Książki</a>
 					<a class="mdl-navigation__link" href="#">Filmy</a>
 					<a class="mdl-navigation__link" href="#">Muzyka</a>
+					</nav>
+					<span class="mdl-layout-title">Profil</span>
+					<nav class="mdl-navigation">
 					<?php if(isset($user)): ?>
 						<a class="mdl-navigation__link" href="/profil"><?= $user['imie'] ?></a>
 						<a class="mdl-navigation__link" href="/wyloguj">Wyloguj się</a>
