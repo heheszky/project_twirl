@@ -8,14 +8,14 @@ class Ksiazka extends CI_Model {
 	function add()
 	{
 		$data = array(
-			"ISBN"					=> $this->input->post('ISBN'),
-			"tytul_ksiazki"			=> $this->input->post('tytul'),
-			"ID_autora"				=> $this->input->post('id_autora'),
-			"ID_epoka"				=> $this->input->post('id_epoka'),
-			"data_wydania_ksiazki"	=> $this->input->post('data_wydania'),
-			"ID_wydawnictwa"		=> $this->input->post('id_wydawnictwa'),
-			"ID_okladka"			=> $this->input->post('id_okladki'),
-			"liczba_egzamplarzy"	=> $this->input->post('liczba_egz')
+			"ISBN"					=> $this->input->post('isbn'),
+			"tytul_ksiazki"			=> $this->input->post('tytul_ksiazki'),
+			"ID_autora"				=> $this->input->post('autor_ksiazki'),
+			"ID_epoka"				=> $this->input->post('epoka_ksiazki'),
+			"data_wydania_ksiazki"	=> $this->input->post('data_wydania_ksiazki'),
+			"ID_wydawnictwa"		=> $this->input->post('wydawnictwo_ksiazki'),
+			"ID_okladka"			=> $this->input->post('okladka'),
+			"liczba_egzemplarzy"	=> $this->input->post('liczba_egz')
 			);
 		$this->db->insert('ksiazka', $data);
 	}

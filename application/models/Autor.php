@@ -5,10 +5,10 @@ class Autor extends CI_Model {
 		$data = array(
 			"imie_autora"		=> $this->input->post('imie_autora'),
 			"nazwisko_autora"	=> $this->input->post('nazwisko_autora'),
-			"pseudonim_autora"	=> $this->input->post('pseudonim'),
-			"data_urodzenia_autora"=> $this->input->post('data_urodzenia'),
-			"data_smierci_autora"=> $this->input->post('data_smierci'),
-			"id_kraju_urodzenia"=> $this->input->post('id_kraju'),
+			"pseudonim_autora"	=> $this->input->post('pseudonim_autora'),
+			"data_urodzenia_autora"=> $this->input->post('data_urodzenia_autora'),
+			"data_smierci_autora"=> $this->input->post('data_smierci_autora'),
+			"id_kraju_urodzenia"=> $this->input->post('kraj_autora'),
 			"typ_autora"		=> $this->input->post('typ_autora')
 			);
 		$this->db->insert('autor', $data);

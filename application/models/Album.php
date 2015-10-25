@@ -1,10 +1,5 @@
 <?php
 class Album extends CI_Model {
-	function __construct()
-	{
-		// Call the Model constructor
-		parent::__construct();
-	}
 	function add()
 	{
 		$data = array(

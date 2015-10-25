@@ -92,3 +92,103 @@ function get_register_validation_config()
 	);
 	return $validation_config;
 }
+
+function add_author_config()
+{
+	$validation_config = array(
+		array(
+			'field' => 'imie_autora',
+			'label' => 'Imie',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Imie jest wymagane',
+			),
+		),
+		array(
+			'field' => 'nazwisko_autora',
+			'label' => 'Nazwisko',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nazwisko jest wymagane',
+			),
+		),
+		array(
+			'field' => 'typ_autora',
+			'label' => 'Typ autora',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Typ autora jest wymagany',
+			),
+		),
+	);
+	return $validation_config;
+}
+
+function add_publisher_config()
+{
+	$validation_config = array(
+		array(
+			'field' => 'nazwa_wydawnictwa',
+			'label' => 'Nazwa wydawnictwa',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nazwa wydawnictwa jest wymagana',
+			),
+		),
+	);
+	return $validation_config;
+}
+function add_book_config()
+{
+	$validation_config = array(
+		array(
+			'field' => 'isbn',
+			'label' => 'ISBN',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'ISBN jest wymagany',
+			),
+		),
+		array(
+			'field' => 'tytul_ksiazki',
+			'label' => 'Tytuł książki',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Tytuł książki jest wymagany',
+			),
+		),
+		array(
+			'field' => 'autor_ksiazki',
+			'label' => 'Autor książki',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Autor książki jest wymagany',
+			),
+		),
+		array(
+			'field' => 'epoka_ksiazki',
+			'label' => 'Epoka',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Epoka jest wymagana',
+			),
+		),
+		array(
+			'field' => 'data_wydania_ksiazki',
+			'label' => 'Data wydania',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Data wydania jest wymagana',
+			),
+		),
+		array(
+			'field' => 'wydawnictwo_ksiazki',
+			'label' => 'Wydawnictwo książki',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Wydawnictwo jest wymagane',
+			),
+		),
+	);
+	return $validation_config;
+}
