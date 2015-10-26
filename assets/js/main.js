@@ -137,6 +137,7 @@ for(var y = 0; y < selects.length; y++){
 	divSelectBody.style.top = '0px';
 	divSelect.classList.add('materialDropdown');
 	for(var x = 0; x < options.length; x++){
+		if(x == 0) item.value = options[0].value;
 		var divOption = document.createElement('div');
 		divOption.innerText = options[x].innerText;
 		divOption.setAttribute("value", options[x].value);
@@ -144,7 +145,6 @@ for(var y = 0; y < selects.length; y++){
 		divOption.addEventListener('click', optionClick);
 		divSelectBody.appendChild(divOption);
 	}
-	
 	divSelect.appendChild(divSelectBody);
 	item.parentNode.insertBefore(divSelect, item);
 }
@@ -165,5 +165,3 @@ function optionClick(){
 		parent.style.clip = 'rect(-10px, '+(width+10)+'px, '+(height+10)+'px, -10px)';
 	}
 }
-
-//ajax

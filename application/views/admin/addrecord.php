@@ -127,7 +127,7 @@
 <!------------------DODAWANIE AUTORA------------------------------->
 <div class='popupAlert' id='popupAutorKsiazki'>
 	<h2>Autor</h2>
-	<form action="/admin/add_author" method="POST">
+	<form action="/admin/add_author" method="POST" id='addAuthorForm'>
 		<input type="hidden" name="action" value="autor">
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="text" id="p1" name="imie_autora"/>
@@ -192,3 +192,40 @@
 
 <div class="obfuscator"></div>
 </div>
+<script>
+	var formAuthor = document.getElementById('addAuthorForm');
+	formAuthor.addEventListener('submit', add_author);
+	function add_author(evt){
+		evt.preventDefault();
+		
+		var inputs = document.querySelectorAll('#addAuthorForm input, #addAuthorForm select');
+		var data = "";
+		for(var x = 0; x < inputs.length; x++){
+			
+			if(inputs[x].getAttribute('name') != null){
+				if(inputs[x].getAttribute('type') == 'checkbox' && inputs[x].checked){
+					console.log(inputs[x].getAttribute('name'), inputs[x].value)
+					data += inputs[x].getAttribute('name') + "=" + inputs[x].value;
+				}else if(inputs[x].getAttribute('type') != 'checkbox'){
+					console.log(inputs[x].getAttribute('name'), inputs[x].value)
+					data += inputs[x].getAttribute('name') + "=" + inputs[x].value;
+				}
+			}
+			data += "&";
+			
+		}
+		data.substring(0, data.length-1);
+		console.log(data);
+		var r = new XMLHttpRequest();
+		r.open("POST", '/admin/add_author', true);
+		r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		r.onreadystatechange = function () {
+		if (r.readyState != 4 || r.status != 200) return;
+			lastMessageFromPost = JSON.parse(r.responseText);
+			console.log(lastMessageFromPost);
+		};
+		r.send(data);
+	}
+	
+	var lastMessageFromPost;
+</script>
