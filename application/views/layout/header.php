@@ -31,6 +31,7 @@
 								<?= $user['imie'] ?>
 								</a>
 								<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="moreProfile">
+									<li class="mdl-menu__item" onclick='window.location = "/profil";'>Profil</li>
 									<li class="mdl-menu__item" onclick='window.location = "/wyloguj";'>Wyloguj się</li>
 								</ul>
 							<?php else: ?>

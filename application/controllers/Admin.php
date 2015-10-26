@@ -22,7 +22,6 @@ class Admin extends BaseController {
 			'epoka',
 			'ksiazka',
 			'nosnik',
-			'album'
 		));
 		if($this->input->post('action'))
 		{

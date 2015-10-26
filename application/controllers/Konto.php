@@ -4,8 +4,10 @@ require_once "BaseController.php";
 class Konto extends BaseController {
 	public function index()
 	{
-		$this->load->view('layout/header');
-		//$this->load->view('layout/testmid');
+		$this->context = array();
+		$this->context['klient'] = $this->klient->get($this->data['id']);
+		$this->load->view('layout/header', $this->data);
+		$this->load->view('klient/index', $this->context);
 		$this->load->view('layout/footer');
 	}
 	public function rejestracja()
