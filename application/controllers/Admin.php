@@ -21,7 +21,8 @@ class Admin extends BaseController {
 			'wydawnictwo',
 			'epoka',
 			'ksiazka',
-			'nosnik'
+			'nosnik',
+			'album'
 		));
 		if($this->input->post('action'))
 		{
@@ -81,7 +82,7 @@ class Admin extends BaseController {
 		$this->load->library('form_validation');
 		$this->load->helper('validation_helper');
 		$this->load->model('autor');
-		$this->form_validation->set_rules(add_author_config());
+		$this->form_validation->set_rules(add_author_config($this->input->post('isZespol')));
 		$return = array();
 		if($this->form_validation->run())
 		{

@@ -93,25 +93,9 @@ function get_register_validation_config()
 	return $validation_config;
 }
 
-function add_author_config()
+function add_author_config($isZespol)
 {
 	$validation_config = array(
-		array(
-			'field' => 'imie_autora',
-			'label' => 'Imie',
-			'rules' => 'trim|required',
-			'errors' => array(
-				'required'		=> 'Imie jest wymagane',
-			),
-		),
-		array(
-			'field' => 'nazwisko_autora',
-			'label' => 'Nazwisko',
-			'rules' => 'trim|required',
-			'errors' => array(
-				'required'		=> 'Nazwisko jest wymagane',
-			),
-		),
 		array(
 			'field' => 'typ_autora',
 			'label' => 'Typ autora',
@@ -121,6 +105,34 @@ function add_author_config()
 			),
 		),
 	);
+	if($isZespol)
+		array_push($validation_config, array(
+			'field' => 'nazwa_zespolu',
+			'label' => 'Nazwa zespołu',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nazwa zespołu jest wymagana',
+			),
+		));
+	else
+	{
+		array_push($validation_config, array(
+			'field' => 'imie_autora',
+			'label' => 'Imie',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Imie jest wymagane',
+			),
+		));
+		array_push($validation_config, array(
+			'field' => 'nazwisko_autora',
+			'label' => 'Nazwisko',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nazwisko jest wymagane',
+			),
+		));
+	}
 	return $validation_config;
 }
 
