@@ -123,7 +123,6 @@ function showPopupAdd(popType){
 	pop.classList.add('show');
 	
 	var main = document.getElementsByTagName('main')[0];
-	console.log(main.scrollTop);
 	pop.style.top = main.scrollTop + 10 + "px";
 }
 
@@ -166,3 +165,5 @@ function optionClick(){
 		parent.style.clip = 'rect(-10px, '+(width+10)+'px, '+(height+10)+'px, -10px)';
 	}
 }
+
+//ajax
