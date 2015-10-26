@@ -121,4 +121,8 @@ function showPopupAdd(popType){
 	var obf = document.getElementsByClassName('obfuscator')[0]
 	obf.classList.add('show');
 	pop.classList.add('show');
+	
+	var main = document.getElementsByTagName('main')[0];
+	console.log(main.scrollTop);
+	pop.style.top = main.scrollTop + 10 + "px";
 }
