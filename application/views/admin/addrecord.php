@@ -1,7 +1,8 @@
 
 <!------------------DODAWANIE KSIĄŻKI------------------------------->
 <div class='addItem'>
-<form action="/admin/addrecord" class='addBookForm' method="POST">
+
+<?= form_open_multipart("/admin/addrecord", 'class="addBookForm"') ?>
 	<h2>Książka</h2>
 	<input type="hidden" name="action" value="ksiazka">
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -67,7 +68,7 @@
 </form>
 <!-----------------DODAWANIE ALBUMU------------------------->
 
-<form action="/admin/addrecord" method="POST" class='addBookForm'>
+<?= form_open_multipart("/admin/addrecord", 'class="addBookForm"') ?>
 	<h2>Album</h2>
 	<input type="hidden" name="action" value="album">
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -120,8 +121,55 @@
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 <!------------------DODAWANIE FILMU------------------------------->
-<form action="/admin/addrecord" method="POST" class='addBookForm'>
-<h2>Film</h2>
+<?= form_open_multipart("/admin/addrecord", 'class="addBookForm"') ?>
+	<h2>Film</h2>
+	<input type="hidden" name="action" value="film">
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="text" id="p1" name="nazwa_filmu"/>
+		<label class="mdl-textfield__label" for="p1">Nazwa filmu</label>
+	</div>
+	<?= form_error('nazwa_filmu'); ?>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+		<select class="materialDropdown" id='p2' name="rezyser_filmu">
+			<?php foreach($rezyserowie as $rezyser): ?>
+			<option value="<?= $rezyser->id_autora ?>"><?= $rezyser->imie_autora." ".$rezyser->nazwisko_autora; ?></option>
+			<?php endforeach; ?>
+		</select>
+		<label class="mdl-textfield__label" for="p2">Autor filmu</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+		<select class="materialDropdown" id='p3' name="studio_filmowe">
+			<?php foreach($studiafilmowe as $studio): ?>
+			<option value="<?= $studio->id_autora ?>"><?= $studio->imie_autora." ".$studio->nazwisko_autora; ?></option>
+			<?php endforeach; ?>
+		</select>
+		<label class="mdl-textfield__label" for="p3">Studio filmowe</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+		<select class="materialDropdown" id='p4' name="kraj_produkcji_filmu">
+			<?php foreach($kraje as $kraj): ?>
+				<option value="<?= $kraj->ID_kraju ?>"><?= $kraj->nazwa_kraju ?></option>
+			<?php endforeach; ?>
+		</select>
+		<label class="mdl-textfield__label" for="p4">Kraj produkcji</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="date" id="p5" name="data_wydania_filmu"/>
+		<label class="mdl-textfield__label" for="p5">Data wydania</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="number" id="p6" name="liczba_egzemplarzy_filmu"/>
+		<label class="mdl-textfield__label" for="p6">Liczba egzemplarzy</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+		<select class="materialDropdown" id='p7' name="nosnik_fizyczny_filmu">
+		<?php foreach($nosniki as $nosnik): ?>
+			<option value="<?= $nosnik->ID_nosnika ?>"><?= $nosnik->nazwa_nosnika ?></option>
+		<?php endforeach; ?>
+		</select>
+		<label class="mdl-textfield__label" for="p7">Nośnik fizyczny</label>
+	</div>
+	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 <!------------------    POPUPY      ------------------------------->
 <!------------------DODAWANIE AUTORA------------------------------->

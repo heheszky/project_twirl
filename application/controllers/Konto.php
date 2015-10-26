@@ -5,7 +5,7 @@ class Konto extends BaseController {
 	public function index()
 	{
 		$this->context = array();
-		$this->context['klient'] = $this->klient->get($this->data['id']);
+		$this->context['klient'] = $this->klient->get($this->data['user']['id']);
 		$this->load->view('layout/header', $this->data);
 		$this->load->view('klient/index', $this->context);
 		$this->load->view('layout/footer');
