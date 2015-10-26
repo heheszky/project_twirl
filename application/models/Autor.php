@@ -12,6 +12,7 @@ class Autor extends CI_Model {
 			"typ_autora"		=> $this->input->post('typ_autora')
 			);
 		$this->db->insert('autor', $data);
+		return array($this->db->insert_id(), $this->input->post('imie_autora')." ".$this->input->post('nazwisko_autora'));
 	}
 	function get($id)
 	{

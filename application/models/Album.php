@@ -5,7 +5,7 @@ class Album extends CI_Model {
 		$data = array(
 			"nazwa_albumu"		=> $this->input->post('nazwa_albumu'),
 			"kompilacja"		=> $this->input->post('kompilacja'),
-			"id_autora_albumu"		=> $this->input->post('autor_albumu'),
+			"id_autora_albumu"	=> $this->input->post('autor_albumu'),
 			"data_wydania_albumu"=> $this->input->post('data_wydania_albumu'),
 			"soundtrack"		=> $this->input->post('soundtrack'),
 			"liczba_utworow"	=> $this->input->post('liczba_utworow'),

@@ -79,6 +79,7 @@ class Admin extends BaseController {
 	/* Add record to database functions */
 	public function add_author()
 	{
+		if(!$this->is_authorized())return;
 		$this->load->library('form_validation');
 		$this->load->helper('validation_helper');
 		$this->load->model('autor');
@@ -86,8 +87,10 @@ class Admin extends BaseController {
 		$return = array();
 		if($this->form_validation->run())
 		{
-			$this->autor->add();
+			$result = $this->autor->add();
 			$return['status'] = "ok";
+			$return['id'] = $result[0];
+			$return['autor'] = $result[1];
 		} else {
 			$errors = array();
 			$this->form_validation->set_error_delimiters('', '');
@@ -100,6 +103,7 @@ class Admin extends BaseController {
 	}
 	public function add_publisher()
 	{
+		if(!$this->is_authorized())return;
 		$this->load->library('form_validation');
 		$this->load->helper('validation_helper');
 		$this->load->model('wydawnictwo');
@@ -107,8 +111,10 @@ class Admin extends BaseController {
 		$return = array();
 		if($this->form_validation->run())
 		{
-			$this->wydawnictwo->add();
+			$result = $this->wydawnictwo->add();
 			$return['status'] = "ok";
+			$return['id'] = $result[0];
+			$return['nazwa'] = $result[1];
 		} else {
 			$errors = array();
 			$this->form_validation->set_error_delimiters('', '');
@@ -121,11 +127,13 @@ class Admin extends BaseController {
 	}
 	public function add_book()
 	{
+		if(!$this->is_authorized())return;
 		$this->form_validation->set_rules(add_book_config());
 		if($this->form_validation->run())$this->ksiazka->add();
 	}
 	public function add_album()
 	{
+		if(!$this->is_authorized())return;
 		$this->form_validation->set_rules(add_album_config());
 		if($this->form_validation->run())
 		{
