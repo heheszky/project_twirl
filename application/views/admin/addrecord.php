@@ -3,7 +3,6 @@
 <div class='addItem'>
 <form action="/admin/addrecord" class='addBookForm' method="POST">
 	<h2>Książka</h2>
-	<input type="hidden" name="action" value="ksiazka">
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="text" id="p1" name="isbn"/>
 		<label class="mdl-textfield__label" for="p1">ISBN</label>
@@ -41,7 +40,7 @@
 	</div>
 	<?= form_error('data_wydania_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-		<select class="materialDropdown" id='p6' name="wydawnictwo_ksiazki">
+		<select class="materialDropdown" name="wydawnictwo_ksiazki" id='distributorSelect'>
 		<?php foreach($wydawnictwa as $wydawnictwo): ?>
 			<option value="<?= $wydawnictwo->id_wydawnictwa ?>"><?php if($wydawnictwo->krotka_nazwa_wydawnictwa): ?><?= $wydawnictwo->krotka_nazwa_wydawnictwa ?><?php else: ?><?= $wydawnictwo->nazwa_wydawnictwa; ?><?php endif; ?></option>
 		<?php endforeach; ?>
@@ -69,7 +68,6 @@
 
 <form action="/admin/addrecord" method="POST" class='addBookForm'>
 	<h2>Album</h2>
-	<input type="hidden" name="action" value="album">
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="text" id="p1" name="nazwa_albumu"/>
 		
@@ -132,7 +130,6 @@
 <div class='popupAlert' id='popupAutorKsiazki'>
 	<h2>Autor</h2>
 	<form action="/admin/add_author" method="POST" id='addAuthorForm'>
-		<input type="hidden" name="action" value="autor">
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="text" id="p1" name="imie_autora"/>
 			<label class="mdl-textfield__label" for="p1">Imię</label>
@@ -178,8 +175,7 @@
 <!------------------DODAWANIE WYDAWNICTWA---------------------------->
 <div class='popupAlert' id='popupWydawnictwo'>
 	<h4>Wydawnictwo</h4>
-	<form action="/admin/add_publisher" method="POST">
-		<input type="hidden" name="action" value="wydawnictwo">
+	<form action="/admin/add_publisher" method="POST" id='addDistributorForm'>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="text" id="p1" name="nazwa_wydawnictwa"/>
 			<label class="mdl-textfield__label" for="p1">Nazwa wydawnictwa</label>
@@ -198,7 +194,11 @@
 </div>
 <script>
 	var formAuthor = document.getElementById('addAuthorForm');
+	var formDistributor = document.getElementById('addDistributorForm');
+	
 	formAuthor.addEventListener('submit', add_author);
+	formDistributor.addEventListener('submit', add_distributor);
+	
 	function add_author(evt){
 		evt.preventDefault();
 		
@@ -239,11 +239,24 @@
 				var pos = divOption.getAttribute('data-index') * 28;
 				authorDiv.children[0].style.top = -pos + "px";
 				authorselect.value = lastMessageFromPost.id;
+				var width = authorDiv.children[0].offsetWidth;
+				authorDiv.children[0].style.clip = 'rect('+pos+'px, '+(width+10)+'px, '+(pos+28)+'px, 0px)';
 				var alertbox = document.getElementById('popupAutorKsiazki')
 				if(alertbox.classList.contains('error'))
 					alertbox.classList.remove('error');
 				alertbox.classList.remove('show');
 				document.getElementsByClassName('obfuscator')[0].classList.remove('show');
+				for(var x = 0; x < inputs.length; x++){
+			
+				if(inputs[x].getAttribute('name') != null){
+					if(inputs[x].getAttribute('type') == 'checkbox' && inputs[x].checked){
+						inputs[x].checked = false;
+					}else if(inputs[x].getAttribute('type') != 'checkbox'){
+						inputs[x].value = "";
+					}
+				}
+				data += "&";
+			}
 			}else{
 				var alertbox = document.getElementById('popupAutorKsiazki')
 				if(!alertbox.classList.contains('error'))
@@ -251,6 +264,71 @@
 			}
 		};
 		r.send(data);
+	}
+	function add_distributor(evt){
+		evt.preventDefault();
+		
+		var inputs = document.querySelectorAll('#addDistributorForm input, #addDistributorForm select');
+		var data = "";
+		for(var x = 0; x < inputs.length; x++){
+			
+			if(inputs[x].getAttribute('name') != null){
+				data += inputs[x].getAttribute('name') + "=" + inputs[x].value;
+				data += "&";
+			}
+			
+		}
+		data.substring(0, data.length-1);
+		var r = new XMLHttpRequest();
+		r.open("POST", '/admin/add_publisher', true);
+		r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		r.onreadystatechange = function () {
+		if (r.readyState != 4 || r.status != 200) return;
+			lastMessageFromPost = JSON.parse(r.responseText);
+			if(lastMessageFromPost.status == "ok"){
+				var authorselect = document.getElementById("distributorSelect");
+				var option = document.createElement('option');
+				option.innerText = lastMessageFromPost.nazwa;
+				option.value = lastMessageFromPost.id;
+				authorselect.appendChild(option);
+				var authorDiv = document.querySelector('div[data-id="distributorSelect"]');
+				var data_index = authorDiv.children[0].children.length;
+				var divOption = document.createElement('div');
+				divOption.setAttribute('data-index', data_index);
+				divOption.setAttribute('value', lastMessageFromPost.id)
+				divOption.innerText = lastMessageFromPost.nazwa;
+				divOption.addEventListener('click', optionClick);
+				authorDiv.children[0].appendChild(divOption);
+				var pos = divOption.getAttribute('data-index') * 28;
+				authorDiv.children[0].style.top = -pos + "px";
+				authorselect.value = lastMessageFromPost.id;
+				var width = authorDiv.children[0].offsetWidth;
+				authorDiv.children[0].style.clip = 'rect('+pos+'px, '+(width+10)+'px, '+(pos+28)+'px, 0px)';
+				var alertbox = document.getElementById('popupWydawnictwo')
+				if(alertbox.classList.contains('error'))
+					alertbox.classList.remove('error');
+				alertbox.classList.remove('show');
+				document.getElementsByClassName('obfuscator')[0].classList.remove('show');
+				for(var x = 0; x < inputs.length; x++){
+			
+				if(inputs[x].getAttribute('name') != null){
+					if(inputs[x].getAttribute('type') == 'checkbox' && inputs[x].checked){
+						inputs[x].checked = false;
+					}else if(inputs[x].getAttribute('type') != 'checkbox'){
+						inputs[x].value = "";
+					}
+				}
+				data += "&";
+			}
+			}else{
+				var alertbox = document.getElementById('popupWydawnictwo')
+				if(!alertbox.classList.contains('error'))
+					alertbox.classList.add('error');
+			}
+			console.log(lastMessageFromPost)
+		};
+		r.send(data);
+		console.log(data);
 	}
 	
 	var lastMessageFromPost;
