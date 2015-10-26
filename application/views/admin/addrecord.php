@@ -15,7 +15,7 @@
 	</div>
 	<?= form_error('tytul_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
-		<select class='materialDropdown' name="autor_ksiazki">
+		<select class='materialDropdown' name="autor_ksiazki" id='authorSelect'>
 		<?php foreach($pisarze as $pisarz): ?>
 			<option value="<?= $pisarz->id_autora ?>"><?php echo $pisarz->imie_autora." ".$pisarz->nazwisko_autora ?></option>
 		<?php endforeach; ?>
@@ -212,7 +212,6 @@
 				}
 			}
 			data += "&";
-			
 		}
 		data.substring(0, data.length-1);
 		console.log(data);
@@ -223,6 +222,33 @@
 		if (r.readyState != 4 || r.status != 200) return;
 			lastMessageFromPost = JSON.parse(r.responseText);
 			console.log(lastMessageFromPost);
+			if(lastMessageFromPost.status == "ok"){
+				var authorselect = document.getElementById("authorSelect");
+				var option = document.createElement('option');
+				option.innerText = lastMessageFromPost.autor;
+				option.value = lastMessageFromPost.id;
+				authorselect.appendChild(option);
+				var authorDiv = document.querySelector('div[data-id="authorSelect"]');
+				var data_index = authorDiv.children[0].children.length;
+				var divOption = document.createElement('div');
+				divOption.setAttribute('data-index', data_index);
+				divOption.setAttribute('value', lastMessageFromPost.id)
+				divOption.innerText = lastMessageFromPost.autor;
+				divOption.addEventListener('click', optionClick);
+				authorDiv.children[0].appendChild(divOption);
+				var pos = divOption.getAttribute('data-index') * 28;
+				authorDiv.children[0].style.top = -pos + "px";
+				authorselect.value = lastMessageFromPost.id;
+				var alertbox = document.getElementById('popupAutorKsiazki')
+				if(alertbox.classList.contains('error'))
+					alertbox.classList.remove('error');
+				alertbox.classList.remove('show');
+				document.getElementsByClassName('obfuscator')[0].classList.remove('show');
+			}else{
+				var alertbox = document.getElementById('popupAutorKsiazki')
+				if(!alertbox.classList.contains('error'))
+					alertbox.classList.add('error');
+			}
 		};
 		r.send(data);
 	}
