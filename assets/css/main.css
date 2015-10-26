@@ -40,7 +40,7 @@ main{background: #eeeeee;}
 select.materialDropdown{display:none;}
 div.materialDropdown{cursor:pointer;display:inline-block;overflow: hidden;border-bottom:1px solid #DCDCDC;height:28px;transition:all 0.25s ease-in-out;width:90%;position:relative;}
 div.materialDropdown.expanded{overflow:visible;}
-div.materialDropdown > div{position:absolute;transition: all .25s ease-in-out;width:100%;z-index:3;}/**/
+div.materialDropdown > div{position:absolute;transition: all .25s ease-in-out;width:100%;z-index:3;}
 div.materialDropdown.expanded > div{box-shadow: 0 5px 5px rgba(0,0,0,.2);z-index:4;}
 div.materialDropdown > div >div{height:28px;box-sizing: border-box;padding:5px;background: transparent;transition: background .25s ease;}
 div.materialDropdown.expanded > div >div{background: #fff;}

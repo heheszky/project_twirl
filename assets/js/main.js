@@ -154,14 +154,15 @@ function optionClick(){
 	var parent = this.parentNode;
 	var root = parent.parentNode;
 	var height = parent.offsetHeight;
+	var width = parent.offsetWidth;
 	if(root.classList.contains('expanded')){
 		root.classList.remove('expanded');
 		root.nextElementSibling.value = this.getAttribute('value');
 		var pos = this.getAttribute('data-index') * 28;
 		parent.style.top = -pos + "px";
-		parent.style.clip = 'rect('+pos+'px, 270px, '+(pos+28)+'px, 0px)';
+		parent.style.clip = 'rect('+pos+'px, '+(width+10)+'px, '+(pos+28)+'px, 0px)';
 	}else{
 		root.classList.add('expanded');
-		parent.style.clip = 'rect(0px, 270px, '+height+'px, 0px)';
+		parent.style.clip = 'rect(-10px, '+(width+10)+'px, '+(height+10)+'px, -10px)';
 	}
 }
