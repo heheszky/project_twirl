@@ -72,6 +72,7 @@
 	<input type="hidden" name="action" value="album">
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="text" id="p1" name="nazwa_albumu"/>
+		
 		<label class="mdl-textfield__label" for="p1">Nazwa albumu</label>
 	</div>
 	<?= form_error('nazwa_albumu'); ?>
@@ -81,6 +82,9 @@
 			<option value="<?= $muzyk->id_autora ?>"><?php if($muzyk->nazwa_zespolu): ?><?= $muzyk->nazwa_zespolu; ?><?php else: ?><?= $muzyk->imie_autora." ".$muzyk->nazwisko_autora; ?><?php endif; ?></option>
 			<?php endforeach; ?>
 		</select>
+		<div class="mdl-button mdl-js-button mdl-button--icon addPopupBtn" onclick='showPopupAdd(1)'>
+			<i class="material-icons">add_box</i>
+		</div>
 		<label class="mdl-textfield__label" for="p1">Autor albumu</label>
 	</div>
 	<?= form_error('autor_albumu'); ?>
@@ -204,24 +208,20 @@
 			
 			if(inputs[x].getAttribute('name') != null){
 				if(inputs[x].getAttribute('type') == 'checkbox' && inputs[x].checked){
-					console.log(inputs[x].getAttribute('name'), inputs[x].value)
 					data += inputs[x].getAttribute('name') + "=" + inputs[x].value;
 				}else if(inputs[x].getAttribute('type') != 'checkbox'){
-					console.log(inputs[x].getAttribute('name'), inputs[x].value)
 					data += inputs[x].getAttribute('name') + "=" + inputs[x].value;
 				}
 			}
 			data += "&";
 		}
 		data.substring(0, data.length-1);
-		console.log(data);
 		var r = new XMLHttpRequest();
 		r.open("POST", '/admin/add_author', true);
 		r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		r.onreadystatechange = function () {
 		if (r.readyState != 4 || r.status != 200) return;
 			lastMessageFromPost = JSON.parse(r.responseText);
-			console.log(lastMessageFromPost);
 			if(lastMessageFromPost.status == "ok"){
 				var authorselect = document.getElementById("authorSelect");
 				var option = document.createElement('option');
