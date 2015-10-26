@@ -126,3 +126,42 @@ function showPopupAdd(popType){
 	console.log(main.scrollTop);
 	pop.style.top = main.scrollTop + 10 + "px";
 }
+
+//zamiana <select> na ładny div z animacjami
+var selects = document.getElementsByTagName('select');
+			
+for(var y = 0; y < selects.length; y++){
+	var item = selects[y];
+	var options = item.children;
+	var divSelect = document.createElement('div');
+	var divSelectBody = document.createElement('div');
+	divSelectBody.style.top = '0px';
+	divSelect.classList.add('materialDropdown');
+	for(var x = 0; x < options.length; x++){
+		var divOption = document.createElement('div');
+		divOption.innerText = options[x].innerText;
+		divOption.setAttribute("value", options[x].value);
+		divOption.setAttribute("data-index", x);
+		divOption.addEventListener('click', optionClick);
+		divSelectBody.appendChild(divOption);
+	}
+	
+	divSelect.appendChild(divSelectBody);
+	item.parentNode.insertBefore(divSelect, item);
+}
+
+function optionClick(){
+	var parent = this.parentNode;
+	var root = parent.parentNode;
+	var height = parent.offsetHeight;
+	if(root.classList.contains('expanded')){
+		root.classList.remove('expanded');
+		root.nextElementSibling.value = this.getAttribute('value');
+		var pos = this.getAttribute('data-index') * 28;
+		parent.style.top = -pos + "px";
+		parent.style.clip = 'rect('+pos+'px, 270px, '+(pos+28)+'px, 0px)';
+	}else{
+		root.classList.add('expanded');
+		parent.style.clip = 'rect(0px, 270px, '+height+'px, 0px)';
+	}
+}

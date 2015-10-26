@@ -1,3 +1,4 @@
+
 <!------------------DODAWANIE KSIĄŻKI------------------------------->
 <div class='addItem'>
 <form action="/admin/addrecord" class='addBookForm' method="POST">
@@ -14,30 +15,22 @@
 	</div>
 	<?= form_error('tytul_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		<select class="mdl-textfield__input dropDownInput" id='p3' name="autor_ksiazki">
-			<option disabled selected></option>
+		<select class='materialDropdown' name="autor_ksiazki">
 		<?php foreach($pisarze as $pisarz): ?>
-			<option value="<?= $pisarz->id_autora ?>">
-				<?= $pisarz->imie_autora." ".$pisarz->nazwisko_autora ?>
-			</option>
+			<option value="<?= $pisarz->id_autora ?>"><?php echo $pisarz->imie_autora." ".$pisarz->nazwisko_autora ?></option>
 		<?php endforeach; ?>
 		</select>
 		<div class="mdl-button mdl-js-button mdl-button--icon addPopupBtn" onclick='showPopupAdd(1)'>
 			<i class="material-icons">add_box</i>
 		</div>
-		<label class="mdl-textfield__label" for="p3">Autor książki</label>
 	</div>
 	<?= form_error('autor_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		<select class="mdl-textfield__input" id='p4' name="epoka_ksiazki">
-			<option disabled selected></option>
-		<?php foreach($epoki as $epoka): ?>
-			<option value="<?= $epoka->ID_epoki ?>">
-				<?= $epoka->nazwa_epoki ?>
-			</option>
-		<?php endforeach; ?>
+		<select class="materialDropdown" id='p4' name="epoka_ksiazki">
+			<?php foreach($epoki as $epoka): ?>
+			<option value="<?= $epoka->ID_epoki ?>"><?= $epoka->nazwa_epoki ?></option>
+			<?php endforeach; ?>
 		</select>
-		<label class="mdl-textfield__label" for="p4">Epoka książki</label>
 	</div>
 	<?= form_error('epoka_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -46,7 +39,7 @@
 	</div>
 	<?= form_error('data_wydania_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		<select class="mdl-textfield__input dropDownInput" id='p6' name="wydawnictwo_ksiazki">
+		<select class="materialDropdown" id='p6' name="wydawnictwo_ksiazki">
 			<option disabled selected></option>
 		<?php foreach($wydawnictwa as $wydawnictwo): ?>
 			<option value="<?= $wydawnictwo->id_wydawnictwa ?>">
