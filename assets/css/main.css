@@ -35,6 +35,7 @@ main{background: #eeeeee;}
 .obfuscator.show{background-color: rgba(0,0,0,.5);visibility: visible;}
 .popupAlert{position: absolute;top: -100px;left: calc(50% - 250px);width: 500px;height: auto;visibility: hidden;z-index: 5;margin: auto;background: #fff;padding: 16px;opacity: 0;box-sizing: border-box;border-radius: 2px;-webkit-transition-property: all;transition-property: all;-webkit-transition-duration: .2s;transition-duration: .2s;-webkit-transition-timing-function: cubic-bezier(.4,0,.2,1);transition-timing-function: cubic-bezier(.4,0,.2,1);}
 .popupAlert.show{top: 10px;visibility: visible;opacity: 1;}
+.popupAlert.error{border:1px solid red;}
 .popupAlert .mdl-textfield{width:500px;}
 
 select.materialDropdown{display:none;}

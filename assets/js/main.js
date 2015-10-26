@@ -145,6 +145,7 @@ for(var y = 0; y < selects.length; y++){
 		divOption.addEventListener('click', optionClick);
 		divSelectBody.appendChild(divOption);
 	}
+	divSelect.setAttribute("data-id", item.getAttribute('id'));
 	divSelect.appendChild(divSelectBody);
 	item.parentNode.insertBefore(divSelect, item);
 }
