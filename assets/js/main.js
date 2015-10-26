@@ -117,6 +117,9 @@ function showPopupAdd(popType){
 		case 1:
 			pop = document.getElementById('popupAutorKsiazki');
 			break;
+		case 2:
+			pop = document.getElementById('popupStudioFilmowe');
+			break;
 	}
 	var obf = document.getElementsByClassName('obfuscator')[0]
 	obf.classList.add('show');

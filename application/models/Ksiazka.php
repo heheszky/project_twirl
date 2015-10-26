@@ -5,7 +5,7 @@ class Ksiazka extends CI_Model {
 		// Call the Model constructor
 		parent::__construct();
 	}
-	function add()
+	function add($okladka)
 	{
 		$data = array(
 			"ISBN"					=> $this->input->post('isbn'),
@@ -15,7 +15,8 @@ class Ksiazka extends CI_Model {
 			"data_wydania_ksiazki"	=> $this->input->post('data_wydania_ksiazki'),
 			"ID_wydawnictwa"		=> $this->input->post('wydawnictwo_ksiazki'),
 			"ID_okladka"			=> $this->input->post('okladka'),
-			"liczba_egzemplarzy"	=> $this->input->post('liczba_egz')
+			"liczba_egzemplarzy"	=> $this->input->post('liczba_egz'),
+			"okladka_ksiazki"		=> $okladka
 			);
 		$this->db->insert('ksiazka', $data);
 	}

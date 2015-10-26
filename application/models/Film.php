@@ -5,7 +5,7 @@ class Film extends CI_Model {
 		// Call the Model constructor
 		parent::__construct();
 	}
-	function add()
+	function add($okladka)
 	{
 		$data = array(
 			"tytul_filmu"		=> $this->input->post('tytul'),
@@ -14,7 +14,8 @@ class Film extends CI_Model {
 			"id_krajuprodukcji"	=> $this->input->post('id_kraju'),
 			"data_wydania_filmu"=> $this->input->post('data_wydania'),
 			"liczba_egzemplarzy_filmu"=> $this->input->post('liczba_egzemplarzy'),
-			"id_nosnika_fizycznego"=> $this->input->post('id_nosnika')
+			"id_nosnika_fizycznego"=> $this->input->post('id_nosnika'),
+			"okladka_filmu"		=> $okladka
 			);
 		$this->db->insert('film', $data);
 	}

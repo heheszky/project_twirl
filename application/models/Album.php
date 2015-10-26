@@ -1,6 +1,6 @@
 <?php
 class Album extends CI_Model {
-	function add()
+	function add($okladka)
 	{
 		$data = array(
 			"nazwa_albumu"		=> $this->input->post('nazwa_albumu'),
@@ -12,6 +12,7 @@ class Album extends CI_Model {
 			"id_nosnika_fizycznego"=> $this->input->post('nosnik_fizyczny'),
 			"liczba_nosnikow"	=> $this->input->post('liczba_nosnikow'),
 			"liczba_egzemplarzy_albumu"=> $this->input->post('liczba_egzemplarzy_albumu'),
+			"okladka_albumu"	=> $okladka
 			);
 		$this->db->insert('album', $data);
 	}

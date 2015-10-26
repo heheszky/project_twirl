@@ -251,3 +251,65 @@ function add_album_config()
 	);
 	return $validation_config;
 }
+
+function add_film_config()
+{
+	$validation_config = array(
+		array(
+			'field' => 'tytul_filmu',
+			'label' => 'Tytuł filmu',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Tytuł jest wymagany',
+			),
+		),
+		array(
+			'field' => 'rezyser_filmu',
+			'label' => 'Reżyser filmu',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Reżyser filmu jest wymagany',
+			),
+		),
+		array(
+			'field' => 'studio_filmowe',
+			'label' => 'Studio filmowe',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Studio filmowe jest wymagane',
+			),
+		),
+		array(
+			'field' => 'kraj_produkcji_filmu',
+			'label' => 'Kraj produkcji',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Kraj produkcji jest wymagany',
+			),
+		),
+		array(
+			'field' => 'nosnik_fizyczny_filmu',
+			'label' => 'Nośnik fizyczny',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nośnik fizyczny jest wymagany',
+			),
+		),
+	);
+	return $validation_config;
+}
+
+function add_studio_config()
+{
+	$validation_config = array(
+		array(
+			'field' => 'nazwa_studia_filmowego',
+			'label' => 'Nazwa studia filmowego',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nazwa studia jest wymagana',
+			),
+		)
+	);
+	return $validation_config;
+}

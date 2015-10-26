@@ -20,8 +20,8 @@ class Admin extends BaseController {
 			'autor',
 			'wydawnictwo',
 			'epoka',
-			'ksiazka',
 			'nosnik',
+			'studiofilmowe'
 		));
 		if($this->input->post('action'))
 		{
@@ -32,12 +32,14 @@ class Admin extends BaseController {
 				case 'ksiazka': $this->add_book(); break;
 				case 'wydawnictwo': $this->add_publisher(); break;
 				case 'album': $this->add_album(); break;
+				case 'film': $this->add_film(); break;
 			}
 		}
 		$this->context['kraje'] = $this->kraj->get_all();
 		$this->context['pisarze'] = $this->autor->get_all('typ_autora=1');
 		$this->context['rezyserowie'] = $this->autor->get_all('typ_autora=2');
 		$this->context['muzycy'] = $this->autor->get_all('typ_autora=3');
+		$this->context['studiafilmowe'] = $this->studiofilmowe->get_all();
 		$this->context['nosniki'] = $this->nosnik->get_all();
 		$this->context['wydawnictwa'] = $this->wydawnictwo->get_all();
 		$this->context['epoki'] = $this->epoka->get_all();
@@ -73,6 +75,20 @@ class Admin extends BaseController {
 		} else {
 			return true;
 		}
+	}
+	
+	public function upload_file($product)
+	{
+		$this->load->library('upload');
+		$config['upload_path'] = 'uploads/'.$product.'/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '2048';
+		$config['file_name'] = $_FILES['upfile']['name'];
+		$this->upload->initialize($config);
+		if($this->upload->do_upload('upfile'))
+			return $config['upload_path'].$config['file_name'];
+		else
+			return false;
 	}
 	
 	/* Add record to database functions */
@@ -128,15 +144,56 @@ class Admin extends BaseController {
 	{
 		if(!$this->is_authorized())return;
 		$this->form_validation->set_rules(add_book_config());
-		if($this->form_validation->run())$this->ksiazka->add();
+		if($this->form_validation->run())
+		{
+			$filename = $this->upload_file('ksiazka');
+			$this->ksiazka->add($filename);
+		}
 	}
 	public function add_album()
 	{
+		$this->load->model('album');
 		if(!$this->is_authorized())return;
 		$this->form_validation->set_rules(add_album_config());
 		if($this->form_validation->run())
 		{
-			$this->album->add();
+			$filename = $this->upload_file('album');
+			$this->album->add($filename);
 		}
+	}
+	public function add_film()
+	{
+		$this->load->model('film');
+		if(!$this->is_authorized())return;
+		$this->form_validation->set_rules(add_film_config());
+		if($this->form_validation->run())
+		{
+			$filename = $this->upload_file('film');
+			$this->film->add($filename);
+		}
+	}
+	public function add_studio($filename)
+	{
+		if(!$this->is_authorized())return;
+		$this->load->library('form_validation');
+		$this->load->helper('validation_helper');
+		$this->load->model('studiofilmowe');
+		$this->form_validation->set_rules(add_studio_config());
+		$return = array();
+		if($this->form_validation->run())
+		{
+			$result = $this->studiofilmowe->add();
+			$return['status'] = "ok";
+			$return['id'] = $result[0];
+			$return['nazwa'] = $result[1];
+		} else {
+			$errors = array();
+			$this->form_validation->set_error_delimiters('', '');
+			foreach($this->input->post() as $k => $v)$errors[$k] = form_error($k);
+			$return['status'] = "fail";
+			$return['errors'] = array_filter($errors);
+		}
+		header('Content-type: application/json');
+		exit(json_encode($return));
 	}
 }
