@@ -77,7 +77,6 @@
 			<option value="<?= $muzyk->id_autora ?>"><?php if($muzyk->nazwa_zespolu): ?><?= $muzyk->nazwa_zespolu; ?><?php else: ?><?= $muzyk->imie_autora." ".$muzyk->nazwisko_autora; ?><?php endif; ?></option>
 			<?php endforeach; ?>
 		</select>
-		<label class="mdl-textfield__label" for="p2">Autor</label>
 	</div>
 	<?= form_error('autor_albumu'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -102,7 +101,6 @@
 			<option value="<?= $nosnik->ID_nosnika ?>"><?= $nosnik->nazwa_nosnika ?></option>
 		<?php endforeach; ?>
 		</select>
-		<label class="mdl-textfield__label" for="p7">Nośnik</label>
 	</div>
 	<?= form_error('nosnik_fizyczny'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -154,7 +152,6 @@
 				<option value="<?= $kraj->ID_kraju ?>"><?= $kraj->nazwa_kraju ?></option>
 			<?php endforeach; ?>
 			</select>
-			<label class="mdl-textfield__label" for="p6">Kraj</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<select class="materialDropdown" id='p7' name="typ_autora">
@@ -162,7 +159,6 @@
 				<option value=2>Reżyser</option>
 				<option value=3>Piosenkarz</option>
 			</select>
-			<label class="mdl-textfield__label" for="p7">Typ</label>
 		</div>
 		<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 	</form>
