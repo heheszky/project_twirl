@@ -40,30 +40,20 @@
 	<?= form_error('data_wydania_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<select class="materialDropdown" id='p6' name="wydawnictwo_ksiazki">
-			<option disabled selected></option>
 		<?php foreach($wydawnictwa as $wydawnictwo): ?>
-			<option value="<?= $wydawnictwo->id_wydawnictwa ?>">
-				<?php if($wydawnictwo->krotka_nazwa_wydawnictwa)
-					echo $wydawnictwo->krotka_nazwa_wydawnictwa;
-				else
-					echo $wydawnictwo->nazwa_wydawnictwa;
-				?>
-			</option>
+			<option value="<?= $wydawnictwo->id_wydawnictwa ?>"><?php if($wydawnictwo->krotka_nazwa_wydawnictwa): ?><?= $wydawnictwo->krotka_nazwa_wydawnictwa ?><?php else: ?><?= $wydawnictwo->nazwa_wydawnictwa; ?><?php endif; ?></option>
 		<?php endforeach; ?>
 		</select>
 		<div class="mdl-button mdl-js-button mdl-button--icon addPopupBtn" onclick='showPopupAdd(0)'>
 			<i class="material-icons">add_box</i>
 		</div>
-		<label class="mdl-textfield__label" for="p6">Wydawnictwo książki</label>
 	</div>
 	<?= form_error('wydawnictwo_ksiazki'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		<select class="mdl-textfield__input" id='p7' name="okladka">
-			<option disabled selected></option>
+		<select class="materialDropdown" id='p7' name="okladka">
 			<option value=1>Miękka</option>
 			<option value=2>Twarda</option>
 		</select>
-		<label class="mdl-textfield__label" for="p7">Okładka</label>
 	</div>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="number" id="p8" name="liczba_egz"/>
@@ -82,16 +72,9 @@
 	</div>
 	<?= form_error('nazwa_albumu'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		<select class="mdl-textfield__input" id='p2' name="autor_albumu">
-			<option disabled selected></option>
+		<select class="materialDropdown" id='p2' name="autor_albumu">
 			<?php foreach($muzycy as $muzyk): ?>
-			<option value="<?= $muzyk->id_autora ?>">
-				<?php if($muzyk->nazwa_zespolu)
-					echo $muzyk->nazwa_zespolu;
-				else
-					echo $muzyk->imie_autora." ".$muzyk->nazwisko_autora;
-				?>
-			</option>
+			<option value="<?= $muzyk->id_autora ?>"><?php if($muzyk->nazwa_zespolu): ?><?= $muzyk->nazwa_zespolu; ?><?php else: ?><?= $muzyk->imie_autora." ".$muzyk->nazwisko_autora; ?><?php endif; ?></option>
 			<?php endforeach; ?>
 		</select>
 		<label class="mdl-textfield__label" for="p2">Autor</label>
@@ -114,12 +97,9 @@
 	</div>
 	<?= form_error('liczba_utworow'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		<select class="mdl-textfield__input" id='p7' name="nosnik_fizyczny">
-			<option disabled selected></option>
+		<select class="materialDropdown" id='p7' name="nosnik_fizyczny">
 		<?php foreach($nosniki as $nosnik): ?>
-			<option value="<?= $nosnik->ID_nosnika ?>">
-				<?= $nosnik->nazwa_nosnika ?>
-			</option>
+			<option value="<?= $nosnik->ID_nosnika ?>"><?= $nosnik->nazwa_nosnika ?></option>
 		<?php endforeach; ?>
 		</select>
 		<label class="mdl-textfield__label" for="p7">Nośnik</label>
@@ -169,19 +149,15 @@
 			<label class="mdl-textfield__label" for="p5">Data śmierci autora</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<select class="mdl-textfield__input" id='p6' name="kraj_autora">
-				<option disabled selected></option>
+			<select class="materialDropdown" id='p6' name="kraj_autora">
 			<?php foreach($kraje as $kraj): ?>
-				<option value="<?= $kraj->ID_kraju ?>">
-					<?= $kraj->nazwa_kraju ?>
-				</option>
+				<option value="<?= $kraj->ID_kraju ?>"><?= $kraj->nazwa_kraju ?></option>
 			<?php endforeach; ?>
 			</select>
 			<label class="mdl-textfield__label" for="p6">Kraj</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<select class="mdl-textfield__input" id='p7' name="typ_autora">
-				<option disabled selected></option>
+			<select class="materialDropdown" id='p7' name="typ_autora">
 				<option value=1>Pisarz</option>
 				<option value=2>Reżyser</option>
 				<option value=3>Piosenkarz</option>
