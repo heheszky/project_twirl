@@ -47,6 +47,8 @@ div.materialDropdown > div >div{height:28px;box-sizing: border-box;padding:5px;b
 div.materialDropdown.expanded > div >div{background: #fff;}
 div.materialDropdown.expanded > div >div:hover{background: #DCDCDC;cursor: pointer;}
 
+.upfile{display:block;margin-bottom:10px;}
+
 @media screen and (max-width:300px){
 	.regForm, .loginForm{
 		width:100%;

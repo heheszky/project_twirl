@@ -61,7 +61,8 @@
 		<input class="mdl-textfield__input" type="number" id="p8" name="liczba_egz"/>
 		<label class="mdl-textfield__label" for="p8">Liczba egzemplarzy</label>
 	</div>
-	<input type="file" name="upfile" accept="image/*"/>
+	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
+	<input type="file" name="upfile" accept="image/*" hidden/>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
@@ -121,7 +122,8 @@
 		<input class="mdl-textfield__input" type="number" id="p9" name="liczba_egzemplarzy_albumu"/>
 		<label class="mdl-textfield__label" for="p9">Liczba egzemplarzy</label>
 	</div>
-	<input type="file" name="upfile"/>
+	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
+	<input type="file" name="upfile" hidden/>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
@@ -181,7 +183,8 @@
 		</select>
 		<label class="mdl-textfield__label" for="p7">Nośnik fizyczny</label>
 	</div>
-	<input type="file" name="upfile"/>
+	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
+	<input type="file" name="upfile" hidden/>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
