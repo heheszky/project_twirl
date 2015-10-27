@@ -1,41 +1,26 @@
 <div id='Books' class='homeCategory'>
   <h4>Książki <button class='mdl-button mdl-js-button'>więcej</button></h4>
   <div class='itemSection'>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='0'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='0'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='0'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='0'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='0'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='0'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='0'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='0'></card>
+    <?php foreach($ksiazki as $ksiazka): ?>
+    <card cardTitle='<?=$ksiazka->tytul_ksiazki?>' cardCover='<?=$ksiazka->okladka_ksiazki?>'  cardActionHref='/ksiazka/<?=$ksiazka->id_ksiazki?>' cardType='0'></card>
+    <?php endforeach; ?>
   </div>
 </div>
 
 <div id='Film' class='homeCategory'>
   <h4>Filmy <button class='mdl-button mdl-js-button'>więcej</button></h4>
   <div class='itemSection'>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='1'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='1'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='1'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='1'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='1'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='1'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='1'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='1'></card>
+    <?php foreach($filmy as $film): ?>
+    <card cardTitle='<?=$film->tytul_filmu?>' cardCover='<?=$film->okladka_filmu?>'  cardActionHref='/film/<?=$film->id_filmu?>' cardType='2'></card>
+    <?php endforeach; ?>
   </div>
 </div>
 
 <div id='Music' class='homeCategory'>
   <h4>Muzyka <button class='mdl-button mdl-js-button'>więcej</button></h4>
   <div class='itemSection'>
-    <card cardTitle='Eminem - Recovery' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='2'></card>
-    <card cardTitle='David Guetta - Nothing But The Beat' cardCover='http://hiphop-n-more.com/wp-content/uploads/2011/07/david-guetta-nothing-but-the-beat.jpg'  cardActionHref='#' cardType='2'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='2'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='2'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='2'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='2'></card>
-    <card cardTitle='Eminem' cardCover='http://ecx.images-amazon.com/images/I/71HH7D7Z66L._SL1500_.jpg'  cardActionHref='#' cardType='2'></card>
-    <card cardTitle='Trelemorele' cardCover=''  cardActionHref='#' cardType='2'></card>
+    <?php foreach($albumy as $album): ?>
+    <card cardTitle='<?=$album->nazwa_albumu?>' cardCover='<?=$album->okladka_albumu?>'  cardActionHref='/album/<?=$album->id_albumu?>' cardType='2'></card>
+    <?php endforeach; ?>
   </div>
 </div>

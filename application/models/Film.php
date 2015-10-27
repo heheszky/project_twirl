@@ -1,10 +1,5 @@
 <?php
 class Film extends CI_Model {
-	function __construct()
-	{
-		// Call the Model constructor
-		parent::__construct();
-	}
 	function add($okladka)
 	{
 		$data = array(
@@ -34,7 +29,8 @@ class Film extends CI_Model {
 			nazwa_kraju,
 			data_wydania_filmu,
 			liczba_egzemplarzy_filmu,
-			nazwa_nosnika
+			nazwa_nosnika,
+			okladka_filmu
 		');
 		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik'));
 		$this->db->where(array(
@@ -44,6 +40,33 @@ class Film extends CI_Model {
 			'id_krajuprodukcji' => 'id_kraju',
 			'id_nosnika_fizycznego' => 'id_nosnika'
 		));
+		return $this->db->get()->result();
+	}
+	function get_all($limit = null)
+	{
+		$this->db->select('
+			id_filmu,
+			tytul_filmu,
+			id_rezysera,
+			imie_autora,
+			nazwisko_autora,
+			nazwa_zespolu,
+			id_studia,
+			nazwa_studia,
+			id_kraju,
+			nazwa_kraju,
+			data_wydania_filmu,
+			liczba_egzemplarzy_filmu,
+			nazwa_nosnika,
+			okladka_filmu
+		');
+		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik'));
+		$this->db->where('id_rezysera=id_autora');
+		$this->db->where('id_studiafilmowego=id_studia');
+		$this->db->where('id_krajuprodukcji=id_kraju');
+		$this->db->where('id_nosnika_fizycznego=id_nosnika');
+		if($limit)$this->db->limit($limit);
+		$this->db->order_by("id_filmu", "desc");
 		return $this->db->get()->result();
 	}
 }

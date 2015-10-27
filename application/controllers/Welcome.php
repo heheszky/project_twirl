@@ -2,26 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require "BaseController.php";
 class Welcome extends BaseController {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
+		$this->load->model(array('ksiazka', 'album', 'film'));
+		$this->context = array();
+		$this->context['ksiazki'] = $this->ksiazka->get_all($limit = 10);
+		$this->context['albumy'] = $this->album->get_all($limit = 10);
+		$this->context['filmy'] = $this->film->get_all($limit = 10);
 		$this->load->view('layout/header', $this->data);
-		$this->load->view('layout/testmid');
+		$this->load->view('layout/testmid', $this->context);
 		$this->load->view('layout/footer');
 	}
 }

@@ -1,10 +1,5 @@
 <?php
 class Ksiazka extends CI_Model {
-	function __construct()
-	{
-		// Call the Model constructor
-		parent::__construct();
-	}
 	function add($okladka)
 	{
 		$data = array(
@@ -45,6 +40,35 @@ class Ksiazka extends CI_Model {
 			'ksiazka.ID_wydawnictwa' => 'epoka.ID_wydawnictwa',
 			'ksiazka.ID_okladka' => 'okladka.ID_okladki'
 		));
+		return $this->db->get()->result();
+	}
+	
+	function get_all($limit = null)
+	{
+		$this->db->select('
+			id_ksiazki,
+			ISBN,
+			tytul_ksiazki,
+			autor.id_autora,
+			imie_autora,
+			nazwisko_autora,
+			nazwa_zespolu,
+			nazwa_epoki,
+			epoka.id_epoki,
+			data_wydania_ksiazki,
+			wydawnictwo.id_wydawnictwa,
+			nazwa_wydawnictwa,
+			typ_okladki,
+			liczba_egzemplarzy,
+			okladka_ksiazki
+		');
+		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka'));
+		$this->db->where('ksiazka.ID_autora=autor.id_autora');
+		$this->db->where('ksiazka.ID_epoka=epoka.ID_epoki');
+		$this->db->where('ksiazka.ID_wydawnictwa=wydawnictwo.ID_wydawnictwa');
+		$this->db->where('ksiazka.ID_okladka=okladka.ID_okladki');
+		if($limit)$this->db->limit($limit);
+		$this->db->order_by("id_ksiazki", "desc");
 		return $this->db->get()->result();
 	}
 }
