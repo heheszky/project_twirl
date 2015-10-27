@@ -169,3 +169,28 @@ function optionClick(){
 		parent.style.clip = 'rect(-10px, '+(width+10)+'px, '+(height+10)+'px, -10px)';
 	}
 }
+function closeOption(e){
+	e.classList.remove('expanded');
+}
+function clickInsideElement( e, className ) {
+	var el = e.srcElement || e.target;
+	if ( el.classList.contains(className) ) {
+		return el;
+	}else{
+		while ( el = el.parentNode ) {
+			if ( el.classList && el.classList.contains(className) ) {
+				return el;
+			}
+		}
+	}
+	return false;
+}
+document.addEventListener('click', function(e){
+	if(!clickInsideElement(e, 'materialDropdown')){
+		var elements = document.getElementsByClassName('materialDropdown')
+		for(var x = 0; x < elements.length; x++){
+			if(elements[x].classList.contains('expanded'))
+				closeOption(elements[x]);
+		}
+	}
+});
