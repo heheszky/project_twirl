@@ -3,15 +3,15 @@ class Film extends CI_Model {
 	function add($okladka)
 	{
 		$data = array(
-			"tytul_filmu"		=> $this->input->post('tytul'),
-			"id_rezysera"		=> $this->input->post('id_rezysera'),
-			"id_studiafilmowego"=> $this->input->post('id_studia'),
-			"id_krajuprodukcji"	=> $this->input->post('id_kraju'),
-			"data_wydania_filmu"=> $this->input->post('data_wydania'),
-			"liczba_egzemplarzy_filmu"=> $this->input->post('liczba_egzemplarzy'),
-			"id_nosnika_fizycznego"=> $this->input->post('id_nosnika'),
+			"tytul_filmu"		=> $this->input->post('tytul_filmu'),
+			"id_rezysera"		=> $this->input->post('rezyser_filmu'),
+			"id_studiafilmowego"=> $this->input->post('studio_filmowe'),
+			"id_krajuprodukcji"	=> $this->input->post('kraj_produkcji_filmu'),
+			"data_wydania_filmu"=> $this->input->post('data_wydania_filmu'),
+			"liczba_egzemplarzy_filmu"=> $this->input->post('liczba_egzemplarzy_filmu'),
+			"id_nosnika_fizycznego"=> $this->input->post('nosnik_fizyczny_filmu'),
 			"okladka_filmu"		=> $okladka
-			);
+		);
 		$this->db->insert('film', $data);
 	}
 	function get($id)

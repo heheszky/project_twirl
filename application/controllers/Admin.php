@@ -172,7 +172,7 @@ class Admin extends BaseController {
 			$this->film->add($filename);
 		}
 	}
-	public function add_studio($filename)
+	public function add_studio()
 	{
 		if(!$this->is_authorized())return;
 		$this->load->library('form_validation');
