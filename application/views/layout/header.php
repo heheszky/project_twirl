@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="mdl-js">
+<html class="mdl-js" ng-app>
 	<head>
 		<title>Projekt</title>
 		

@@ -49,6 +49,14 @@ div.materialDropdown.expanded > div >div:hover{background: #DCDCDC;cursor: point
 
 .upfile{display:block;margin-bottom:10px;}
 
+.product{display:flex;justify-content: center;}
+.product{padding:1%;flex:1;}
+.product .photo{width:300px;}
+.product .photo imgn{width:300px;}
+.product table{width:600px;}
+.product table tr td{text-align: left;}
+.product table tr td:first-child:first-letter{text-transform: uppercase;}
+
 @media screen and (max-width:300px){
 	.regForm, .loginForm{
 		width:100%;

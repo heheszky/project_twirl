@@ -15,31 +15,31 @@ class Ksiazka extends CI_Model {
 			);
 		$this->db->insert('ksiazka', $data);
 	}
-	function get($isbn)
+	function get($id)
 	{
 		$this->db->select('
+			id_ksiazki
 			ISBN,
 			tytul_ksiazki,
 			autor.id_autora,
 			imie_autora,
 			nazwisko_autora,
-			pseudonim_autora,
+			nazwa_zespolu,
 			nazwa_epoki,
 			epoka.id_epoki,
 			data_wydania_ksiazki,
 			wydawnictwo.id_wydawnictwa,
 			nazwa_wydawnictwa,
 			typ_okladki,
-			liczba_egzemplarzy
+			liczba_egzemplarzy,
+			okladka_ksiazki as okladka
 		');
 		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka'));
-		$this->db->where(array(
-			'ISBN' => $isbn,
-			'ksiazka.ID_autora' => 'autor.id_autora',
-			'ksiazka.ID_epoki' => 'epoka.ID_epoki',
-			'ksiazka.ID_wydawnictwa' => 'epoka.ID_wydawnictwa',
-			'ksiazka.ID_okladka' => 'okladka.ID_okladki'
-		));
+		$this->db->where('id_ksiazki', $id);
+		$this->db->where('ksiazka.ID_autora=autor.id_autora');
+		$this->db->where('ksiazka.ID_epoka=epoka.ID_epoki');
+		$this->db->where('ksiazka.ID_wydawnictwa=wydawnictwo.ID_wydawnictwa');
+		$this->db->where('ksiazka.ID_okladka=okladka.ID_okladki');
 		return $this->db->get()->result();
 	}
 	
@@ -60,7 +60,7 @@ class Ksiazka extends CI_Model {
 			nazwa_wydawnictwa,
 			typ_okladki,
 			liczba_egzemplarzy,
-			okladka_ksiazki
+			okladka_ksiazki as okladka
 		');
 		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka'));
 		$this->db->where('ksiazka.ID_autora=autor.id_autora');

@@ -49,6 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['ksiazka/(:num)'] = 'produkt/get_product/ksiazka/$1';
+$route['album/(:num)'] = 'produkt/get_product/album/$1';
+$route['film/(:num)'] = 'produkt/get_product/film/$1';
 $route['get_json/(:any)'] = 'produkt/get_products_json/$1';
 $route['ksiazki'] = 'produkt/index/ksiazka';
 $route['albumy'] = 'produkt/index/album';

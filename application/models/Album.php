@@ -25,16 +25,14 @@ class Album extends CI_Model {
 			data_wydania_albumu,
 			soundtrack,
 			liczba_utworow,
-			typ_nosnika,
+			nazwa_nosnika,
 			liczba_nosnikow,
 			liczba_egzemplarzy_albumu,
-			okladka_albumu
+			okladka_albumu as okladka
 		');
 		$this->db->from(array('album', 'nosnik'));
-		$this->db->where(array(
-			'ID_albumu' => $id,
-			'id_nosnika_fizycznego' => 'id_nosnika'
-		));
+		$this->db->where('ID_albumu',$id);
+		$this->db->where('id_nosnika_fizycznego=id_nosnika');
 		return $this->db->get()->result();
 	}
 	function get_all($limit = null)
@@ -48,7 +46,7 @@ class Album extends CI_Model {
 			liczba_utworow,
 			liczba_nosnikow,
 			liczba_egzemplarzy_albumu,
-			okladka_albumu
+			okladka_albumu as okladka
 		');
 		$this->db->from(array('album', 'nosnik'));
 		$this->db->where('id_nosnika_fizycznego=id_nosnika');

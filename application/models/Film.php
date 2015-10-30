@@ -22,7 +22,7 @@ class Film extends CI_Model {
 			id_rezysera,
 			imie_autora,
 			nazwisko_autora,
-			pseudonim_autora,
+			nazwa_zespolu,
 			id_studia,
 			nazwa_studia,
 			id_kraju,
@@ -30,16 +30,14 @@ class Film extends CI_Model {
 			data_wydania_filmu,
 			liczba_egzemplarzy_filmu,
 			nazwa_nosnika,
-			okladka_filmu
+			okladka_filmu as okladka
 		');
 		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik'));
-		$this->db->where(array(
-			'ID_filmu' => $id,
-			'id_rezysera' => 'id_autora',
-			'id_studiafilmowego' => 'id_studia',
-			'id_krajuprodukcji' => 'id_kraju',
-			'id_nosnika_fizycznego' => 'id_nosnika'
-		));
+		$this->db->where('ID_filmu', $id);
+		$this->db->where('id_rezysera=id_autora');
+		$this->db->where('id_studiafilmowego=id_studia');
+		$this->db->where('id_krajuprodukcji=id_kraju');
+		$this->db->where('id_nosnika_fizycznego=id_nosnika');
 		return $this->db->get()->result();
 	}
 	function get_all($limit = null)
@@ -58,7 +56,7 @@ class Film extends CI_Model {
 			data_wydania_filmu,
 			liczba_egzemplarzy_filmu,
 			nazwa_nosnika,
-			okladka_filmu
+			okladka_filmu as okladka
 		');
 		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik'));
 		$this->db->where('id_rezysera=id_autora');

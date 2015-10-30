@@ -15,4 +15,5 @@
 	</body>
 	<script src="/assets/js/material.min.js"></script>
 	<script src='/assets/js/main.js'></script>
+	<script src='/assets/js/angular.min.js'></script>
 </html>
