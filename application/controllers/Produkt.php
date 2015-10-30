@@ -70,15 +70,15 @@ class Produkt extends BaseController {
 		$this->load->model($product);
 		switch($product)
 		{
-			case 'ksiazka': $product = $this->ksiazka->get($id);break;
-			case 'album': $product = $this->album->get($id);break;
-			case 'film': $product = $this->film->get($id);break;
+			case 'ksiazka': $product = $this->ksiazka->get($id);$type="ksiazka";break;
+			case 'album': $product = $this->album->get($id);$type="album";break;
+			case 'film': $product = $this->film->get($id);$type="film";break;
 		}
 		if(!$this->session->userdata('cart')) $this->session->set_userdata('cart', array());
 		$cart = $this->session->userdata('cart');
-		if(!in_array($product, $cart))
+		if(!in_array(array('type'=>$type, 'product'=>$product), $cart))
 		{
-			array_push($cart, $product);
+			array_push($cart, array('type'=>$type, 'product'=>$product));
 			$this->session->set_userdata('cart', $cart);
 		}
 		/* debug */
@@ -91,22 +91,28 @@ class Produkt extends BaseController {
 		$this->load->model($product);
 		switch($product)
 		{
-			case 'ksiazka': $product = $this->ksiazka->get($id);break;
-			case 'album': $product = $this->album->get($id);break;
-			case 'film': $product = $this->film->get($id);break;
+			case 'ksiazka': $product = $this->ksiazka->get($id);$type="ksiazka";break;
+			case 'album': $product = $this->album->get($id);$type="album";break;
+			case 'film': $product = $this->film->get($id);$type="film";break;
 		}
+		/* get cart or return if null */
 		if(!$this->session->userdata('cart')) return;
 		$cart = $this->session->userdata('cart');
-		if(in_array($product, $cart))
-		{
-			if(($key = array_search($product, $cart)) !== false) {
-				unset($cart[$key]);
-			}
-			$this->session->set_userdata('cart', $cart);
+		
+		/* delete product from array and update */
+		if(($key = array_search(array('type'=>$type, 'product'=>$product), $cart)) !== false) {
+			unset($cart[$key]);
 		}
+		$this->session->set_userdata('cart', $cart);
+		
 		/* debug */
 		echo "<pre>";
 		print_r($this->session->userdata());
 		echo "</pre>";
+	}
+	public function debug()
+	{
+		echo "<pre>";
+		print_r($this->session->userdata());
 	}
 }
