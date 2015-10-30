@@ -28,7 +28,7 @@ class Film extends CI_Model {
 			id_kraju,
 			nazwa_kraju,
 			data_wydania_filmu,
-			liczba_egzemplarzy_filmu,
+			liczba_egzemplarzy_filmu as liczba_egzemplarzy,
 			nazwa_nosnika,
 			okladka_filmu as okladka
 		');
@@ -38,7 +38,7 @@ class Film extends CI_Model {
 		$this->db->where('id_studiafilmowego=id_studia');
 		$this->db->where('id_krajuprodukcji=id_kraju');
 		$this->db->where('id_nosnika_fizycznego=id_nosnika');
-		return $this->db->get()->result();
+		return $this->db->get()->row();
 	}
 	function get_all($limit = null)
 	{
@@ -66,5 +66,21 @@ class Film extends CI_Model {
 		if($limit)$this->db->limit($limit);
 		$this->db->order_by("id_filmu", "desc");
 		return $this->db->get()->result();
+	}
+	function get_available_count($id)
+	{
+		return $this->db->query('
+			SELECT
+				liczba_egzemplarzy_filmu - count(ID_rzeczy) as dostepne
+			FROM
+				film,
+				wypozyczenie_rzeczy,
+				wypozyczenie
+			WHERE
+				id_filmu = id_rzeczy AND
+				wypozyczenie.ID_wypozyczenia = wypozyczenie_rzeczy.ID_wypozyczenia AND
+				id_rzeczy = '.$id.' AND
+				data_oddania is null;
+		')->row()->dostepne;
 	}
 }

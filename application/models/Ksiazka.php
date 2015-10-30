@@ -40,7 +40,7 @@ class Ksiazka extends CI_Model {
 		$this->db->where('ksiazka.ID_epoka=epoka.ID_epoki');
 		$this->db->where('ksiazka.ID_wydawnictwa=wydawnictwo.ID_wydawnictwa');
 		$this->db->where('ksiazka.ID_okladka=okladka.ID_okladki');
-		return $this->db->get()->result();
+		return $this->db->get()->row();
 	}
 	
 	function get_all($limit = null)
@@ -70,5 +70,21 @@ class Ksiazka extends CI_Model {
 		if($limit)$this->db->limit($limit);
 		$this->db->order_by("id_ksiazki", "desc");
 		return $this->db->get()->result();
+	}
+	function get_available_count($id)
+	{
+		return $this->db->query('
+			SELECT
+				liczba_egzemplarzy - count(ID_rzeczy) as dostepne
+			FROM
+				ksiazka,
+				wypozyczenie_rzeczy,
+				wypozyczenie
+			WHERE
+				id_ksiazki = id_rzeczy AND
+				wypozyczenie.ID_wypozyczenia = wypozyczenie_rzeczy.ID_wypozyczenia AND
+				id_rzeczy = '.$id.' AND
+				data_oddania is null;
+		')->row()->dostepne;
 	}
 }

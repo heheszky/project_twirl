@@ -27,13 +27,13 @@ class Album extends CI_Model {
 			liczba_utworow,
 			nazwa_nosnika,
 			liczba_nosnikow,
-			liczba_egzemplarzy_albumu,
+			liczba_egzemplarzy_albumu as liczba_egzemplarzy,
 			okladka_albumu as okladka
 		');
 		$this->db->from(array('album', 'nosnik'));
 		$this->db->where('ID_albumu',$id);
 		$this->db->where('id_nosnika_fizycznego=id_nosnika');
-		return $this->db->get()->result();
+		return $this->db->get()->row();
 	}
 	function get_all($limit = null)
 	{
@@ -53,5 +53,21 @@ class Album extends CI_Model {
 		if($limit)$this->db->limit($limit);
 		$this->db->order_by("id_albumu", "desc");
 		return $this->db->get()->result();
+	}
+	function get_available_count($id)
+	{
+		return $this->db->query('
+			SELECT
+				liczba_egzemplarzy_albumu - count(ID_rzeczy) as dostepne
+			FROM
+				album,
+				wypozyczenie_rzeczy,
+				wypozyczenie
+			WHERE
+				id_albumu = id_rzeczy AND
+				wypozyczenie.ID_wypozyczenia = wypozyczenie_rzeczy.ID_wypozyczenia AND
+				id_rzeczy = '.$id.' AND
+				data_oddania is null;
+		')->row()->dostepne;
 	}
 }

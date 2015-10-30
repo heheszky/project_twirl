@@ -50,15 +50,63 @@ class Produkt extends BaseController {
 		{
 			case 'ksiazka':
 				$this->context['product'] = $this->ksiazka->get($id);
+				$this->context['available'] = $this->ksiazka->get_available_count($id);
 				break;
 			case 'album':
 				$this->context['product'] = $this->album->get($id);
+				$this->context['available'] = $this->album->get_available_count($id);
 				break;
 			case 'film':
 				$this->context['product'] = $this->film->get($id);
+				$this->context['available'] = $this->film->get_available_count($id);
+				break;
 		}
 		$this->load->view('layout/header', $this->data);
 		$this->load->view('produkt/produkt', $this->context);
 		$this->load->view('layout/footer');
+	}
+	public function add_to_cart($product, $id)
+	{
+		$this->load->model($product);
+		switch($product)
+		{
+			case 'ksiazka': $product = $this->ksiazka->get($id);break;
+			case 'album': $product = $this->album->get($id);break;
+			case 'film': $product = $this->film->get($id);break;
+		}
+		if(!$this->session->userdata('cart')) $this->session->set_userdata('cart', array());
+		$cart = $this->session->userdata('cart');
+		if(!in_array($product, $cart))
+		{
+			array_push($cart, $product);
+			$this->session->set_userdata('cart', $cart);
+		}
+		/* debug */
+		echo "<pre>";
+		print_r($this->session->userdata());
+		echo "</pre>";
+	}
+	public function delete_from_cart($product, $id)
+	{
+		$this->load->model($product);
+		switch($product)
+		{
+			case 'ksiazka': $product = $this->ksiazka->get($id);break;
+			case 'album': $product = $this->album->get($id);break;
+			case 'film': $product = $this->film->get($id);break;
+		}
+		if(!$this->session->userdata('cart')) return;
+		$cart = $this->session->userdata('cart');
+		if(in_array($product, $cart))
+		{
+			if(($key = array_search($product, $cart)) !== false) {
+				unset($cart[$key]);
+			}
+			$this->session->set_userdata('cart', $cart);
+		}
+		/* debug */
+		echo "<pre>";
+		print_r($this->session->userdata());
+		echo "</pre>";
 	}
 }
