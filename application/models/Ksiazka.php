@@ -53,6 +53,7 @@ class Ksiazka extends CI_Model {
 			autor.id_autora,
 			imie_autora,
 			nazwisko_autora,
+			concat(imie_autora, " ", nazwisko_autora) as autor,
 			nazwa_zespolu,
 			nazwa_epoki,
 			epoka.id_epoki,

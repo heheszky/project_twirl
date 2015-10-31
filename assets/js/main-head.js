@@ -19,6 +19,7 @@ function cardToDiv(card, id)
 	var cardActionHref = card.attributes.getNamedItem('cardActionHref').value;
 	var divBody = document.createElement("div");
 	divBody.classList.add("mdl-card");
+	divBody.setAttribute("product-id", id);
 	
 	var aCover = document.createElement('a');
 	aCover.href = cardActionHref;

@@ -40,6 +40,15 @@ class Album extends CI_Model {
 		$this->db->select('
 			id_albumu,
 			nazwa_albumu,
+			autor.id_autora,
+			imie_autora,
+			nazwisko_autora,
+			CASE 
+				WHEN nazwa_zespolu = ""
+				THEN concat(imie_autora, " ", nazwisko_autora)
+				ELSE nazwa_zespolu END
+				AS autor,
+			nazwa_zespolu,
 			kompilacja,
 			data_wydania_albumu,
 			soundtrack,
@@ -48,8 +57,9 @@ class Album extends CI_Model {
 			liczba_egzemplarzy_albumu,
 			okladka_albumu as okladka
 		');
-		$this->db->from(array('album', 'nosnik'));
+		$this->db->from(array('album', 'nosnik', 'autor'));
 		$this->db->where('id_nosnika_fizycznego=id_nosnika');
+		$this->db->where('album.id_autora_albumu=autor.id_autora');
 		if($limit)$this->db->limit($limit);
 		$this->db->order_by("id_albumu", "desc");
 		return $this->db->get()->result();

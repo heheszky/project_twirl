@@ -9,14 +9,18 @@
 		case 'ksiazka':
 			var names = ['id_ksiazki', 'tytul_ksiazki', 'okladka'];
 			var filter_by = [
-				['Epoka', 'id_epoki', 'nazwa_epoki'],
-				['Okładka', 'id_okladki', 'typ_okladki']
-			]
+				['select', 'Autor', 'id_autora', 'autor'],
+				['select', 'Epoka', 'id_epoki', 'nazwa_epoki'],
+				['select', 'Okładka', 'id_okladki', 'typ_okladki']
+			];
 			var cType = 0;
 			break;
 		case 'album':
 			var names = ['id_albumu', 'nazwa_albumu', 'okladka'];
-			var filter_by = [];
+			var filter_by = [
+				['select', 'Autor', 'id_autora', 'autor'],
+				['cb', 'Soundtrack', 'soundtrack']
+			];
 			var cType = 1;
 			break;
 		case 'film':
@@ -30,34 +34,63 @@
 	var filter = {};
 	// Add filter keys
 	for(i = 0 ; i < filter_by.length ; i++)
-		filter[filter_by[i][1]] = [];
+		filter[filter_by[i][2]] = [];
 		
 	for(i = 0 ; i < products.length ; i++)
 	{
 		// Add filter values
 		for(j = 0 ; j < filter_by.length ; j++)
-			if(filter[filter_by[j][1]].containsArray([String(products[i][filter_by[j][1]]), products[i][filter_by[j][2]]]))
+			if(filter_by[j][0] == "cb" || filter[filter_by[j][2]].containsArray([String(products[i][filter_by[j][2]]), products[i][filter_by[j][3]]]))
 				continue
 			else
-				filter[filter_by[j][1]].push([products[i][filter_by[j][1]], products[i][filter_by[j][2]]])
+				filter[filter_by[j][2]].push([products[i][filter_by[j][2]], products[i][filter_by[j][3]]])
+
+		card = document.createElement("card");
+		cardTitle = document.createAttribute("cardTitle");
+		cardCover = document.createAttribute("cardCover");
+		cardActionHref = document.createAttribute("cardActionHref");
+		cardType = document.createAttribute("cardType");
+		cardActionHref.value = '/' + product + '/' + products[i][names[0]];
+		cardTitle.value = products[i][names[1]];
+		cardCover.value = products[i][names[2]];
+		cardType.value = cType;
+		card.setAttributeNode(cardTitle);
+		card.setAttributeNode(cardCover);
+		card.setAttributeNode(cardActionHref);
+		card.setAttributeNode(cardType);
+		container.appendChild(card);
+		cardToDiv(card, products[i][names[0]]);
+		
 	}
 	for(i = 0 ; i < filter_by.length ; i++)
 	{
 		div = document.createElement("div");
 		div.style.width = "200px";
 		div.style.display = "inline-block";
-		div.innerText = filter_by[i][0];
+		div.innerText = filter_by[i][1];
+		if(filter_by[i][0] == "cb")
+		{
+			
+			cb = document.createElement("input");
+			cb.type = "checkbox";
+			cb.id = filter_by[i][2];
+			cb.addEventListener("change", updateItems);
+			cb.setAttribute("index", i);
+			div.appendChild(cb);
+			document.getElementById('sort-panel').appendChild(div);
+			continue;
+		}
 		select = document.createElement("select");
-		select.id = filter_by[i][1];
+		select.id = filter_by[i][2];
 		select.classList.add("a");
 		select.appendChild(document.createElement("option"));
-		select.addEventListener("change", createCards);
+		select.addEventListener("change", updateItems);
 		select.setAttribute("index", i);
-		for(e = 0 ; e < filter[filter_by[i][1]].length ; e++)
+		for(e = 0 ; e < filter[filter_by[i][2]].length ; e++)
 		{
 			option = document.createElement("option");
-			option.value = filter[filter_by[i][1]][e][0];
-			option.innerText = filter[filter_by[i][1]][e][1];
+			option.value = filter[filter_by[i][2]][e][0];
+			option.innerText = filter[filter_by[i][2]][e][1];
 			select.appendChild(option);
 		}
 		div.appendChild(select);
@@ -66,43 +99,42 @@
 	function updateItems()
 	{
 		sortPanel = document.getElementById('sort-panel');
-		selects = sortPanel.getElementsByTagName('select');
 		filtered_products = products;
+		selects = sortPanel.getElementsByTagName('select');
 		for(i = 0 ; i < selects.length ; i++)
 		{
 			if(selects[i].value!="")
 			{
 				index = selects[i].attributes.index.value;
 				filtered_products = filtered_products.filter(function(e){
-					return e[filter_by[index][1]] == selects[i].value;
+					return e[filter_by[index][2]] == selects[i].value;
 				});
 			}
 		}
+		checkboxes = sortPanel.getElementsByTagName('input');
+		for(i = 0 ; i < checkboxes.length ; i++)
+		{
+			console.log(checkboxes[i].value)
+			if(checkboxes[i].checked)
+			{
+				index = selects[i].attributes.index.value;
+				filtered_products = filtered_products.filter(function(e){
+					return e[filter_by[index][2]] == 1;
+				});
+			}
+		}
+		for(i = 0 ; i < container.childNodes.length ; i++)
+		{
+			console.log("---");
+			display = false;
+			for(j = 0 ; j < filtered_products.length ; j++)
+			{
+				if(container.childNodes[i].attributes['product-id'].value == filtered_products[j][names[0]])
+					{display = true;break;}
+			}
+			if(display)container.childNodes[i].style.display = "flex";
+			else container.childNodes[i].style.display = "none";
+		}
 		console.log(filtered_products);
 	}
-	function createCards()
-	{
-		updateItems();
-		document.getElementById('products').innerHTML = "";
-		// Create Cards
-		for(i = 0 ; i < filtered_products.length ; i++)
-		{
-			card = document.createElement("card");
-			cardTitle = document.createAttribute("cardTitle");
-			cardCover = document.createAttribute("cardCover");
-			cardActionHref = document.createAttribute("cardActionHref");
-			cardType = document.createAttribute("cardType");
-			cardActionHref.value = '/' + product + '/' + filtered_products[i][names[0]];
-			cardTitle.value = filtered_products[i][names[1]];
-			cardCover.value = filtered_products[i][names[2]];
-			cardType.value = cType;
-			card.setAttributeNode(cardTitle);
-			card.setAttributeNode(cardCover);
-			card.setAttributeNode(cardActionHref);
-			card.setAttributeNode(cardType);
-			container.appendChild(card);
-			cardToDiv(card, filtered_products[i][names[0]]);
-		}
-	}
-	createCards();
 </script>
