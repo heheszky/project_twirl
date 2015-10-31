@@ -129,3 +129,22 @@ document.addEventListener('click', function(e){
 		}
 	}
 });
+
+// Dodawanie do koszyka
+function addToCart(e)
+{
+	var productType = e.attributes.producttype.value;
+	var itemID = e.attributes.itemid.value;
+	console.log(productType);
+	console.log(itemID);
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+		if (xhttp.readyState == 4 && xhttp.status == 200)
+		{
+			response = xhttp.responseText;
+		}
+	}
+	xhttp.open("GET", "/dodaj_do_koszyka/"+productType+"/"+itemID, true);
+	xhttp.send();
+}

@@ -33,7 +33,8 @@ class Ksiazka extends CI_Model {
 			id_okladki,
 			typ_okladki,
 			liczba_egzemplarzy,
-			okladka_ksiazki as okladka
+			okladka_ksiazki as okladka,
+			cena_za_tydzien
 		');
 		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka'));
 		$this->db->where('id_ksiazki', $id);
@@ -63,7 +64,8 @@ class Ksiazka extends CI_Model {
 			id_okladki,
 			typ_okladki,
 			liczba_egzemplarzy,
-			okladka_ksiazki as okladka
+			okladka_ksiazki as okladka,
+			cena_za_tydzien
 		');
 		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka'));
 		$this->db->where('ksiazka.ID_autora=autor.id_autora');

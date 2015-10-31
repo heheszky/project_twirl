@@ -50,6 +50,8 @@
 		cardCover = document.createAttribute("cardCover");
 		cardActionHref = document.createAttribute("cardActionHref");
 		cardType = document.createAttribute("cardType");
+		itemID = document.createAttribute("itemID");
+		itemID.value = products[i][names[0]];
 		cardActionHref.value = '/' + product + '/' + products[i][names[0]];
 		cardTitle.value = products[i][names[1]];
 		cardCover.value = products[i][names[2]];
@@ -58,6 +60,7 @@
 		card.setAttributeNode(cardCover);
 		card.setAttributeNode(cardActionHref);
 		card.setAttributeNode(cardType);
+		card.setAttributeNode(itemID);
 		container.appendChild(card);
 		cardToDiv(card, products[i][names[0]]);
 		
@@ -125,7 +128,6 @@
 		}
 		for(i = 0 ; i < container.childNodes.length ; i++)
 		{
-			console.log("---");
 			display = false;
 			for(j = 0 ; j < filtered_products.length ; j++)
 			{

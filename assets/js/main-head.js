@@ -17,6 +17,7 @@ function cardToDiv(card, id)
 	var cardCover = card.attributes.getNamedItem('cardCover').value;
 	var cardType = card.attributes.getNamedItem('cardType').value;
 	var cardActionHref = card.attributes.getNamedItem('cardActionHref').value;
+	var itemID = card.attributes.getNamedItem('itemID').value;
 	var divBody = document.createElement("div");
 	divBody.classList.add("mdl-card");
 	divBody.setAttribute("product-id", id);
@@ -26,6 +27,13 @@ function cardToDiv(card, id)
 	
 	var divTitleParent = document.createElement("div");
 	divTitleParent.classList.add('mdl-card__title', 'mdl-card--expand');
+	var productType;
+	switch(cardType)
+	{
+		case "0": productType = "ksiazka";break;
+		case "1": productType = "film";break;
+		case "2": productType = "album";break;
+	}
 	if(cardCover == "" || typeof(cardCover) == 'undefined'){
 		switch(cardType){
 			case "0":
@@ -50,7 +58,7 @@ function cardToDiv(card, id)
 	<button id="id-card-'+id+'" class="mdl-button mdl-js-button mdl-button--icon moreBtn">\
 	<i class="material-icons">more_vert</i></button>\
 	<ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" for="id-card-'+id+'">\
-		<li class="mdl-menu__item">Dodaj do koszyka</li>\
+		<li class="mdl-menu__item" onclick="addToCart(this)" itemID="'+itemID+'" productType="'+productType+'">Dodaj do koszyka</li>\
 		<li class="mdl-menu__item" onclick="window.location = \''+cardActionHref+'\'">Pokaż więcej informacji</li>\
 		<li class="mdl-menu__item" onclick="window.location = \'https://www.google.pl/webhp#q='+cardTitle+'\'">Szukaj w Google</li>\
 		<li class="mdl-menu__item" onclick="window.location = \'https://pl.wikipedia.org/wiki/Specjalna:Szukaj/'+cardTitle+'\'">Szukaj na Wikipedii</li>\
@@ -68,6 +76,6 @@ function cardToDiv(card, id)
 	divBody.appendChild(divActions);
 	
 	card.parentNode.insertBefore(divBody, card);
-	//card.parentNode.removeChild(card);
-	card.remove();
+	card.parentNode.removeChild(card);
+	//card.remove();
 }

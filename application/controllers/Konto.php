@@ -10,7 +10,7 @@ class Konto extends BaseController {
 		$this->load->view('klient/index', $this->context);
 		$this->load->view('layout/footer');
 	}
-	public function rejestracja()
+	public function register()
 	{
 		$this->load->helper(array('validation'));
 		$this->load->library('form_validation');
@@ -59,7 +59,7 @@ class Konto extends BaseController {
 			redirect('/');
 		}
 	}
-	public function wyloguj()
+	public function logout()
 	{
 		$this->session->unset_userdata('logged_in');
 		session_destroy();
@@ -67,7 +67,7 @@ class Konto extends BaseController {
 	}
 	
 	/* callback_functions */
-	public function sprawdz_pesel()
+	public function check_pesel()
 	{
 		$numbers = str_split($this->input->post('pesel'));
 		$weights = array(1,3,7,9,1,3,7,9,1,3);

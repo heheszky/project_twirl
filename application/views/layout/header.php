@@ -38,6 +38,8 @@
 							<?php else: ?>
 								<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
 							<?php endif; ?>
+							<?php if(isset($cart)) $count=count($cart); else $count = 0; ?>
+							<a class="mdl-navigation__link" href="/koszyk">Koszyk (<?= $count ?>)</a>
 						</nav>
 					</div>
 				</header>

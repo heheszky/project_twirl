@@ -30,7 +30,8 @@ class Film extends CI_Model {
 			data_wydania_filmu,
 			liczba_egzemplarzy_filmu as liczba_egzemplarzy,
 			nazwa_nosnika,
-			okladka_filmu as okladka
+			okladka_filmu as okladka,
+			cena_za_tydzien
 		');
 		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik'));
 		$this->db->where('ID_filmu', $id);
@@ -56,7 +57,8 @@ class Film extends CI_Model {
 			data_wydania_filmu,
 			liczba_egzemplarzy_filmu,
 			nazwa_nosnika,
-			okladka_filmu as okladka
+			okladka_filmu as okladka,
+			cena_za_tydzien
 		');
 		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik'));
 		$this->db->where('id_rezysera=id_autora');

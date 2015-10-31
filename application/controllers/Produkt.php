@@ -70,15 +70,15 @@ class Produkt extends BaseController {
 		$this->load->model($product);
 		switch($product)
 		{
-			case 'ksiazka': $product = $this->ksiazka->get($id);$type="ksiazka";break;
-			case 'album': $product = $this->album->get($id);$type="album";break;
-			case 'film': $product = $this->film->get($id);$type="film";break;
+			case 'ksiazka': $product_obj = $this->ksiazka->get($id);$type="ksiazka";break;
+			case 'album': $product_obj = $this->album->get($id);$type="album";break;
+			case 'film': $product_obj = $this->film->get($id);$type="film";break;
 		}
 		if(!$this->session->userdata('cart')) $this->session->set_userdata('cart', array());
 		$cart = $this->session->userdata('cart');
-		if(!in_array(array('type'=>$type, 'product'=>$product), $cart))
+		if(!in_array(array('type'=>$type, 'product'=>$product_obj), $cart))
 		{
-			array_push($cart, array('type'=>$type, 'product'=>$product));
+			array_push($cart, array('type'=>$type, 'product'=>$product_obj));
 			$this->session->set_userdata('cart', $cart);
 		}
 		header('Content-Type: application/json');
@@ -109,5 +109,9 @@ class Produkt extends BaseController {
 	{
 		echo "<pre>";
 		print_r($this->session->userdata());
+	}
+	public function clearCart()
+	{
+		$this->session->set_userdata('cart', array());
 	}
 }

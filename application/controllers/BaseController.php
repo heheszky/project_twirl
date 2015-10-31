@@ -9,7 +9,7 @@ class BaseController extends CI_Controller {
 		{
 			$session_data = $this->session->userdata('logged_in');
 			$this->data['user'] = $session_data;
-			$this->data['cart'] = $this->session->userdata('cart');
 		}
+		$this->data['cart'] = $this->session->userdata('cart');
 	}
 }

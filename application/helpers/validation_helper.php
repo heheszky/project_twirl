@@ -83,7 +83,7 @@ function get_register_validation_config()
 		array(
 			'field' => 'pesel',
 			'label' => 'Pesel',
-			'rules' => 'trim|required|callback_sprawdz_pesel',
+			'rules' => 'trim|required|callback_check_pesel',
 			'errors' => array(
 				'required'		=> 'PESEL jest wymagany',
 				'sprawdz_pesel' => 'Podaj prawidłowy pesel',

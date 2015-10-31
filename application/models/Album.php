@@ -28,7 +28,8 @@ class Album extends CI_Model {
 			nazwa_nosnika,
 			liczba_nosnikow,
 			liczba_egzemplarzy_albumu as liczba_egzemplarzy,
-			okladka_albumu as okladka
+			okladka_albumu as okladka,
+			cena_za_tydzien
 		');
 		$this->db->from(array('album', 'nosnik'));
 		$this->db->where('ID_albumu',$id);
@@ -55,7 +56,8 @@ class Album extends CI_Model {
 			liczba_utworow,
 			liczba_nosnikow,
 			liczba_egzemplarzy_albumu,
-			okladka_albumu as okladka
+			okladka_albumu as okladka,
+			cena_za_tydzien
 		');
 		$this->db->from(array('album', 'nosnik', 'autor'));
 		$this->db->where('id_nosnika_fizycznego=id_nosnika');
