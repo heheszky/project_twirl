@@ -12,6 +12,7 @@
 		<link rel='stylesheet' href='/assets/css/header.css'>
 		<link rel='stylesheet' href='/assets/css/main.css'>
 		<link rel='stylesheet' href='/assets/css/cards.css'>
+		<script src="/assets/js/main-head.js"></script>
 	</head>
 	<body>
 		<div class='mdl-layout mdl-js-layout'>
@@ -23,9 +24,9 @@
 						<div class="mdl-layout-spacer"></div>
 						<nav class="mdl-navigation">
 							<a class="mdl-navigation__link" href="/">Wszystkie</a>
-							<a class="mdl-navigation__link" href="#">Książki</a>
-							<a class="mdl-navigation__link" href="#">Filmy</a>
-							<a class="mdl-navigation__link" href="#">Muzyka</a>
+							<a class="mdl-navigation__link" href="/ksiazki">Książki</a>
+							<a class="mdl-navigation__link" href="/filmy">Filmy</a>
+							<a class="mdl-navigation__link" href="/albumy">Muzyka</a>
 							<?php if(isset($user)): ?>
 								<a class="mdl-navigation__link" id="moreProfile">
 								<?= $user['imie'] ?>
@@ -44,9 +45,9 @@
 					<span class="mdl-layout-title">Kategorie</span>
 					<nav class="mdl-navigation">
 					<a class="mdl-navigation__link" href="/">Wszystkie</a>
-					<a class="mdl-navigation__link" href="#">Książki</a>
-					<a class="mdl-navigation__link" href="#">Filmy</a>
-					<a class="mdl-navigation__link" href="#">Muzyka</a>
+					<a class="mdl-navigation__link" href="/ksiazki">Książki</a>
+					<a class="mdl-navigation__link" href="/filmy">Filmy</a>
+					<a class="mdl-navigation__link" href="/albumy">Muzyka</a>
 					</nav>
 					<span class="mdl-layout-title">Profil</span>
 					<nav class="mdl-navigation">

@@ -30,6 +30,7 @@ class Ksiazka extends CI_Model {
 			data_wydania_ksiazki,
 			wydawnictwo.id_wydawnictwa,
 			nazwa_wydawnictwa,
+			id_okladki,
 			typ_okladki,
 			liczba_egzemplarzy,
 			okladka_ksiazki as okladka
@@ -58,6 +59,7 @@ class Ksiazka extends CI_Model {
 			data_wydania_ksiazki,
 			wydawnictwo.id_wydawnictwa,
 			nazwa_wydawnictwa,
+			id_okladki,
 			typ_okladki,
 			liczba_egzemplarzy,
 			okladka_ksiazki as okladka

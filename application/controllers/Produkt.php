@@ -81,10 +81,8 @@ class Produkt extends BaseController {
 			array_push($cart, array('type'=>$type, 'product'=>$product));
 			$this->session->set_userdata('cart', $cart);
 		}
-		/* debug */
-		echo "<pre>";
-		print_r($this->session->userdata());
-		echo "</pre>";
+		header('Content-Type: application/json');
+		echo json_encode($cart);
 	}
 	public function delete_from_cart($product, $id)
 	{
@@ -102,13 +100,10 @@ class Produkt extends BaseController {
 		/* delete product from array and update */
 		if(($key = array_search(array('type'=>$type, 'product'=>$product), $cart)) !== false) {
 			unset($cart[$key]);
+			$this->session->set_userdata('cart', $cart);
 		}
-		$this->session->set_userdata('cart', $cart);
-		
-		/* debug */
-		echo "<pre>";
-		print_r($this->session->userdata());
-		echo "</pre>";
+		header('Content-Type: application/json');
+		echo json_encode($cart);
 	}
 	public function debug()
 	{

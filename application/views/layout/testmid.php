@@ -24,3 +24,9 @@
     <?php endforeach; ?>
   </div>
 </div>
+<script>
+  var cards = document.getElementsByTagName("card");
+  var cardsLen = cards.length;
+  for(var x = 0; x < cardsLen; x++)
+    cardToDiv(cards[0], x);
+</script>

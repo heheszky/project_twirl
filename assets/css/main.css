@@ -57,6 +57,8 @@ div.materialDropdown.expanded > div >div:hover{background: #DCDCDC;cursor: point
 .product table tr td{text-align: left;}
 .product table tr td:first-child:first-letter{text-transform: uppercase;}
 
+.sort-panel{width: 100%;background:#CACACA;height: 50px;}
+
 @media screen and (max-width:300px){
 	.regForm, .loginForm{
 		width:100%;
