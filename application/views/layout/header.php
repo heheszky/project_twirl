@@ -57,6 +57,7 @@
 					<span class="mdl-layout-title">Profil</span>
 					<nav class="mdl-navigation">
 					<?php if(isset($user)): ?>
+						<a class="mdl-navigation__link" href="/koszyk">Koszyk</a>
 						<a class="mdl-navigation__link" href="/profil"><?= $user['imie'] ?></a>
 						<a class="mdl-navigation__link" href="/wyloguj">Wyloguj się</a>
 					<?php else: ?>

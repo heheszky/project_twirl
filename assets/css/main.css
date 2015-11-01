@@ -5,7 +5,7 @@ html{text-rendering: geometricPrecision;}
 .mdl-layout-title a{color: white;text-decoration: none;}
 .mdl-layout__content{display: flex;flex-direction:column;}
 
-main{background: #eeeeee;}
+main{background: #eeeeee;padding-top:64px;}
 
 .homeCategory, .midcontent{flex: 1;padding:1%;}
 .homeCategory h4{padding:5px;}
