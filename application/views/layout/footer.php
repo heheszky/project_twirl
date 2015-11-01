@@ -8,8 +8,8 @@
 						</ul>
 					</div>
 				</footer>
-				</main>
 				<div class="mdl-layout__obfuscator"></div>
+				</main>
 			</div>
 		</div>
 	</body>

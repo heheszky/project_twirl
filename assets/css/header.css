@@ -1,5 +1,6 @@
 html>body{font-family:'Roboto','Helvetica','Arial',sans-serif!important;}
 
+header{position: fixed;top:0;}
 header .mdl-navigation__link{color:#fff;text-transform: uppercase;opacity: .65;border-bottom: 3px solid transparent;height:61px;}
 header .mdl-navigation__link.active{border-bottom-color:#fff;opacity: 1;}
 header .mdl-navigation__link:hover{border-bottom-color:#fff;opacity: 1;}
@@ -11,5 +12,5 @@ header .mdl-menu__container{right:28px !important;}
 .mdl-layout__drawer-button{display: none;}
 .mdl-layout__drawer .mdl-navigation{padding-top:0;padding-bottom:16px;}
 
-.is-small-screen .small-screen-header{display:block;height: 52px;background: #263238;color: white;}
+.is-small-screen .small-screen-header{display:block;height: 52px;background: #263238;color: white;position:fixed;top:0;width:100%;z-index: 3;}
 .is-small-screen .mdl-layout__drawer-button{display: block;color:white;}
