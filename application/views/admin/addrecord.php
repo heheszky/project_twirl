@@ -188,6 +188,25 @@
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
+<!-- GATUNEK -->
+<?= form_open_multipart("/admin/addrecord", 'class="addBookForm"') ?>
+	<h2>Film</h2>
+	<input type="hidden" name="action" value="gatunek">
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="text" id="p1" name="nazwa_gatunku" required/>
+		<label class="mdl-textfield__label" for="p1">Nazwa gatunku</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty">
+		<select class="materialDropdown" id='p4' name="typ_gatunku" required>
+			<option value='1'>Książka</option>
+			<option value='2'>Film</option>
+			<option value='3'>Album</option>
+		</select>
+		<label class="mdl-textfield__label" for="p4">Typ gatunku</label>
+	</div>
+	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
+</form>
+
 <!------------------    POPUPY      ------------------------------->
 <!------------------DODAWANIE AUTORA------------------------------->
 
