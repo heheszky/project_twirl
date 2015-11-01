@@ -61,6 +61,7 @@ class Produkt extends BaseController {
 				$this->context['available'] = $this->film->get_available_count($id);
 				break;
 		}
+		$this->context['productType'] = $product;
 		$this->load->view('layout/header', $this->data);
 		$this->load->view('produkt/produkt', $this->context);
 		$this->load->view('layout/footer');
