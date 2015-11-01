@@ -90,7 +90,7 @@
 	</div>
 	<?= form_error('autor_albumu'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		<input type="checkbox" name="kompilacja"/> Kompilacja 
+		<input type="checkbox" name="kompilacja" id='kompilacja' class='input-checkbox'/><label class='input-checkbox-label' for='kompilacja'></label> Kompilacja 
 	</div>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="date" id="p4" name="data_wydania_albumu" required/>
@@ -98,7 +98,7 @@
 	</div>
 	<?= form_error('data_wydania_albumu'); ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-		<input type="checkbox" name="soundtrack"/> Soundtrack
+		<input type="checkbox" name="soundtrack" id='soundtrack' class='input-checkbox'/><label class='input-checkbox-label' for='soundtrack'></label> Soundtrack
 	</div>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="number" id="p6" name="liczba_utworow" required/>
@@ -226,7 +226,7 @@
 			<label class="mdl-textfield__label" for="p3">Nazwa zespołu</label>
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<input type="checkbox" name="isZespol"/> Zespół
+			<input type="checkbox" name="isZespol" id='zespol' class='input-checkbox'/><label class='input-checkbox-label' for='zespol'></label> Zespół
 		</div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="date" id="p4" name="data_urodzenia_autora" required/>
