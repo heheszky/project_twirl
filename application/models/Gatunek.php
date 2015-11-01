@@ -8,13 +8,14 @@ class Gatunek extends CI_Model {
 			);
 		$this->db->insert('gatunek', $data);
 	}
-	function get_all()
+	function get_all($type=null)
 	{
 		$this->db->select('
 			id_gatunku,
 			nazwa_gatunku,
 			typ_gatunku
 		');
+		if($type)$this->db->where('typ_gatunku', $type);
 		return $this->db->get('gatunek')->result();
 	}
 }

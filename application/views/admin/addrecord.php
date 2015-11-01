@@ -63,6 +63,9 @@
 	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" accept="image/*" hidden/>
+	<?php foreach($gatunek_ksiazka as $gatunek): ?>
+	<input type="checkbox" name="gatunek_ksiazki" value="<?=$gatunek->id_gatunku;?>"/><?=$gatunek->nazwa_gatunku;?><br/>
+	<?php endforeach; ?>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
@@ -124,6 +127,9 @@
 	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" hidden/>
+	<?php foreach($gatunek_album as $gatunek): ?>
+	<input type="checkbox" name="gatunek_albumu" value="<?=$gatunek->id_gatunku;?>"/><?=$gatunek->nazwa_gatunku;?><br/>
+	<?php endforeach; ?>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
@@ -185,6 +191,9 @@
 	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" hidden/>
+	<?php foreach($gatunek_film as $gatunek): ?>
+	<input type="checkbox" name="gatunek_filmu" value="<?=$gatunek->id_gatunku;?>"/><?=$gatunek->nazwa_gatunku;?><br/>
+	<?php endforeach; ?>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
