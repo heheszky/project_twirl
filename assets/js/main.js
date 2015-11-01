@@ -97,6 +97,8 @@ function optionClick(){
 		root.classList.remove('expanded');
 		root.nextElementSibling.value = this.getAttribute('value');
 		var pos = this.getAttribute('data-index') * 28;
+		if(root.nextElementSibling.onchange)
+			root.nextElementSibling.onchange();
 		parent.style.top = -pos + "px";
 		parent.style.clip = 'rect('+pos+'px, '+(width+10)+'px, '+(pos+28)+'px, 0px)';
 	}else{
