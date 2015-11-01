@@ -17,6 +17,7 @@
 	<body>
 		<div class='mdl-layout mdl-js-layout'>
 			<div class='mdl-layout mdl-js-layout is-upgraded' data-upgraded=",MaterialLayout" >
+				<main class='mdl-layout__content mdl-color-text--grey-600'>
 				<header class='mdl-layout__header mdl-layout__header--transparent' style='background: #263238'>
 					<div class="mdl-layout-icon"></div>
 					<div class="mdl-layout__header-row">
@@ -63,4 +64,4 @@
 				</div>
 				<div class="mdl-layout__drawer-button"><i class="material-icons">menu</i></div>
 				<div class='small-screen-header'>Wypożyczalnia</div>
-				<main class='mdl-layout__content mdl-color-text--grey-600'>
+				
