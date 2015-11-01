@@ -4,8 +4,10 @@ require_once "BaseController.php";
 class Konto extends BaseController {
 	public function index()
 	{
+		$this->load->model('wypozyczenie');
 		$this->context = array();
 		$this->context['klient'] = $this->klient->get($this->data['user']['id']);
+		$this->context['wypozyczenia'] = $this->wypozyczenie->get_all($this->data['user']['id']);
 		$this->load->view('layout/header', $this->data);
 		$this->load->view('klient/index', $this->context);
 		$this->load->view('layout/footer');
