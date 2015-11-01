@@ -13,6 +13,7 @@ class Film extends CI_Model {
 			"okladka_filmu"		=> $okladka
 		);
 		$this->db->insert('film', $data);
+		return $this->db->insert_id();
 	}
 	function get($id)
 	{
@@ -84,5 +85,9 @@ class Film extends CI_Model {
 				id_rzeczy = '.$id.' AND
 				data_oddania is null;
 		')->row()->dostepne;
+	}
+	function add_type($id_filmu, $id_gatunku)
+	{
+		$this->db->insert("film_gatunek", array('id_filmu'=>$id_filmu,'id_gatunku'=>$id_gatunku));
 	}
 }

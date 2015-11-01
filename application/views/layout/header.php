@@ -12,6 +12,7 @@
 		<link rel='stylesheet' href='/assets/css/header.css'>
 		<link rel='stylesheet' href='/assets/css/main.css'>
 		<link rel='stylesheet' href='/assets/css/cards.css'>
+		<link href="/assets/css/multiple-select.css" rel="stylesheet"/>
 		<script src="/assets/js/main-head.js"></script>
 	</head>
 	<body>

@@ -63,9 +63,12 @@
 	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" accept="image/*" hidden/>
+	<label for="gatunek_ksiazka">Gatunek książki</label>
+	<select id="gatunek_ksiazka" multiple="multiple" name="gatunek_ksiazka[]">
 	<?php foreach($gatunek_ksiazka as $gatunek): ?>
-	<input type="checkbox" name="gatunek_ksiazki" value="<?=$gatunek->id_gatunku;?>"/><?=$gatunek->nazwa_gatunku;?><br/>
+		<option value="<?=$gatunek->id_gatunku;?>"><?=$gatunek->nazwa_gatunku;?></option>
 	<?php endforeach; ?>
+	</select><br/><br/>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
@@ -127,9 +130,12 @@
 	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" hidden/>
+	<label for="gatunek_album">Gatunek albumu</label>
+	<select id="gatunek_album" multiple="multiple" name="gatunek_album[]">
 	<?php foreach($gatunek_album as $gatunek): ?>
-	<input type="checkbox" name="gatunek_albumu" value="<?=$gatunek->id_gatunku;?>"/><?=$gatunek->nazwa_gatunku;?><br/>
+		<option value="<?=$gatunek->id_gatunku;?>"><?=$gatunek->nazwa_gatunku;?></option>
 	<?php endforeach; ?>
+	</select><br/><br/>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 
@@ -191,9 +197,12 @@
 	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" hidden/>
+	<label for="gatunek_film">Gatunek filmu</label>
+	<select id="gatunek_film" multiple="multiple" name="gatunek_film[]">
 	<?php foreach($gatunek_film as $gatunek): ?>
-	<input type="checkbox" name="gatunek_filmu" value="<?=$gatunek->id_gatunku;?>"/><?=$gatunek->nazwa_gatunku;?><br/>
+		<option value="<?=$gatunek->id_gatunku;?>"><?=$gatunek->nazwa_gatunku;?></option>
 	<?php endforeach; ?>
+	</select><br/><br/>
 	<input type="submit" value="Dodaj" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"/>
 </form>
 

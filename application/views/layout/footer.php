@@ -16,4 +16,7 @@
 	<script src="/assets/js/material.min.js"></script>
 	<script src='/assets/js/main.js'></script>
 	<script src='/assets/js/angular.min.js'></script>
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.multiple.select.js"></script>
+	<script> $('select').multipleSelect(); </script>
 </html>

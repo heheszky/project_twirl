@@ -148,11 +148,16 @@ class Admin extends BaseController {
 	public function add_book()
 	{
 		if(!$this->is_authorized())return;
+		$this->load->model('ksiazka');
 		$this->form_validation->set_rules(add_book_config());
 		if($this->form_validation->run())
 		{
 			$filename = $this->upload_file('ksiazka');
-			$this->ksiazka->add($filename);
+			$insert_id = $this->ksiazka->add($filename);
+			foreach($this->input->post('gatunek_ksiazka') as $gatunek)
+			{
+				$this->ksiazka->add_type($insert_id, $gatunek);
+			}
 		}
 	}
 	public function add_album()
@@ -163,7 +168,11 @@ class Admin extends BaseController {
 		if($this->form_validation->run())
 		{
 			$filename = $this->upload_file('album');
-			$this->album->add($filename);
+			$insert_id = $this->album->add($filename);
+			foreach($this->input->post('gatunek_album') as $gatunek)
+			{
+				$this->album->add_type($insert_id, $gatunek);
+			}
 		}
 	}
 	public function add_film()
@@ -174,7 +183,11 @@ class Admin extends BaseController {
 		if($this->form_validation->run())
 		{
 			$filename = $this->upload_file('film');
-			$this->film->add($filename);
+			$insert_id = $this->film->add($filename);
+			foreach($this->input->post('gatunek_film') as $gatunek)
+			{
+				$this->film->add_type($insert_id, $gatunek);
+			}
 		}
 	}
 	public function add_studio()

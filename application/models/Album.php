@@ -15,6 +15,7 @@ class Album extends CI_Model {
 			"okladka_albumu"	=> $okladka
 			);
 		$this->db->insert('album', $data);
+		return $this->db->insert_id();
 	}
 	function get($id)
 	{
@@ -81,5 +82,9 @@ class Album extends CI_Model {
 				id_rzeczy = '.$id.' AND
 				data_oddania is null;
 		')->row()->dostepne;
+	}
+	function add_type($id_albumu, $id_gatunku)
+	{
+		$this->db->insert("album_gatunek", array('id_albumu'=>$id_albumu,'id_gatunku'=>$id_gatunku));
 	}
 }

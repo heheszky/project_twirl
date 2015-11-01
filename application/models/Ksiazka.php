@@ -14,6 +14,7 @@ class Ksiazka extends CI_Model {
 			"okladka_ksiazki"		=> $okladka
 			);
 		$this->db->insert('ksiazka', $data);
+		return $this->db->insert_id();
 	}
 	function get($id)
 	{
@@ -91,5 +92,9 @@ class Ksiazka extends CI_Model {
 				id_rzeczy = '.$id.' AND
 				data_oddania is null;
 		')->row()->dostepne;
+	}
+	function add_type($id_ksiazki, $id_gatunku)
+	{
+		$this->db->insert("ksiazka_gatunek", array('id_ksiazki'=>$id_ksiazki,'id_gatunku'=>$id_gatunku));
 	}
 }
