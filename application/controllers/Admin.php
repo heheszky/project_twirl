@@ -37,6 +37,9 @@ class Admin extends BaseController {
 				case 'gatunek': $this->add_type(); break;
 			}
 		}
+		$this->context['gatunek_ksiazka'] = $this->gatunek->get_all(1);
+		$this->context['gatunek_film'] = $this->gatunek->get_all(2);
+		$this->context['gatunek_album'] = $this->gatunek->get_all(3);
 		$this->context['kraje'] = $this->kraj->get_all();
 		$this->context['pisarze'] = $this->autor->get_all('typ_autora=1');
 		$this->context['rezyserowie'] = $this->autor->get_all('typ_autora=2');
