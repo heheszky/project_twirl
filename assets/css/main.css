@@ -52,9 +52,10 @@ div.materialDropdown.expanded > div >div:hover{background: #DCDCDC;cursor: point
 
 .product{display:flex;justify-content: center;}
 .product{padding:1%;flex:1;}
-.product .photo{width:300px;}
+.product .photo{padding:1%;width:300px;}
 .product .photo img{width:300px;}
-.product table{width:600px;}
+.product .content{padding:1%;}
+.product table{width:600px;margin-bottom:10px;}
 .product table tr td{text-align: left;}
 .product table tr td:first-child:first-letter{text-transform: uppercase;}
 

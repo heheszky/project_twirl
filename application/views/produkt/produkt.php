@@ -13,12 +13,10 @@
 				<?php endif; ?>
 			<?php endforeach; ?>
 				<tr>
-					<td>Liczba egzemplarzy</td><td><?= $product->liczba_egzemplarzy ?>(<?=$available?> dostępne)</td>
-				</tr>
-				<tr>
-					<td colspan=2>Dodaj do koszyka</td>
+					<td>Liczba egzemplarzy</td><td><?= $product->liczba_egzemplarzy ?> (<?=$available?> dostępne)</td>
 				</tr>
 			</tbody>
 		</table>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Dodaj do koszyka</button>
 	</div>
 </div>
