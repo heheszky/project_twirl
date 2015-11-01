@@ -18,7 +18,7 @@ class Ksiazka extends CI_Model {
 	function get($id)
 	{
 		$this->db->select('
-			id_ksiazki
+			id_ksiazki,
 			ISBN,
 			tytul_ksiazki,
 			autor.id_autora,

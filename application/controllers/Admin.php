@@ -21,7 +21,8 @@ class Admin extends BaseController {
 			'wydawnictwo',
 			'epoka',
 			'nosnik',
-			'studiofilmowe'
+			'studiofilmowe',
+			'gatunek'
 		));
 		if($this->input->post('action'))
 		{
@@ -33,6 +34,7 @@ class Admin extends BaseController {
 				case 'wydawnictwo': $this->add_publisher(); break;
 				case 'album': $this->add_album(); break;
 				case 'film': $this->add_film(); break;
+				case 'gatunek': $this->add_type(); break;
 			}
 		}
 		$this->context['kraje'] = $this->kraj->get_all();
@@ -195,5 +197,14 @@ class Admin extends BaseController {
 		}
 		header('Content-type: application/json');
 		exit(json_encode($return));
+	}
+	public function add_type()
+	{
+		if(!$this->is_authorized())return;
+		$this->form_validation->set_rules(add_type_config());
+		if($this->form_validation->run())
+		{
+			$this->gatunek->add();
+		}
 	}
 }
