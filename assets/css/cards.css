@@ -10,12 +10,17 @@
 .mdl-card:hover .mdl-card__actions{bottom:0;}
 .moreBtn{position: absolute;bottom: 15px;right: 15px;color: white;}
 
+#Books .mdl-card, #Film .mdl-card{height:445px;}
+
 @media screen and (max-width: 1024px){
 	.mdl-card{width:250px;height:250px;}
+	#Books .mdl-card, #Film .mdl-card{height:355px;}
 }
 @media screen and (max-width: 550px){
 	.mdl-card{width:200px;height:200px;}
+	#Books .mdl-card, #Film .mdl-card{height:285px;}
 }
 @media screen and (max-width: 445px){
-	.mdl-card{width:100%;height:200px;}
+	.mdl-card{width:100%;height:250px;}
+	#Books .mdl-card, #Film .mdl-card{height:410px;}
 }
