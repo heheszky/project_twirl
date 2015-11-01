@@ -6,6 +6,7 @@
 		</tr>
 		</thead>
 		<tbody>
+		<?php if($cart): ?>
 		<?php $sum = 0;$i = 1;foreach($cart as $product): ?>
 		<?php
 		switch($product['type'])
@@ -26,8 +27,8 @@
 				</button>
 			</td>
 		</tr>
-	<?php $i++; endforeach; ?>
-	<?php if($i > 1): ?>
+	<?php $i++; endforeach; endif; ?>
+	<?php if($cart && $i > 1): ?>
 		<tr>
 			<td colspan="2">Razem</td>
 			<td><?= $sum ?>zł</td>

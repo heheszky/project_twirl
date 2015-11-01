@@ -7,6 +7,7 @@ class Zamowienie extends BaseController {
 		$this->context = array();$this->context['products'] = array();
 		$this->load->model(array('wypozyczenie','album','ksiazka','film'));
 		$this->context['wypozyczenie'] = $this->wypozyczenie->get($id);
+		if(!$this->context['wypozyczenie'])redirect("/");
 		if($this->context['wypozyczenie']->id_klienta != $this->data['user']['id'])redirect("/");
 		$prod_ids = $this->wypozyczenie->get_product_ids($this->context['wypozyczenie']->id_wypozyczenia);
 		$suma = 0;
