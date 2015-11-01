@@ -29,6 +29,8 @@
 							<a class="mdl-navigation__link" href="/filmy">Filmy</a>
 							<a class="mdl-navigation__link" href="/albumy">Muzyka</a>
 							<?php if(isset($user)): ?>
+								<?php if(isset($cart)) $count=count($cart); else $count = 0; ?>
+								<a class="mdl-navigation__link" href="/koszyk" id='navKoszyk'>Koszyk (<?= $count ?>)</a>
 								<a class="mdl-navigation__link" id="moreProfile">
 								<?= $user['imie'] ?>
 								</a>
@@ -36,11 +38,11 @@
 									<li class="mdl-menu__item" onclick='window.location = "/profil";'>Profil</li>
 									<li class="mdl-menu__item" onclick='window.location = "/wyloguj";'>Wyloguj się</li>
 								</ul>
+								
 							<?php else: ?>
 								<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
 							<?php endif; ?>
-							<?php if(isset($cart)) $count=count($cart); else $count = 0; ?>
-							<a class="mdl-navigation__link" href="/koszyk">Koszyk (<?= $count ?>)</a>
+							
 						</nav>
 					</div>
 				</header>

@@ -145,8 +145,32 @@ function addToCart(e)
 		if (xhttp.readyState == 4 && xhttp.status == 200)
 		{
 			response = xhttp.responseText;
+			res = JSON.parse(response)
+			var koszyk = document.getElementById('navKoszyk');
+			koszyk.innerText = "Koszyk (" + res.length + ")";
 		}
 	}
 	xhttp.open("GET", "/dodaj_do_koszyka/"+productType+"/"+itemID, true);
+	xhttp.send();
+}
+function removeFromCart(e)
+{
+	var productType = e.attributes.producttype.value;
+	var itemID = e.attributes.itemid.value;
+	console.log(productType);
+	console.log(itemID);
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+		if (xhttp.readyState == 4 && xhttp.status == 200)
+		{
+			response = xhttp.responseText;
+			res = JSON.parse(response)
+			var koszyk = document.getElementById('navKoszyk');
+			koszyk.innerText = "Koszyk (" + res.length + ")";
+			window.location.reload();
+		}
+	}
+	xhttp.open("GET", "/usun_z_koszyka/"+productType+"/"+itemID, true);
 	xhttp.send();
 }

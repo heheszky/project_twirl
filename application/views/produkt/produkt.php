@@ -17,6 +17,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Dodaj do koszyka</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" productType="<?= $productType ?>" itemID="<?= $productId ?>" onclick='addToCart(this)'>Dodaj do koszyka</button>
 	</div>
 </div>
