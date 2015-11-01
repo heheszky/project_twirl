@@ -1,4 +1,6 @@
-<div id="sort-panel" class="sort-panel"></div>
+<div class='sort-panel-body'>
+	<div id="sort-panel" class="sort-panel"></div>
+</div>
 <div class="homeCategory">
 	<div id="products" class='itemSection'></div>
 </div>
@@ -85,9 +87,10 @@
 		}
 		select = document.createElement("select");
 		select.id = filter_by[i][2];
-		select.classList.add("a");
+		select.classList.add("materialDropdown");
 		select.appendChild(document.createElement("option"));
-		select.addEventListener("change", updateItems);
+		//select.addEventListener("change", updateItems);
+		select.onchange = updateItems;
 		select.setAttribute("index", i);
 		for(e = 0 ; e < filter[filter_by[i][2]].length ; e++)
 		{
