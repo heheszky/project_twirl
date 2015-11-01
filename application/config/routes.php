@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['clear'] = 'produkt/clearCart';
 $route['debug'] = 'produkt/debug';
-$route['koszyk'] = 'zamowienie/basket';
+$route['koszyk'] = 'zamowienie/cart';
 $route['usun_z_koszyka/(:any)/(:num)'] = 'produkt/delete_from_cart/$1/$2';
 $route['dodaj_do_koszyka/(:any)/(:num)'] = 'produkt/add_to_cart/$1/$2';
 $route['ksiazka/(:num)'] = 'produkt/get_product/ksiazka/$1';

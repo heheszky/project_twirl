@@ -150,6 +150,28 @@ function add_publisher_config()
 	);
 	return $validation_config;
 }
+function add_type_config()
+{
+	$validation_config = array(
+		array(
+			'field' => 'nazwa_gatunku',
+			'label' => 'Nazwa gatunku',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Nazwa gatunku jest wymagana',
+			),
+		),
+		array(
+			'field' => 'typ_gatunku',
+			'label' => 'Typ gatunku',
+			'rules' => 'trim|required',
+			'errors' => array(
+				'required'		=> 'Typ gatunku jest wymagany',
+			),
+		),
+	);
+	return $validation_config;
+}
 function add_book_config()
 {
 	$validation_config = array(
