@@ -190,7 +190,7 @@
 
 <!-- GATUNEK -->
 <?= form_open_multipart("/admin/addrecord", 'class="addBookForm"') ?>
-	<h2>Film</h2>
+	<h2>Gatunek</h2>
 	<input type="hidden" name="action" value="gatunek">
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="text" id="p1" name="nazwa_gatunku" required/>
