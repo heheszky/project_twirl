@@ -62,6 +62,7 @@ class Produkt extends BaseController {
 				break;
 		}
 		$this->context['productType'] = $product;
+		$this->context['productId'] = $id;
 		$this->load->view('layout/header', $this->data);
 		$this->load->view('produkt/produkt', $this->context);
 		$this->load->view('layout/footer');
