@@ -64,7 +64,7 @@
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" accept="image/*" hidden/>
 	<label for="gatunek_ksiazka">Gatunek książki</label>
-	<select id="gatunek_ksiazka" multiple="multiple" name="gatunek_ksiazka[]">
+	<select class="multiple" id="gatunek_ksiazka" multiple="multiple" name="gatunek_ksiazka[]">
 	<?php foreach($gatunek_ksiazka as $gatunek): ?>
 		<option value="<?=$gatunek->id_gatunku;?>"><?=$gatunek->nazwa_gatunku;?></option>
 	<?php endforeach; ?>
@@ -131,7 +131,7 @@
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" hidden/>
 	<label for="gatunek_album">Gatunek albumu</label>
-	<select id="gatunek_album" multiple="multiple" name="gatunek_album[]">
+	<select class="multiple" id="gatunek_album" multiple="multiple" name="gatunek_album[]">
 	<?php foreach($gatunek_album as $gatunek): ?>
 		<option value="<?=$gatunek->id_gatunku;?>"><?=$gatunek->nazwa_gatunku;?></option>
 	<?php endforeach; ?>
@@ -198,7 +198,7 @@
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" hidden/>
 	<label for="gatunek_film">Gatunek filmu</label>
-	<select id="gatunek_film" multiple="multiple" name="gatunek_film[]">
+	<select class="multiple" id="gatunek_film" multiple="multiple" name="gatunek_film[]">
 	<?php foreach($gatunek_film as $gatunek): ?>
 		<option value="<?=$gatunek->id_gatunku;?>"><?=$gatunek->nazwa_gatunku;?></option>
 	<?php endforeach; ?>
