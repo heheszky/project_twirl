@@ -22,6 +22,12 @@ class Album extends CI_Model {
 		$this->db->select('
 			album.ID_albumu,
 			nazwa_albumu,
+			id_autora_albumu,
+			CASE 
+				WHEN nazwa_zespolu = ""
+				THEN concat(imie_autora, " ", nazwisko_autora)
+				ELSE nazwa_zespolu END
+				AS autor,
 			GROUP_CONCAT(nazwa_gatunku SEPARATOR \', \') as gatunek,
 			kompilacja,
 			data_wydania_albumu,
@@ -33,8 +39,9 @@ class Album extends CI_Model {
 			okladka_albumu as okladka,
 			cena_za_tydzien
 		');
-		$this->db->from(array('album', 'nosnik', 'album_gatunek', 'gatunek'));
+		$this->db->from(array('album', 'nosnik', 'album_gatunek', 'gatunek', 'autor'));
 		$this->db->where('album.ID_albumu',$id);
+		$this->db->where('autor.id_autora=album.id_autora_albumu');
 		$this->db->where('id_nosnika_fizycznego=id_nosnika');
 		$this->db->where('album.id_albumu=album_gatunek.id_albumu');
 		$this->db->where('gatunek.id_gatunku=album_gatunek.id_gatunku');
