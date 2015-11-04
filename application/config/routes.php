@@ -66,6 +66,7 @@ $route['filmy'] = 'produkt/index/film';
 $route['profil'] = 'konto/index';
 $route['admin/(:any)'] = 'admin/$1';
 $route['wyloguj'] = 'konto/logout';
+$route['rejestracja/(:any)'] = 'konto/register/$1';
 $route['rejestracja'] = 'konto/register';
 $route['default_controller'] = 'Welcome';
 $route['404_override'] = '';

@@ -17,9 +17,15 @@ class Film extends CI_Model {
 	}
 	function get($id)
 	{
+		//"select tytul_filmu, GROUP_CONCAT(nazwa_gatunku SEPARATOR ', ')
+		//from film, gatunek, film_gatunek
+		//where film.id_filmu=film_gatunek.id_filmu
+		//and gatunek.id_gatunku=film_gatunek.id_gatunku
+		//group by tytul_filmu;"
 		$this->db->select('
-			ID_filmu,
+			film.ID_filmu,
 			tytul_filmu,
+			GROUP_CONCAT(nazwa_gatunku SEPARATOR \', \') as gatunek,
 			id_rezysera,
 			imie_autora,
 			nazwisko_autora,
@@ -34,12 +40,14 @@ class Film extends CI_Model {
 			okladka_filmu as okladka,
 			cena_za_tydzien
 		');
-		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik'));
-		$this->db->where('ID_filmu', $id);
+		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik', 'gatunek', 'film_gatunek'));
+		$this->db->where('film.id_filmu', $id);
 		$this->db->where('id_rezysera=id_autora');
 		$this->db->where('id_studiafilmowego=id_studia');
 		$this->db->where('id_krajuprodukcji=id_kraju');
 		$this->db->where('id_nosnika_fizycznego=id_nosnika');
+		$this->db->where('film.id_filmu=film_gatunek.id_filmu');
+		$this->db->where('gatunek.id_gatunku=film_gatunek.id_gatunku');
 		return $this->db->get()->row();
 	}
 	function get_all($limit = null)
@@ -47,6 +55,10 @@ class Film extends CI_Model {
 		$this->db->select('
 			id_filmu,
 			tytul_filmu,
+			(SELECT GROUP_CONCAT(nazwa_gatunku SEPARATOR \', \')
+				FROM gatunek,film_gatunek
+				WHERE gatunek.id_gatunku=film_gatunek.id_gatunku
+				AND film_gatunek.id_filmu=film.id_filmu) as gatunek,
 			id_rezysera,
 			imie_autora,
 			nazwisko_autora,

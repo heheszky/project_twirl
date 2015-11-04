@@ -72,9 +72,27 @@ class Produkt extends BaseController {
 		$this->load->model($product);
 		switch($product)
 		{
-			case 'ksiazka': $product_obj = $this->ksiazka->get($id);$type="ksiazka";break;
-			case 'album': $product_obj = $this->album->get($id);$type="album";break;
-			case 'film': $product_obj = $this->film->get($id);$type="film";break;
+			case 'ksiazka':
+				$product_obj = $this->ksiazka->get($id);
+				$available = $this->ksiazka->get_available_count($id);
+				$type="ksiazka";
+				break;
+			case 'album':
+				$product_obj = $this->album->get($id);
+				$available = $this->album->get_available_count($id);
+				$type="album";
+				break;
+			case 'film':
+				$product_obj = $this->film->get($id);
+				$available = $this->film->get_available_count($id);
+				$type="film";
+				break;
+		}
+		if($available < 1)
+		{
+			$res['error'] = 'Produkt niedostępny';
+			$res['message'] = 'Niestety produkt, który wybrałeś/aś jest niedostępny';
+			echo json_encode($res);return;
 		}
 		if(!$this->session->userdata('cart')) $this->session->set_userdata('cart', array());
 		$cart = $this->session->userdata('cart');

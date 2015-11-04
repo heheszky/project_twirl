@@ -2,6 +2,7 @@
 <form action="/rejestracja" method="post" class='loginForm' autocomplete="off">
 	<h4>Zaloguj się</h4>
 	<input type="hidden" name="action" value="login"/>
+	<?php if(isset($next))echo $next; ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="text" id="p1" name="login_email"/>
 		<label class="mdl-textfield__label" for="p1">Adres email</label>
@@ -17,6 +18,7 @@
 <form action="/rejestracja" method="post" class='regForm' autocomplete="off">
 	<h4>Rejestracja</h4>
 	<input type="hidden" name="action" value="register"/>
+	<?php if(isset($next))echo $next; ?>
 	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 		<input class="mdl-textfield__input" type="text" id="p1" name="imie_klienta"/>
 		<label class="mdl-textfield__label" for="p1">Imię</label>

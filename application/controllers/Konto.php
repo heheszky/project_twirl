@@ -12,7 +12,7 @@ class Konto extends BaseController {
 		$this->load->view('klient/index', $this->context);
 		$this->load->view('layout/footer');
 	}
-	public function register()
+	public function register($next=null)
 	{
 		$this->load->helper(array('validation'));
 		$this->load->library('form_validation');
@@ -44,7 +44,9 @@ class Konto extends BaseController {
 		if($this->form_validation->run() == FALSE)
 		{
 			$this->load->view('layout/header', $this->data);
-			$this->load->view('klient/rejestracja');
+			$this->context = array();
+			if($next)$this->context['next'] = '<input type="hidden" name="next" value="/'.$next.'"/>';
+			$this->load->view('klient/rejestracja', $this->context);
 			$this->load->view('layout/footer');
 		} else {
 			if($this->input->post('action') == 'register')
@@ -58,13 +60,13 @@ class Konto extends BaseController {
 				);
 				$this->session->set_userdata('logged_in', $sess_array);
 			}
+			if($this->input->post('next'))redirect($this->input->post('next'));
 			redirect('/');
 		}
 	}
 	public function logout()
 	{
 		$this->session->unset_userdata('logged_in');
-		session_destroy();
 		redirect("/");
 	}
 	

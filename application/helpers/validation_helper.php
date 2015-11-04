@@ -86,7 +86,7 @@ function get_register_validation_config()
 			'rules' => 'trim|required|callback_check_pesel',
 			'errors' => array(
 				'required'		=> 'PESEL jest wymagany',
-				'sprawdz_pesel' => 'Podaj prawidłowy pesel',
+				'check_pesel' => 'Podaj prawidłowy pesel',
 			),
 		),
 	);

@@ -19,9 +19,10 @@ class Ksiazka extends CI_Model {
 	function get($id)
 	{
 		$this->db->select('
-			id_ksiazki,
+			ksiazka.id_ksiazki,
 			ISBN,
 			tytul_ksiazki,
+			GROUP_CONCAT(nazwa_gatunku SEPARATOR \', \') as gatunek,
 			autor.id_autora,
 			imie_autora,
 			nazwisko_autora,
@@ -37,21 +38,27 @@ class Ksiazka extends CI_Model {
 			okladka_ksiazki as okladka,
 			cena_za_tydzien
 		');
-		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka'));
-		$this->db->where('id_ksiazki', $id);
+		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka', 'gatunek', 'ksiazka_gatunek'));
+		$this->db->where('ksiazka.id_ksiazki', $id);
 		$this->db->where('ksiazka.ID_autora=autor.id_autora');
 		$this->db->where('ksiazka.ID_epoka=epoka.ID_epoki');
 		$this->db->where('ksiazka.ID_wydawnictwa=wydawnictwo.ID_wydawnictwa');
 		$this->db->where('ksiazka.ID_okladka=okladka.ID_okladki');
+		$this->db->where('ksiazka.id_ksiazki=ksiazka_gatunek.id_ksiazki');
+		$this->db->where('gatunek.id_gatunku=ksiazka_gatunek.id_gatunku');
 		return $this->db->get()->row();
 	}
 	
 	function get_all($limit = null)
 	{
 		$this->db->select('
-			id_ksiazki,
+			ksiazka.id_ksiazki,
 			ISBN,
 			tytul_ksiazki,
+			(SELECT GROUP_CONCAT(nazwa_gatunku SEPARATOR \', \')
+				FROM gatunek,ksiazka_gatunek
+				WHERE gatunek.id_gatunku=ksiazka_gatunek.id_gatunku
+				AND ksiazka_gatunek.id_ksiazki=ksiazka.id_ksiazki) as gatunek,
 			autor.id_autora,
 			imie_autora,
 			nazwisko_autora,
@@ -68,13 +75,14 @@ class Ksiazka extends CI_Model {
 			okladka_ksiazki as okladka,
 			cena_za_tydzien
 		');
-		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka'));
+		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka', 'gatunek', 'ksiazka_gatunek'));
 		$this->db->where('ksiazka.ID_autora=autor.id_autora');
 		$this->db->where('ksiazka.ID_epoka=epoka.ID_epoki');
 		$this->db->where('ksiazka.ID_wydawnictwa=wydawnictwo.ID_wydawnictwa');
 		$this->db->where('ksiazka.ID_okladka=okladka.ID_okladki');
 		if($limit)$this->db->limit($limit);
 		$this->db->order_by("id_ksiazki", "desc");
+		$this->db->group_by("ksiazka.id_ksiazki");
 		return $this->db->get()->result();
 	}
 	function get_available_count($id)

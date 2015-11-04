@@ -29,9 +29,9 @@
 							<a class="mdl-navigation__link" href="/ksiazki">Książki</a>
 							<a class="mdl-navigation__link" href="/filmy">Filmy</a>
 							<a class="mdl-navigation__link" href="/albumy">Muzyka</a>
+							<?php if(isset($cart)) $count=count($cart); else $count = 0; ?>
+							<a class="mdl-navigation__link" href="/koszyk" id='navKoszyk'>Koszyk (<?= $count ?>)</a>
 							<?php if(isset($user)): ?>
-								<?php if(isset($cart)) $count=count($cart); else $count = 0; ?>
-								<a class="mdl-navigation__link" href="/koszyk" id='navKoszyk'>Koszyk (<?= $count ?>)</a>
 								<a class="mdl-navigation__link" id="moreProfile">
 								<?= $user['imie'] ?>
 								</a>

@@ -137,8 +137,6 @@ function addToCart(e)
 {
 	var productType = e.attributes.producttype.value;
 	var itemID = e.attributes.itemid.value;
-	console.log(productType);
-	console.log(itemID);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function()
 	{
@@ -146,6 +144,11 @@ function addToCart(e)
 		{
 			response = xhttp.responseText;
 			res = JSON.parse(response)
+			if(res['error'])
+			{
+				show_msgbox(res['error'], res['message']);
+				return false;
+			}
 			var koszyk = document.getElementById('navKoszyk');
 			koszyk.innerText = "Koszyk (" + res.length + ")";
 		}
@@ -166,6 +169,7 @@ function removeFromCart(e)
 		{
 			response = xhttp.responseText;
 			res = JSON.parse(response)
+			console.log(res);
 			var koszyk = document.getElementById('navKoszyk');
 			koszyk.innerText = "Koszyk (" + res.length + ")";
 			window.location.reload();
@@ -173,4 +177,35 @@ function removeFromCart(e)
 	}
 	xhttp.open("GET", "/usun_z_koszyka/"+productType+"/"+itemID, true);
 	xhttp.send();
+}
+c = document.getElementById("c");
+c.style.display='none';
+function show_msgbox(title, content)
+{
+	title = title;
+	content = content;
+	div = document.createElement("div");
+	div.id = "MessageBox";
+	h3 = document.createElement("h3");
+	h3.innerText = title;
+	div.appendChild(h3);
+	p = document.createElement("p");
+	p.innerText = content;
+	div.appendChild(p);
+	btn = document.createElement("button");
+	btn.classList.add("msgbox");
+	btn.id = "close";
+	btn.innerText = "Zamknij";
+	btn.addEventListener("click", delete_msgbox);
+	div.appendChild(btn);
+	document.getElementsByTagName("body")[0].appendChild(div);
+	c.style.display = "block";
+	setTimeout(function(){c.classList.add("active");div.classList.add("ready");}, 30)
+}
+function delete_msgbox()
+{
+	div = document.getElementById("MessageBox");
+	div.classList.add("blur");
+	c.classList.remove("active");
+	setTimeout(function(){c.style.display="none";div.remove();}, 400);
 }

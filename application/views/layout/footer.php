@@ -9,6 +9,7 @@
 					</div>
 				</footer>
 				<div class="mdl-layout__obfuscator"></div>
+				<div id="c"></div>
 				</main>
 			</div>
 		</div>
