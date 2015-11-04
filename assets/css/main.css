@@ -63,7 +63,7 @@ div.materialDropdown.expanded > div >div:hover{background: #DCDCDC;cursor: point
 .sort-panel{width: 600px;margin:auto;}
 
 /* Ksankowe style */
-#c{z-index: 99998;top:0;left:0;width: 100%;height: 100%;position: absolute;background: rgba(0,0,0,.4);opacity: 0;transition: all .4s ease-in-out;}
+#c{z-index: 99998;top:0;left:0;width: 100%;height: 100%;position: absolute;background: rgba(0,0,0,.6);opacity: 0;transition: all .4s ease-in-out;}
 #c.active{transition: all .4s ease-in-out;opacity: 1;}
 button.msgbox{background-color: #3f51b5;width: 120px;height:40px;color: white;font-size: 22px;width: 162px;border: 0;}
 #MessageBox{z-index: 99999;width: 500px;background: white;left: calc(50% - 250px);top: -100px;opacity: 0;position: absolute;text-align: center;}

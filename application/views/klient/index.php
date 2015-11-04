@@ -20,7 +20,8 @@
 		</thead>
 		<tbody>
 		<?php foreach($wypozyczenia as $wyp): ?>
-			<tr>
+			<tr onclick="document.location = '/wypozyczenie/<?=$wyp->id_wypozyczenia?>';"
+				style="cursor: pointer;">
 				<td><?=$wyp->id_wypozyczenia?></td>
 				<td><?=$wyp->data_wypozyczenia?></td>
 				<?php if($wyp->data_oddania): ?>

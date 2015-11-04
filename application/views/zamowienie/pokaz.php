@@ -19,7 +19,8 @@
 				break;
 		}
 		?>
-		<tr>
+		<tr onclick="document.location = '/<?=$p['type']."/".$id?>';"
+			style="cursor: pointer;">
 			<td><?=$i?></td>
 			<td><?=$name?></td>
 			<td><?=$p['product']->cena_za_tydzien?>zł</td>
