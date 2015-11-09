@@ -65,7 +65,7 @@ function showPopupAdd(popType){
 }
 
 //zamiana <select> na ładny div z animacjami
-var selects = document.getElementsByTagName('select');
+var selects = document.querySelectorAll("select.materialDropdown")
 			
 for(var y = 0; y < selects.length; y++){
 	var item = selects[y];
