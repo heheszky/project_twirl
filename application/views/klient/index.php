@@ -1,4 +1,4 @@
-<div class='midcontent centered' style='margin: auto;'>
+<div class='midcontent centered' style='margin: auto;display: flex;'>
 	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='tableClients'>
 		<tbody>
 		<?php foreach($klient[0] as $k=>$v): ?>
@@ -10,8 +10,6 @@
 		<?php endforeach; ?>
 		</tbody>
 	</table>
-</div>
-<div class='midcontent centered' style='margin: auto;'>
 	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='tableWypozyczenia'>
 		<thead>
 			<tr>

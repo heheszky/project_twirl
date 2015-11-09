@@ -11,7 +11,7 @@ main{background: #eeeeee;padding-top:64px;}
 .homeCategory h4{padding:5px;}
 .midcontent.centered{justify-content: center;}
 
-.midcontent table{position: static;left:0;}
+.midcontent table{position: static;left:0;margin:10px;}
 .table-centered{margin:auto;}
 .tableScrollButtons{display:none;}
 
