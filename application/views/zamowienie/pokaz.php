@@ -52,5 +52,11 @@
 		class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
 		data-upgraded=",MaterialButton">Wróć
 	</a>
+	<?php else: ?>
+	<a  onclick="document.location = '/profil'"
+		style="margin-top: 5px;"
+		class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+		data-upgraded=",MaterialButton">Wróć
+	</a>
 	<?php endif; ?>
 </div>
