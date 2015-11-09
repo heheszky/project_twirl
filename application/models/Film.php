@@ -58,9 +58,9 @@ class Film extends CI_Model {
 				WHERE gatunek.id_gatunku=film_gatunek.id_gatunku
 				AND film_gatunek.id_filmu=film.id_filmu) as gatunek,
 			id_rezysera,
+			concat(imie_autora, " ", nazwisko_autora) as reżyser,
 			imie_autora,
 			nazwisko_autora,
-			nazwa_zespolu,
 			id_studia,
 			nazwa_studia,
 			id_kraju,

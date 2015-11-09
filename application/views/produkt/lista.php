@@ -8,6 +8,11 @@
 	var product = "<?=$product?>";
 	switch(product)
 	{
+		// Filter by
+		// checkbox:
+		// Nazwa pola, pole w bazie
+		// select:
+		// Nazwa pola, pole z id, pole z nazwami
 		case 'ksiazka':
 			var names = ['id_ksiazki', 'tytul_ksiazki', 'okladka'];
 			var filter_by = [
@@ -27,7 +32,10 @@
 			break;
 		case 'film':
 			var names = ['id_filmu', 'tytul_filmu', 'okladka'];
-			var filter_by = [];
+			var filter_by = [
+				['select', 'Reżyser', 'id_rezysera', 'reżyser'],
+				['select', 'Studio filmowe', 'id_studia', 'nazwa_studia'],
+			];
 			var cType = 2;
 			break;
 	}

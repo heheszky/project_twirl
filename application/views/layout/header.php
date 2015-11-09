@@ -37,6 +37,9 @@
 								</a>
 								<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="moreProfile">
 									<li class="mdl-menu__item" onclick='window.location = "/profil";'>Profil</li>
+									<?php if($user['admin']): ?>
+									<li class="mdl-menu__item" onclick='window.location = "/admin";'>Panel admina</li>
+									<?php endif; ?>
 									<li class="mdl-menu__item" onclick='window.location = "/wyloguj";'>Wyloguj się</li>
 								</ul>
 								
@@ -60,6 +63,9 @@
 					<?php if(isset($user)): ?>
 						<a class="mdl-navigation__link" href="/koszyk">Koszyk</a>
 						<a class="mdl-navigation__link" href="/profil"><?= $user['imie'] ?></a>
+						<?php if($user['admin']): ?>
+						<a class="mdl-navigation__link" href="/admin">Panel admina</a>
+						<?php endif; ?>
 						<a class="mdl-navigation__link" href="/wyloguj">Wyloguj się</a>
 					<?php else: ?>
 						<a class="mdl-navigation__link" href="/rejestracja">Zaloguj się</a>
