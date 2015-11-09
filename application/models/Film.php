@@ -10,6 +10,7 @@ class Film extends CI_Model {
 			"data_wydania_filmu"=> $this->input->post('data_wydania_filmu'),
 			"liczba_egzemplarzy_filmu"=> $this->input->post('liczba_egzemplarzy_filmu'),
 			"id_nosnika_fizycznego"=> $this->input->post('nosnik_fizyczny_filmu'),
+			"cena_za_tydzien"=> $this->input->post('cena_za_tydzien'),
 			"okladka_filmu"		=> $okladka
 		);
 		$this->db->insert('film', $data);
@@ -36,7 +37,7 @@ class Film extends CI_Model {
 			liczba_egzemplarzy_filmu as liczba_egzemplarzy,
 			nazwa_nosnika,
 			okladka_filmu as okladka,
-			cena_za_tydzien
+			concat(cena_za_tydzien, "zł") as cena_za_tydzien
 		');
 		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik', 'gatunek', 'film_gatunek'));
 		$this->db->where('film.id_filmu', $id);
@@ -69,7 +70,7 @@ class Film extends CI_Model {
 			liczba_egzemplarzy_filmu,
 			nazwa_nosnika,
 			okladka_filmu as okladka,
-			cena_za_tydzien
+			concat(cena_za_tydzien, "zł") as cena_za_tydzien
 		');
 		$this->db->from(array('film', 'autor', 'studio_filmowe', 'kraj', 'nosnik'));
 		$this->db->where('id_rezysera=id_autora');

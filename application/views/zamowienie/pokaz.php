@@ -23,7 +23,7 @@
 			style="cursor: pointer;">
 			<td><?=$i?></td>
 			<td><?=$name?></td>
-			<td><?=$p['product']->cena_za_tydzien?>zł</td>
+			<td><?=$p['product']->cena_za_tydzien?></td>
 		</tr>
 		<?php $i++;endforeach; ?>
 		<tr>
@@ -40,4 +40,17 @@
 		</tr>
 		<?php endif; ?>
 	</table>
+	<?php if($user['admin']): ?>
+		<?php if(!$czyZaplacono): ?>
+		<form action="" method="post" style="display: inline-block">
+			<input type="hidden" name="finallize" value="true"/>
+			<input type="submit" style="margin-top: 5px;" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" data-upgraded=",MaterialButton" value="Zakończ zamówienie"/>
+		</form>
+		<?php endif; ?>
+	<a  onclick="document.location = '/admin/orders'"
+		style="margin-top: 5px;"
+		class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+		data-upgraded=",MaterialButton">Wróć
+	</a>
+	<?php endif; ?>
 </div>

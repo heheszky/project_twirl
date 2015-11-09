@@ -11,7 +11,7 @@ main{background: #eeeeee;padding-top:64px;}
 .homeCategory h4{padding:5px;}
 .midcontent.centered{justify-content: center;}
 
-.midcontent table{position: static;left:0;margin:10px;}
+.midcontent table{position: static;left:0;}
 .table-centered{margin:auto;}
 .tableScrollButtons{display:none;}
 
@@ -63,6 +63,7 @@ div.materialDropdown.expanded > div >div:hover{background: #DCDCDC;cursor: point
 .sort-panel{width: 600px;margin:auto;}
 
 /* Ksankowe style */
+/* MessageBox */
 #c{z-index: 99998;top:0;left:0;width: 100%;height: 100%;position: absolute;background: rgba(0,0,0,.6);opacity: 0;transition: all .4s ease-in-out;}
 #c.active{transition: all .4s ease-in-out;opacity: 1;}
 button.msgbox{background-color: #3f51b5;width: 120px;height:40px;color: white;font-size: 22px;width: 162px;border: 0;}
@@ -72,6 +73,12 @@ button.msgbox{background-color: #3f51b5;width: 120px;height:40px;color: white;fo
 #MessageBox h3{background: #ccc;margin-top: 0;padding: 15px;}
 #MessageBox p{padding: 15px;}
 #MessageBox button.msgbox{margin-bottom: 10px;}
+/* Admin */
+.admin-tiles{text-align: center;}
+a.admin-tile{display: inline-block;background: rgba(63,81,181,1);width: 25%;position: relative;padding: 50px 0;margin-top: 10px;}
+@media screen and (max-width: 1500px){a.admin-tile{width: 33%;}}
+@media screen and (max-width: 900px){a.admin-tile{width: 49%;}}
+@media screen and (max-width: 550px){a.admin-tile{width: 100%;}}
 /* Koniec Ksankowych styli */
 
 @media screen and (max-width:300px){
@@ -103,7 +110,7 @@ button.msgbox{background-color: #3f51b5;width: 120px;height:40px;color: white;fo
 	.tableScrollButtonLeft{float:left;}
 	.tableScrollButtonRight{float:right;}
 	.midcontent table{position: relative;left:0;}
-	
+
 	.midcontent .container{
 		width:100%;
 		overflow-x: hidden;

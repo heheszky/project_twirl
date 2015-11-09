@@ -1,19 +1,8 @@
 <div class='midcontent centered' style='margin: auto;display: flex;'>
-	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='tableClients'>
-		<tbody>
-		<?php foreach($klient[0] as $k=>$v): ?>
-			<?php if ((strpos($k,'id') === false && strpos($k,'ID') === false) && $v != null && $k != "okladka" && $k != 'admin'): ?>
-			<tr>
-				<td><?= str_replace("_", " ", $k) ?></td><td><?= $v ?></td>
-			</tr>
-			<?php endif; ?>
-		<?php endforeach; ?>
-		</tbody>
-	</table>
 	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id='tableWypozyczenia' style="margin: 0 10px;">
 		<thead>
 			<tr>
-				<td>Numer wypożyczenia</td><td>Data wypożyczenia</td><td>Data oddania</td><td>Status</td>
+				<td>Numer wypożyczenia</td><td>Klient</td><td>Data wypożyczenia</td><td>Data oddania</td><td>Status</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,6 +10,7 @@
 			<tr onclick="document.location = '/wypozyczenie/<?=$wyp->id_wypozyczenia?>';"
 				style="cursor: pointer;">
 				<td><?=$wyp->id_wypozyczenia?></td>
+				<td><?=$wyp->klient?></td>
 				<td><?=$wyp->data_wypozyczenia?></td>
 				<?php if($wyp->data_oddania): ?>
 				<td><?=$wyp->data_oddania?></td>

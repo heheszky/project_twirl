@@ -11,6 +11,7 @@ class Ksiazka extends CI_Model {
 			"ID_wydawnictwa"		=> $this->input->post('wydawnictwo_ksiazki'),
 			"ID_okladka"			=> $this->input->post('okladka'),
 			"liczba_egzemplarzy"	=> $this->input->post('liczba_egz'),
+			"cena_za_tydzien"=> $this->input->post('cena_za_tydzien'),
 			"okladka_ksiazki"		=> $okladka
 			);
 		$this->db->insert('ksiazka', $data);
@@ -35,7 +36,7 @@ class Ksiazka extends CI_Model {
 			typ_okladki,
 			liczba_egzemplarzy,
 			okladka_ksiazki as okladka,
-			cena_za_tydzien
+			concat(cena_za_tydzien, "zł") as cena_za_tydzien
 		');
 		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka', 'gatunek', 'ksiazka_gatunek'));
 		$this->db->where('ksiazka.id_ksiazki', $id);
@@ -72,7 +73,7 @@ class Ksiazka extends CI_Model {
 			typ_okladki,
 			liczba_egzemplarzy,
 			okladka_ksiazki as okladka,
-			cena_za_tydzien
+			concat(cena_za_tydzien, "zł") as cena_za_tydzien
 		');
 		$this->db->from(array('ksiazka', 'autor', 'epoka', 'wydawnictwo', 'okladka', 'gatunek', 'ksiazka_gatunek'));
 		$this->db->where('ksiazka.ID_autora=autor.id_autora');

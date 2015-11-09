@@ -20,7 +20,7 @@
 		<tr>
 			<td><?= $i ?></td>
 			<td><?= $title; ?></td>
-			<td><?= $product['product']->cena_za_tydzien; ?>zł</td>
+			<td><?= $product['product']->cena_za_tydzien; ?></td>
 			<td>
 				<button class="mdl-button mdl-js-button mdl-button--icon" productType="<?= $product['type'] ?>" itemID="<?= $id ?>" onclick='removeFromCart(this)'>
 					<i class="material-icons">delete</i>
@@ -31,7 +31,7 @@
 	<?php if($cart && $i > 1): ?>
 		<tr>
 			<td colspan="2">Razem</td>
-			<td><?= $sum ?>zł</td>
+			<td><?= $sum ?></td>
 			<td></td>
 		</tr>
 		</tbody>

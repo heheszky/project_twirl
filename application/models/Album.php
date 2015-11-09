@@ -12,6 +12,7 @@ class Album extends CI_Model {
 			"id_nosnika_fizycznego"=> $this->input->post('nosnik_fizyczny'),
 			"liczba_nosnikow"	=> $this->input->post('liczba_nosnikow'),
 			"liczba_egzemplarzy_albumu"=> $this->input->post('liczba_egzemplarzy_albumu'),
+			"cena_za_tydzien"=> $this->input->post('cena_za_tydzien'),
 			"okladka_albumu"	=> $okladka
 			);
 		$this->db->insert('album', $data);
@@ -37,7 +38,7 @@ class Album extends CI_Model {
 			liczba_nosnikow,
 			liczba_egzemplarzy_albumu as liczba_egzemplarzy,
 			okladka_albumu as okladka,
-			cena_za_tydzien
+			concat(cena_za_tydzien, "zł") as cena_za_tydzien
 		');
 		$this->db->from(array('album', 'nosnik', 'album_gatunek', 'gatunek', 'autor'));
 		$this->db->where('album.ID_albumu',$id);
@@ -72,7 +73,7 @@ class Album extends CI_Model {
 			liczba_nosnikow,
 			liczba_egzemplarzy_albumu,
 			okladka_albumu as okladka,
-			cena_za_tydzien
+			concat(cena_za_tydzien, "zł") as cena_za_tydzien
 		');
 		$this->db->from(array('album', 'nosnik', 'autor'));
 		$this->db->where('id_nosnika_fizycznego=id_nosnika');

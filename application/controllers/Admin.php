@@ -10,6 +10,16 @@ class Admin extends BaseController {
 		$this->load->view('layout/footer');
 	}
 	
+	public function orders()
+	{
+		$this->context = array();
+		$this->load->model('wypozyczenie');
+		$this->context['wypozyczenia'] = $this->wypozyczenie->get_all();
+		$this->load->view('layout/header', $this->data);
+		$this->load->view('admin/orders', $this->context);
+		$this->load->view('layout/footer');
+	}
+	
 	public function addrecord()
 	{
 		if(!$this->is_authorized())return;

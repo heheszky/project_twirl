@@ -61,6 +61,10 @@
 		<input class="mdl-textfield__input" type="number" id="p8" name="liczba_egz"/>
 		<label class="mdl-textfield__label" for="p8">Liczba egzemplarzy</label>
 	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="number" id="p9" name="cena_za_tydzien"/>
+		<label class="mdl-textfield__label" for="p9">Cena/tydzień</label>
+	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" accept="image/*" hidden/>
 	<label for="gatunek_ksiazka">Gatunek książki</label>
@@ -128,6 +132,10 @@
 		<input class="mdl-textfield__input" type="number" id="p9" name="liczba_egzemplarzy_albumu"/>
 		<label class="mdl-textfield__label" for="p9">Liczba egzemplarzy</label>
 	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="number" id="p10" name="cena_za_tydzien"/>
+		<label class="mdl-textfield__label" for="p10">Cena/tydzień</label>
+	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" hidden/>
 	<label for="gatunek_album">Gatunek albumu</label>
@@ -194,6 +202,10 @@
 		<?php endforeach; ?>
 		</select>
 		<label class="mdl-textfield__label" for="p7">Nośnik fizyczny</label>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<input class="mdl-textfield__input" type="number" id="p8" name="cena_za_tydzien"/>
+		<label class="mdl-textfield__label" for="p8">Cena/tydzień</label>
 	</div>
 	<span class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored upfile" onclick='this.nextElementSibling.click()'>Wybierz okładkę</span>
 	<input type="file" name="upfile" hidden/>

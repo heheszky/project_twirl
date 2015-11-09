@@ -1,6 +1,6 @@
 <div class='midcontent centered'>
-  <div class='container'>
   <a href="/admin" style="display:block; margin: auto; width: 100px; padding-bottom: 5px;">Wróć</a>
+  <div class='container'>
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-centered" id='tableClients'>
     <thead>
       <tr>
